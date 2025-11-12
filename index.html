@@ -27,11 +27,12 @@
 <style>
 /* Custom Properties for a more modern theme */
 :root {
---bg-color: #f9fafb; /* Lighter gray background */
+--bg-color: #fffbeb; /* Warm, sunny off-white */
 --text-color: #1f2937; /* Dark gray for text */
 --border-color: #e5e7eb;
 --primary-color: #f59e0b; /* Amber/Yellow */
 --primary-hover: #d97706;
+--shadow-color: 220 38% 40%;
 }
 /* Adds a subtle transition to the accordion content */
 .content-panel {
@@ -51,9 +52,9 @@ opacity: 1;
         }
 /* Custom style for the fading gradient effect around the hero section */
 .hero-header {
-            background: linear-gradient(120deg, #fde047 0%, #f97316 100%); /* Yellow to Orange gradient */
-            padding: 5rem 0;
-            margin-bottom: 4rem;
+            background: linear-gradient(120deg, #fcd34d 0%, #fb923c 100%); /* Softer Yellow to Orange gradient */
+            padding: 4rem 0;
+            margin-bottom: 0;
         }
 /* Image section styles */
 .image-section img {
@@ -104,9 +105,15 @@ transform: scale(1.02);
             z-index: -1;
             transition: opacity 0.3s;
         }
+/* Gradient text for headings */
+.gradient-text {
+            background: linear-gradient(120deg, #b45309, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800 leading-relaxed">
+<body class="bg-yellow-50 font-sans text-gray-800 leading-relaxed">
 <div id="app">
 <!-- MAIN CONTENT -->
 <main>
@@ -114,18 +121,18 @@ transform: scale(1.02);
 <section class="hero-header text-center">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-center gap-4 mb-6">
-<div class="text-5xl">🍋</div>
-<h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Rooftop Lemon Guide</h1>
+<div class="text-6xl">🍋</div>
+<h1 class="text-5xl md:text-6xl font-extrabold text-gray-900">Rooftop Lemon Guide</h1>
 </div>
-<p class="text-lg text-gray-800 leading-relaxed mb-10 max-w-3xl mx-auto">
+<p class="text-lg text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto">
                             Growing a lemon tree in Orcutt requires precision engineering. This guide provides the exact media recipe, lightweight containers, sensor-driven irrigation, and environmental mitigation strategies to create a thriving urban orchard.
 </p>
 <!-- Hero Cards Container -->
-<div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+<div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- Cards will be injected by JS -->
 </div>
 </section>
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 <!-- Visual Section: Lemon Harvest Images (External URLs) -->
 <section class="mb-16 image-section">
 <div class="max-w-5xl mx-auto">
@@ -149,14 +156,14 @@ transform: scale(1.02);
 
 <!-- Core Sections -->
 <section class="mb-16">
-<h2 class="text-3xl font-bold text-gray-900 mb-6">Core Growing Systems</h2>
+<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center gradient-text">Core Growing Systems</h2>
 <!-- Accordion Container -->
 <div id="sections-container" class="space-y-4">
 <!-- Sections will be injected by JS -->
 </div>
 </section>
 <!-- Shopping Checklist -->
-<section class="mb-16" id="checklist">
+<section class="mb-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80" id="checklist">
 <h2 class="text-3xl font-bold text-gray-900 mb-6">Shopping Checklist</h2>
 <!-- Checklist Container -->
 <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -172,14 +179,14 @@ transform: scale(1.02);
 </section>
 <!-- Retailers -->
 <section class="mb-16">
-<h2 class="text-3xl font-bold text-gray-900 mb-6">Where to Buy</h2>
+<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center gradient-text">Where to Buy</h2>
 <!-- Retailers Container -->
 <div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 <!-- Retailers will be injected by JS -->
 </div>
 </section>
 <!-- Troubleshooting -->
-<section class="mb-16">
+<section class="mb-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80">
 <h2 class="text-3xl font-bold text-gray-900 mb-6">Common Issues & Fixes</h2>
 <!-- Troubleshooting Container -->
 <div id="troubleshooting-container" class="space-y-4">
@@ -187,7 +194,7 @@ transform: scale(1.02);
 </div>
 </section>
 <!-- CTA Section -->
-<section class="bg-gradient-to-br from-gray-800 to-black rounded-xl p-10 text-white text-center mb-12 shadow-2xl">
+<section class="bg-gradient-to-br from-gray-800 to-black rounded-2xl p-10 text-white text-center mb-12 shadow-2xl">
 <h2 class="text-4xl font-extrabold mb-4">Ready to Grow?</h2>
 <p class="mb-8 text-gray-300 leading-relaxed max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
 <button id="print-button" class="bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:from-yellow-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -241,7 +248,8 @@ const heroCards = [
 const sections = {
                 soil: {
                     title: 'Soil Media Design',
-                    icon: 'package',
+                    icon: 'layers',
+                    color: 'amber',
                     content: [
                         { ingredient: 'Coarse pine bark', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density, large macropores, and excellent drainage.' },
                         { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds essential weight for stability and keeps EC low.' },
@@ -251,16 +259,18 @@ const sections = {
                 },
                 water: {
                     title: 'Water Management',
-                    icon: 'droplet',
+                    icon: 'droplets',
+                    color: 'blue',
                     content: [
                         { type: 'Emitter Flow', value: '0.5 gph', description: 'Use pressure-compensating emitters for consistent delivery.' },
                         { type: 'Sensor Trigger', value: 'VWC Target (35%)', description: 'Irrigate when Volumetric Water Content (VWC) drops below target.' },
                         { type: 'Target EC', value: '< 1.2 dS m⁻¹', description: 'Flush weekly with 2L rainwater or distilled water to prevent salt buildup.' }
                     ]
                 },
-                environment: {
+                nutrients: {
                     title: 'Environmental Mitigation',
                     icon: 'sun',
+                    color: 'orange',
                     content: [
                         { item: 'Shade cloth', spec: '30% density', benefit: 'Reduces leaf temp ~5°C, passes 70% PAR.' },
                         { item: 'Lattice windbreak', spec: 'Vinyl', benefit: 'Blocks ~40% wind exposure, critical in exposed rooftop locations.' },
@@ -268,9 +278,10 @@ const sections = {
                         { item: 'Coconut-coir mulch', spec: '1-2 in. layer', benefit: 'Cuts surface evaporation by approximately 30%.' },
                     ]
                 },
-                nutrients: {
+                environment: {
                     title: 'Nutrient Management',
                     icon: 'leaf',
+                    color: 'green',
                     content: [
                         { type: 'Slow Release', formula: '14-14-14', rate: '½ cup per pot', description: 'Osmocote® or similar releases NPK at 2-4% monthly for baseline.' },
                         { type: 'Liquid Feed', formula: '2-4-6', rate: '30 mL bi-weekly', description: 'Jack\'s Classic liquid to boost P & K during flowering and fruit set.' },
@@ -327,7 +338,7 @@ const sortedKeywords = Object.keys(productLinks).sort((a, b) => b.length - a.len
                 sortedKeywords.forEach(kw => {
 const url = productLinks[kw];
 const regex = new RegExp(`\\b${kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'g');
-                    linkedText = linkedText.replace(regex, `<a href="${url}" class="font-semibold text-amber-600 hover:text-amber-700 underline" target="_blank" rel="noopener noreferrer">${kw}</a>`);
+                    linkedText = linkedText.replace(regex, `<a href="${url}" class="font-semibold text-amber-600 hover:text-amber-800 underline" target="_blank" rel="noopener noreferrer">${kw}</a>`);
                 });
 return linkedText;
             }
@@ -372,7 +383,7 @@ function showTroubleshootingModal() {
                 document.getElementById('modal-title').innerText = '✨ AI Troubleshooting Helper';
                 modalContent.innerHTML = `
                     <p class="text-gray-600 mb-4">Please describe the problem you're seeing with your lemon tree. Be specific! (e.g., "yellow leaves with green veins," "sticky white bugs on new growth," "brown spots on fruit").</p>
-                    <textarea id="problem-textarea" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Type your problem here..."></textarea>
+                    <textarea id="problem-textarea" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none" placeholder="Type your problem here..."></textarea>
                     <button id="submit-troubleshooting-btn" class="mt-4 w-full bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors flex items-center justify-center gap-2">
                         Get AI Diagnosis
                     </button>
@@ -522,7 +533,7 @@ if (!heroContainer || !sectionsContainer || !checklistContainer || !retailersCon
 return;
                 }
                 heroContainer.innerHTML = heroCards.map(card => `
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left">
+                    <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left">
                         <svg class="w-8 h-8 text-amber-600 mb-3" data-lucide="${card.icon}"></svg>
                         <h3 class="font-bold text-gray-900 mb-1 text-lg">${card.title}</h3>
                         <p class="text-sm text-gray-700">${card.text}</p>
@@ -530,6 +541,12 @@ return;
                 `).join('');
                 sectionsContainer.innerHTML = Object.entries(sections).map(([key, section]) => {
 const isExpanded = openSections.has(key);
+const colorClasses = {
+                    amber: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-900', icon: 'text-amber-600', badge: 'bg-amber-100 text-amber-800' },
+                    blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-900', icon: 'text-blue-600', badge: 'bg-blue-100 text-blue-800' },
+                    green: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-900', icon: 'text-green-600', badge: 'bg-green-100 text-green-800' },
+                    orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-900', icon: 'text-orange-600', badge: 'bg-orange-100 text-orange-800' },
+                };
 let contentHtml = '';
 if (key === 'soil') {
                         contentHtml = `<div class="grid md:grid-cols-2 gap-4">` + section.content.map(item => `
@@ -543,7 +560,7 @@ if (key === 'soil') {
                             </div>`).join('') + `</div>`;
                         contentHtml += `
                             <div class="mt-5">
-                                <button id="find-substitutes-btn" class="w-full bg-black text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2" aria-live="polite">
+                                <button id="find-substitutes-btn" class="w-full bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2" aria-live="polite">
                                     <svg data-lucide="sparkles" class="w-5 h-5"></svg>
                                     Find Product Substitutes
                                 </button>
@@ -581,15 +598,15 @@ if (key === 'soil') {
                         `).join('') + `</div>`;
                     }
 return `
-                        <div class="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-                            <button class="accordion-button w-full p-5 flex items-center justify-between hover:bg-gray-50/50 transition-colors" data-key="${key}">
+                        <div class="border ${colorClasses[section.color].border} rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-all">
+                            <button class="accordion-button w-full p-5 flex items-center justify-between hover:bg-gray-50/50 transition-colors" data-key="${key}" style="--section-color: var(--${section.color}-500)">
                                 <div class="flex items-center gap-4">
-                                    <svg class="w-6 h-6 text-gray-800" data-lucide="${section.icon}"></svg>
-                                    <h3 class="text-xl font-semibold text-gray-900">${section.title}</h3>
+                                    <div class="w-10 h-10 rounded-lg ${colorClasses[section.color].bg} flex items-center justify-center"><svg class="w-6 h-6 ${colorClasses[section.color].icon}" data-lucide="${section.icon}"></svg></div>
+                                    <h3 class="text-xl font-semibold ${colorClasses[section.color].text}">${section.title}</h3>
                                 </div>
                                 <svg class="w-5 h-5 text-gray-600 transition-transform ${isExpanded ? 'rotate-180' : ''}" data-lucide="chevron-down"></svg>
                             </button>
-                            <div id="content-${key}" class="content-panel px-5 ${isExpanded ? '' : 'hidden'}">
+                            <div id="content-${key}" class="content-panel px-6 ${isExpanded ? '' : 'hidden'}">
                                 <div class="py-6 border-t border-gray-100 space-y-4">
 ${contentHtml}
                                 </div>
@@ -598,7 +615,7 @@ ${contentHtml}
                     `;
                 }).join('');
                 checklistContainer.innerHTML = checklist.map(group => `
-                    <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all section-fade-in h-full">
+                    <div class="bg-yellow-50/50 border border-yellow-200/60 rounded-lg p-6 transition-all section-fade-in h-full">
                         <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-3 text-lg">
                             <svg class="w-5 h-5 text-gray-800" data-lucide="clipboard-list"></svg>
 ${group.category}
@@ -615,13 +632,13 @@ ${group.items.map(item => `
                     </div>
                 `).join('');
                 retailersContainer.innerHTML = retailers.map(retailer => `<a href="${retailer.url}" target="_blank" rel="noopener noreferrer" class="block section-fade-in group">
-                    <div class="bg-white border border-gray-200 rounded-lg p-4 text-center group-hover:border-gray-300 group-hover:shadow-lg transition-all h-full flex flex-col justify-center items-center">
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 text-center group-hover:border-amber-300 group-hover:shadow-lg transition-all h-full flex flex-col justify-center items-center shadow-sm">
                         <div class="text-4xl mb-3">${retailer.icon}</div>
                         <p class="font-medium text-gray-800 text-sm">${retailer.name}</p>
                     </div>
                 </a>`).join('');
                 troubleshootingContainer.innerHTML = troubleshooting.map(item => `
-                    <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="border border-gray-200 rounded-lg p-6">
                         <div class="flex flex-wrap items-center gap-4 mb-3">
                             <svg class="w-6 h-6 text-gray-800 flex-shrink-0 mt-0.5" data-lucide="alert-triangle"></svg>
                             <h3 class="text-lg font-semibold text-gray-900">${item.problem}</h3>
@@ -632,10 +649,10 @@ ${group.items.map(item => `
                     </div>
                 `).join('');
                 troubleshootingContainer.innerHTML += `
-                    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-8 text-center shadow-sm">
+                    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-8 text-center">
                         <h4 class="text-xl font-semibold text-blue-900 mb-3">Have a different problem?</h4>
                         <p class="text-gray-600 mb-6 max-w-lg mx-auto">Describe your lemon tree's issue and get a custom solution from our AI gardening expert, trained for the Orcutt climate.</p>
-                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors flex items-center justify-center gap-2">
+                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
                             <svg data-lucide="sparkles" class="w-5 h-5"></svg>
                             Get AI Troubleshooting Help
                         </button>
