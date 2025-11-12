@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooftop Lemon Tree Growing Guide</title>
+<!-- Load Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Load Lucide Icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
+<!-- Load Inter Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Configure Tailwind to use Inter font -->
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+</script>
+<style>
+/* Adds a subtle transition to the accordion content */
+.content-panel {
+transition: all 0.3s ease-in-out;
+overflow: hidden;
+        }
+.content-panel.hidden {
+max-height: 0;
+opacity: 0;
+padding-top: 0;
+padding-bottom: 0;
+margin-top: 0;
+        }
+.content-panel:not(.hidden) {
+max-height: 1000px; /* Large enough for content */
+opacity: 1;
+        }
+/* Custom style for the fading gradient effect around the hero section */
+.hero-gradient-wrapper {
+background: radial-gradient(circle at center, #fefefe 10%, #ffffff 70%, #ffffff 100%);
+padding: 3rem 0;
+margin-bottom: 2rem;
+        }
+/* Image section styles */
+.image-section img {
+transition: transform 0.3s ease;
+}
+.image-section img:hover {
+transform: scale(1.02);
+}
+</style>
+</head>
+<body class="bg-white font-sans text-black">
+<div id="app">
+<!-- Header: STICKY TOP BAR -->
+<header class="border-b border-gray-200 bg-white sticky top-0 z-50 shadow-md">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="text-4xl">🍋</div>
+<h1 class="text-4xl font-bold text-black">Rooftop Lemon Tree</h1>
+</div>
+<p class="text-lg text-gray-600">A Complete Growing Guide for Orcutt, Santa Barbara County, CA</p>
+</div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-12">
+<!-- Hero Section Wrapper with Fading Gradient -->
+<div class="hero-gradient-wrapper -mx-4 sm:-mx-6 lg:-mx-8">
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-white rounded-xl p-8 shadow-2xl border-t-8 border-yellow-400">
+<h2 class="text-4xl font-extrabold text-black mb-4 flex items-center gap-2">
+<svg class="w-8 h-8 text-yellow-500" data-lucide="citrus"></svg>
+                            The Rooftop Advantage
+</h2>
+<p class="text-xl text-gray-700 leading-relaxed mb-8 max-w-4xl">
+                            Growing a lemon tree on a third-story rooftop in an arid climate like Orcutt requires precision engineering. This guide provides the exact media recipe, lightweight containers, sensor-driven irrigation, and environmental mitigation strategies to create a thriving urban orchard.
+</p>
+<!-- Hero Cards Container -->
+<div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+<!-- Cards will be injected by JS -->
+</div>
+</div>
+</section>
+</div>
+
+<!-- Visual Section: Lemon Harvest Images (External URLs) -->
+<section class="mb-16 image-section">
+<div class="max-w-6xl mx-auto">
+<h3 class="text-2xl font-semibold text-black mb-6 text-center">Visualizing Your Rooftop Lemon Harvest</h3>
+<p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Inspirational scenes of fresh lemons and lemonade, evoking the rewarding outcome of your rooftop cultivation efforts.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- First Image -->
+<figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+<img src="https://image.cdn2.seaart.me/2025-11-12/d4afbite878c73as2d6g/b43a49bd216e812b29a94c58bb114dbd.webp" alt="Woman in yellow bikini holding a large glass of lemonade on a sunny beach, symbolizing fresh rooftop lemon yield" class="w-full h-auto object-cover" loading="lazy">
+<figcaption class="p-4 text-sm text-gray-600 text-center">Fresh lemonade from your rooftop harvest</figcaption>
+</figure>
+<!-- Second Image -->
+<figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+<img src="https://image.cdn2.seaart.me/2025-11-12/d4afcsde878c738s8etg/58194980cbde8c7575534cf55932f761.webp" alt="Woman in yellow bikini holding two large lemons, representing successful lemon tree growth" class="w-full h-auto object-cover" loading="lazy">
+<figcaption class="p-4 text-sm text-gray-600 text-center">Abundant lemons ready for picking</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- Core Sections -->
+<section class="mb-16">
+<h2 class="text-3xl font-semibold text-black mb-6">Core Growing Systems</h2>
+<!-- Accordion Container -->
+<div id="sections-container" class="space-y-4">
+<!-- Sections will be injected by JS -->
+</div>
+</section>
+<!-- Shopping Checklist -->
+<section class="mb-16">
+<h2 class="text-3xl font-semibold text-black mb-6">What to Buy Checklist</h2>
+<!-- Checklist Container -->
+<div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Checklist items will be injected by JS -->
+</div>
+<div class="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-6 flex gap-4 items-start">
+<svg class="w-6 h-6 text-black flex-shrink-0 mt-0.5" data-lucide="info"></svg>
+<div>
+<p class="text-md font-semibold text-black mb-1">Estimated Cost</p>
+<p class="text-md text-gray-800">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
+</div>
+</div>
+</section>
+<!-- Retailers -->
+<section class="mb-16">
+<h2 class="text-3xl font-semibold text-black mb-6">Where to Buy</h2>
+<!-- Retailers Container -->
+<div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Retailers will be injected by JS -->
+</div>
+</section>
+<!-- Troubleshooting -->
+<section class="mb-16">
+<h2 class="text-3xl font-semibold text-black mb-6">Common Issues & Fixes</h2>
+<!-- Troubleshooting Container -->
+<div id="troubleshooting-container" class="space-y-4">
+<!-- Issues will be injected by JS -->
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-black rounded-lg p-10 text-white text-center mb-12 shadow-lg">
+<h2 class="text-3xl font-bold mb-4">Ready to Grow?</h2>
+<p class="mb-8 opacity-90 max-w-2xl mx-auto">All products are available in the Central Coast market. Create a spreadsheet with the checklist above and batch-order from Home Depot, Lowe's, or specialty retailers for best results.</p>
+<button id="print-button" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    Print or Save Guide
+</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-gray-200 bg-white py-10 mt-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
+<p>🍋 Rooftop Lemon Tree Guide • Third-Story Growing for Orcutt, Santa Barbara County, CA</p>
+<p class="mt-2">Based on peer-reviewed horticultural research and extension bulletins</p>
+</div>
+</footer>
+</div>
+<!-- Gemini AI Modal -->
+<div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div id="modal-box" class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+<div class="flex justify-between items-center p-4 border-b border-gray-200">
+<h3 id="modal-title" class="text-lg font-semibold text-black">✨ AI-Generated Suggestions</h3>
+<button id="modal-close-btn" class="text-gray-500 hover:text-black" aria-label="Close modal">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+</div>
+<div id="modal-content" class="p-6 text-gray-700 leading-relaxed overflow-y-auto">
+<!-- AI content will be injected here -->
+</div>
+</div>
+</div>
+<!-- Main Application Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+// --- DATA ---
+const openSections = new Set(['soil']);
+function safeCreateIcons() {
+if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                }
+            }
+const heroCards = [
+                { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold text-black">≤ 20 lb/ft²</span> roof load' },
+                { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold text-black">VWC monitoring</span>' },
+                { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold text-black">20-30%</span>' },
+            ];
+const sections = {
+                soil: {
+                    title: 'Soil Media Design',
+                    icon: 'package',
+                    content: [
+                        { ingredient: 'Coarse pine bark', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density, large macropores, and excellent drainage.' },
+                        { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds essential weight for stability and keeps EC low.' },
+                        { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention capacity and maintains acidic pH ≈ 5.5.' },
+                        { ingredient: 'Perlite (3-5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity (AFP) which is vital for roots.' },
+                    ]
+                },
+                water: {
+                    title: 'Water Management',
+                    icon: 'droplet',
+                    content: [
+                        { type: 'Emitter Flow', value: '0.5 gph', description: 'Use pressure-compensating emitters for consistent delivery.' },
+                        { type: 'Sensor Trigger', value: 'VWC Target (35%)', description: 'Irrigate when Volumetric Water Content (VWC) drops below target.' },
+                        { type: 'Target EC', value: '< 1.2 dS m⁻¹', description: 'Flush weekly with 2L rainwater or distilled water to prevent salt buildup.' }
+                    ]
+                },
+                environment: {
+                    title: 'Environmental Mitigation',
+                    icon: 'sun',
+                    content: [
+                        { item: 'Shade cloth', spec: '30% density', benefit: 'Reduces leaf temp ~5°C, passes 70% PAR.' },
+                        { item: 'Lattice windbreak', spec: 'Vinyl', benefit: 'Blocks ~40% wind exposure, critical in exposed rooftop locations.' },
+                        { item: 'Cool-roof coating', spec: '0.65+ albedo', benefit: 'Lowers roof surface temp 10-12°C, minimizing radiant heat stress.' },
+                        { item: 'Coconut-coir mulch', spec: '1-2 in. layer', benefit: 'Cuts surface evaporation by approximately 30%.' },
+                    ]
+                },
+                nutrients: {
+                    title: 'Nutrient Management',
+                    icon: 'leaf',
+                    content: [
+                        { type: 'Slow Release', formula: '14-14-14', rate: '½ cup per pot', description: 'Osmocote® or similar releases NPK at 2-4% monthly for baseline.' },
+                        { type: 'Liquid Feed', formula: '2-4-6', rate: '30 mL bi-weekly', description: 'Jack\'s Classic liquid to boost P & K during flowering and fruit set.' },
+                        { type: 'Soil Inoculant', formula: 'Mycorrhizae', rate: '5g per pot', description: 'MycoApply™ inoculum to enhance root surface area and nutrient uptake efficiency.' },
+                    ]
+                }
+            };
+const checklist = [
+                { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1.5L)', 'Peat moss/coir (1.2L)', 'Perlite (0.15L)', 'Dolomitic lime (0.25 lb)'] },
+                { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
+                { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (20 ft)', 'Rain-Bird PC ½ gph emitters (2)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '5-gal gravity reservoir'] },
+                { category: 'Nutrients & Inoculants', items: ['Osmocote 14-14-14 (½ cup)', 'Jack\'s Classic 2-4-6 liquid', 'MycoApply mycorrhizal inoculum (5g)', 'Dolomitic lime (0.25 lb)'] },
+                { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1-2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
+            ];
+const retailers = [
+                { name: 'Home Depot', icon: '🏪' },
+                { name: 'Lowe\'s', icon: '🏪' },
+                { name: 'Amazon', icon: '📦' },
+                { name: 'DripWorks', icon: '💧' },
+                { name: 'Miller\'s Nurseries (Santa Maria)', icon: '🌱' },
+                { name: 'Green Acres Nursery', icon: '🌱' },
+            ];
+const troubleshooting = [
+                { problem: 'Leaf yellowing + black roots', solution: 'Improve drainage by adding 5-10% extra perlite to media.', badge: 'Drainage Issue', fix: 'Miracle-Gro perlite bags' },
+                { problem: 'Sun-scorch on south side', solution: 'Increase shade cloth overlap to achieve 40% total shading during peak hours.', badge: 'Heat Stress', fix: 'Additional Cool-Shade cloth roll' },
+                { problem: 'Fruit drop after hot night', solution: 'Apply 30 mL Jack\'s 2-4-6 liquid weekly as foliar spray to boost leaf K.', badge: 'Nutrient Deficiency', fix: 'Jack\'s Classic fertilizer' },
+                { problem: 'Mildew under canopy', solution: 'Increase pot spacing and add lattice panels for better airflow and light penetration.', badge: 'Airflow / Humidity', fix: 'Garden Edge lattice panels' },
+                { problem: 'pH drift upward in winter', solution: 'Add 0.1 lb elemental sulfur per 5-gal pot to safely acidify the media.', badge: 'Media Chemistry', fix: '5-lb sulfur bag from Home Depot' },
+            ];
+const productLinks = {
+'Sungro® Professional Pine Bark': 'https://www.homedepot.com/s/pine%20bark%20mulch',
+'Sungro® Professional Sand – Fine': 'https://www.homedepot.com/s/play%20sand',
+'Coir-Lite™ Coconut Coir': 'https://www.amazon.com/s?k=coconut+coir+brick',
+'Miracle-Gro Perlite': 'https://www.amazon.com/s?k=miracle+gro+perlite',
+'Smart Pot®': 'https://www.amazon.com/s?k=smart+pot',
+'DripWorks': 'https://www.dripworks.com/',
+'Rain-Bird': 'https://www.homedepot.com/s/rain%20bird%20drip',
+'Titan': 'https://www.amazon.com/s?k=12v+irrigation+timer',
+'Osmocote® Smart-Release 14-14-14': 'https://www.amazon.com/s?k=osmocote+14-14-14',
+"Jack's Classic 2-4-6": "https://www.amazon.com/s?k=jacks+classic+fertilizer",
+'MycoApply™': 'https://www.amazon.com/s?k=mycoapply',
+'Cool-Shade': 'https://www.homedepot.com/s/shade%20cloth',
+'Garden Edge': 'https://www.homedepot.com/s/vinyl%20lattice',
+'CocoCoir': 'https://www.homedepot.com/s/coconut%20coir%20mulch',
+'Home Depot': 'https://www.homedepot.com/',
+"Lowe's": 'https://www.lowes.com/',
+'Amazon': 'https://www.amazon.com/',
+'elemental sulfur': 'https://www.homedepot.com/s/elemental%20sulfur'
+            };
+function linkifyProduct(text) {
+if (!text) return '';
+let linkedText = text;
+const sortedKeywords = Object.keys(productLinks).sort((a, b) => b.length - a.length);
+                sortedKeywords.forEach(kw => {
+const url = productLinks[kw];
+const regex = new RegExp(kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
+                    linkedText = linkedText.replace(regex, `<a href="${url}" class="font-semibold text-black hover:text-gray-600 underline" target="_blank" rel="noopener noreferrer">${kw}</a>`);
+                });
+return linkedText;
+            }
+// --- Modal Functions ---
+const modalOverlay = document.getElementById('modal-overlay');
+const modalBox = document.getElementById('modal-box');
+const modalContent = document.getElementById('modal-content');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+function showModal() {
+                modalOverlay.classList.remove('hidden');
+            }
+function closeModal() {
+                modalOverlay.classList.add('hidden');
+                modalContent.innerHTML = '';
+            }
+function setModalLoading() {
+                modalContent.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-48">
+                        <svg class="animate-spin h-8 w-8 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p class="mt-4 text-gray-600">Contacting our AI Gardener...</p>
+                    </div>
+                `;
+                showModal();
+            }
+function setModalContent(htmlContent) {
+                modalContent.innerHTML = `<div class="whitespace-pre-wrap">${htmlContent}</div>`;
+                showModal();
+            }
+function setModalError(errorMessage) {
+                modalContent.innerHTML = `
+                    <div class="text-center">
+                        <h4 class="font-semibold text-red-700 mb-2">An Error Occurred</h4>
+                        <p class="text-sm text-gray-600">${errorMessage}</p>
+                    </div>
+                `;
+                showModal();
+            }
+function showTroubleshootingModal() {
+                document.getElementById('modal-title').innerText = '✨ AI Troubleshooting Helper';
+                modalContent.innerHTML = `
+                    <p class="text-gray-700 mb-4">Please describe the problem you're seeing with your lemon tree. Be specific! (e.g., "yellow leaves with green veins," "sticky white bugs on new growth," "brown spots on fruit").</p>
+                    <textarea id="problem-textarea" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:outline-none" placeholder="Type your problem here..."></textarea>
+                    <button id="submit-troubleshooting-btn" class="mt-4 w-full bg-black text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                        Get AI Diagnosis
+                    </button>
+                    <div id="ai-response-container" class="mt-4"></div>
+                `;
+                showModal();
+                document.getElementById('submit-troubleshooting-btn').addEventListener('click', handleSubmitTroubleshooting);
+            }
+async function handleSubmitTroubleshooting() {
+const problemText = document.getElementById('problem-textarea').value;
+if (!problemText.trim()) {
+const responseContainer = document.getElementById('ai-response-container');
+                    responseContainer.innerHTML = `<p class="text-red-700 text-sm">Please describe your problem first.</p>`;
+return;
+                }
+const submitBtn = document.getElementById('submit-troubleshooting-btn');
+const responseContainer = document.getElementById('ai-response-container');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Diagnosing...
+                `;
+                responseContainer.innerHTML = '';
+try {
+const aiResponse = await callGeminiTroubleshootingApi(problemText);
+                    responseContainer.innerHTML = `<div class="whitespace-pre-wrap p-4 bg-gray-50 rounded-lg border border-gray-200">${aiResponse}</div>`;
+                } catch (error) {
+                    responseContainer.innerHTML = `<p class="text-red-700 text-sm">Sorry, an error occurred. Please try again.</p>`;
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Get AI Diagnosis';
+                }
+            }
+async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
+try {
+const response = await fetch(url, options);
+if (!response.ok) {
+throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+return await response.json();
+                } catch (error) {
+if (retries > 0) {
+await new Promise(resolve => setTimeout(resolve, delay));
+return fetchWithRetry(url, options, retries - 1, delay * 2);
+                    } else {
+                        console.error('API call failed after retries:', error);
+throw error;
+                    }
+                }
+            }
+async function callGeminiApi() {
+const apiKey = "";
+const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+const systemPrompt = "You are a helpful and concise master gardener. You provide practical, safe, and accurate advice for home gardeners. You will be asked to find substitutes for specific branded horticultural products. Provide 2-3 common, widely available alternatives that can be found at stores like Home Depot or Lowe's, and briefly explain *why* they are good substitutes (e.g., 'similar drainage', 'good water retention').";
+const userQuery = `Based on this specific soil recipe for a rooftop lemon tree: ${JSON.stringify(sections.soil.content)}.
+Please suggest 2-3 common, widely available substitutes for *each* of the following branded products:
+- 'Sungro® Professional Pine Bark'
+- 'Sungro® Professional Sand – Fine'
+- 'Coir-Lite™ Coconut Coir'
+- 'Miracle-Gro Perlite'
+Format the response in simple bullet points, grouped by the original product.`;
+const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+try {
+const result = await fetchWithRetry(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+if (text) {
+                        setModalContent(text);
+                    } else {
+throw new Error("Invalid response from API.");
+                    }
+                } catch (error) {
+                    setModalError("Sorry, I couldn't get suggestions at this time. Please check your connection and try again.");
+                }
+            }
+async function callGeminiTroubleshootingApi(userProblem) {
+const apiKey = "";
+const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+const systemPrompt = `You are a master gardener and citrus expert specializing in container-grown lemon trees. Your advice is for a user on a third-story rooftop in Orcutt, Santa Barbara County, CA, which has an arid, windy, mild climate.
+Provide a concise, practical diagnosis and 2-3 actionable, numbered steps to fix the user's problem.
+Prioritize organic solutions first (like neem oil, insecticidal soap) before suggesting stronger chemicals.
+Keep the entire response under 150 words.`;
+const userQuery = `My rooftop lemon tree in Orcutt, CA has this problem: "${userProblem}"
+What is the likely cause and what are the 2-3 specific, actionable steps I should take to fix it?`;
+const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+try {
+const result = await fetchWithRetry(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+if (text) {
+return text;
+                    } else {
+throw new Error("Invalid response from API.");
+                    }
+                } catch (error) {
+                    console.error('Gemini Troubleshooting API call failed:', error);
+throw error;
+                }
+            }
+function handleFindSubstitutesClick() {
+const btn = document.getElementById('find-substitutes-btn');
+if (!btn) return;
+                btn.disabled = true;
+                btn.innerHTML = `
+                    <svg data-lucide="sparkles" class="w-5 h-5 animate-pulse"></svg>
+                    Finding Substitutes...
+                `;
+                safeCreateIcons();
+                document.getElementById('modal-title').innerText = '✨ AI-Generated Substitutes';
+                setModalLoading();
+                callGeminiApi().finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = `
+                        <svg data-lucide="sparkles" class="w-5 h-5"></svg>
+                        Find Product Substitutes
+                    `;
+                    safeCreateIcons();
+                });
+            }
+function renderDynamicContent() {
+const heroContainer = document.getElementById('hero-cards');
+const sectionsContainer = document.getElementById('sections-container');
+const checklistContainer = document.getElementById('checklist-container');
+const retailersContainer = document.getElementById('retailers-container');
+const troubleshootingContainer = document.getElementById('troubleshooting-container');
+if (!heroContainer || !sectionsContainer || !checklistContainer || !retailersContainer || !troubleshootingContainer) {
+                    console.error('One or more containers not found!');
+return;
+                }
+                heroContainer.innerHTML = heroCards.map(card => `
+                    <div class="bg-white rounded-lg p-5 border border-gray-100 shadow-lg">
+                        <svg class="w-8 h-8 text-yellow-600 mb-3" data-lucide="${card.icon}"></svg>
+                        <h3 class="font-bold text-black mb-1 text-lg">${card.title}</h3>
+                        <p class="text-sm text-gray-600">${card.text}</p>
+                    </div>
+                `).join('');
+                sectionsContainer.innerHTML = Object.entries(sections).map(([key, section]) => {
+const isExpanded = openSections.has(key);
+let contentHtml = '';
+if (key === 'soil') {
+                        contentHtml = section.content.map(item => `
+                            <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                <div class="flex flex-wrap items-center justify-between mb-2">
+                                    <span class="font-semibold text-black">${item.ingredient}</span>
+                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">${item.percent}</span>
+                                </div>
+                                <p class="text-sm text-gray-700 mb-2">Recommended Product: ${linkifyProduct(item.product)}</p>
+                                <p class="text-sm text-gray-600">${item.why}</p>
+                            </div>
+                        `).join('');
+                        contentHtml += `
+                            <div class="mt-5">
+                                <button id="find-substitutes-btn" class="w-full bg-black text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2" aria-live="polite">
+                                    <svg data-lucide="sparkles" class="w-5 h-5"></svg>
+                                    Find Product Substitutes
+                                </button>
+                            </div>`;
+                    } else if (key === 'water') {
+                        contentHtml = `<div class="space-y-4">` + section.content.map(item => `
+                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="font-semibold text-black">${item.type}</span>
+                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">${item.value}</span>
+                                </div>
+                                <p class="text-sm text-gray-700">${item.description}</p>
+                            </div>
+                        `).join('') + `</div>`;
+                    } else if (key === 'nutrients') {
+                        contentHtml = `<div class="space-y-4">` + section.content.map(item => `
+                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="font-semibold text-black">${item.type}</span>
+                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.formula}</span>
+                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.rate}</span>
+                                </div>
+                                <p class="text-sm text-gray-700">${item.description}</p>
+                            </div>
+                        `).join('') + `</div>`;
+                    } else if (key === 'environment') {
+                         contentHtml = `<div class="space-y-4">` + section.content.map(item => `
+                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="font-semibold text-black">${item.item}</span>
+                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full">${item.spec}</span>
+                                </div>
+                                <p class="text-sm text-gray-700">${item.benefit}</p>
+                            </div>
+                        `).join('') + `</div>`;
+                    }
+return `
+                        <div class="border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                            <button class="accordion-button w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors" data-key="${key}">
+                                <div class="flex items-center gap-4">
+                                    <svg class="w-6 h-6 text-black" data-lucide="${section.icon}"></svg>
+                                    <h3 class="text-xl font-semibold text-black">${section.title}</h3>
+                                </div>
+                                <svg class="w-5 h-5 text-gray-600 transition-transform ${isExpanded ? 'rotate-180' : ''}" data-lucide="chevron-down"></svg>
+                            </button>
+                            <div id="content-${key}" class="content-panel px-6 ${isExpanded ? '' : 'hidden'}">
+                                <div class="py-6 border-t border-gray-100 space-y-4">
+${contentHtml}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                checklistContainer.innerHTML = checklist.map(group => `
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all">
+                        <h3 class="font-semibold text-black mb-4 flex items-center gap-3 text-lg">
+                            <svg class="w-5 h-5 text-black" data-lucide="check-circle-2"></svg>
+${group.category}
+                        </h3>
+                        <ul class="space-y-3">
+${group.items.map(item => `
+                                <li class="flex items-start gap-3 text-gray-700">
+                                    <svg class="w-4 h-4 text-black flex-shrink-0 mt-1" data-lucide="check"></svg>
+                                    <span>${linkifyProduct(item)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('');
+                retailersContainer.innerHTML = retailers.map(retailer => `
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:border-gray-400 hover:shadow-md transition-all cursor-pointer">
+                        <div class="text-4xl mb-3">${retailer.icon}</div>
+                        <p class="font-medium text-black">${retailer.name}</p>
+                    </div>
+                `).join('');
+                troubleshootingContainer.innerHTML = troubleshooting.map(item => `
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <div class="flex flex-wrap items-center gap-4 mb-3">
+                            <svg class="w-6 h-6 text-gray-800 flex-shrink-0 mt-0.5" data-lucide="alert-triangle"></svg>
+                            <h3 class="text-lg font-semibold text-black">${item.problem}</h3>
+                            <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">${item.badge}</span>
+                        </div>
+                        <p class="text-gray-700 mb-3 ml-10">${item.solution}</p>
+                        <div class="ml-10 bg-gray-50 rounded-lg p-4 text-sm text-gray-600 border border-gray-200">${linkifyProduct(item.fix)}</div>
+                    </div>
+                `).join('');
+                troubleshootingContainer.innerHTML += `
+                    <div class="mt-8 bg-gray-50 border border-gray-200 rounded-lg p-8 text-center shadow-sm">
+                        <h4 class="text-xl font-semibold text-black mb-3">Have a different problem?</h4>
+                        <p class="text-gray-600 mb-6 max-w-lg mx-auto">Describe your lemon tree's issue and get a custom solution from our AI gardening expert, trained for the Orcutt climate.</p>
+                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-black text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+                            <svg data-lucide="sparkles" class="w-5 h-5"></svg>
+                            Get AI Troubleshooting Help
+                        </button>
+                    </div>
+                `;
+                safeCreateIcons();
+            }
+function toggleSection(key) {
+const contentPanel = document.getElementById(`content-${key}`);
+const icon = document.querySelector(`.accordion-button[data-key="${key}"] [data-lucide="chevron-down"]`);
+if (!contentPanel || !icon) return;
+if (openSections.has(key)) {
+                    openSections.delete(key);
+                    contentPanel.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                } else {
+                    openSections.add(key);
+                    contentPanel.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                }
+                safeCreateIcons();
+            }
+function setupEventListeners() {
+                document.querySelectorAll('.accordion-button').forEach(button => {
+                    button.addEventListener('click', () => {
+const key = button.dataset.key;
+                        toggleSection(key);
+                    });
+                });
+                document.getElementById('sections-container').addEventListener('click', (e) => {
+const btn = e.target.closest('#find-substitutes-btn');
+if (btn) {
+                        e.preventDefault();
+if (!btn.disabled) {
+                            handleFindSubstitutesClick();
+                        }
+                    }
+                });
+                document.getElementById('troubleshooting-container').addEventListener('click', (e) => {
+const btn = e.target.closest('#troubleshoot-ai-btn');
+if (btn) {
+                        e.preventDefault();
+                        showTroubleshootingModal();
+                    }
+                });
+                modalCloseBtn.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', (e) => {
+if (e.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+const printButton = document.getElementById('print-button');
+if (printButton) {
+                    printButton.addEventListener('click', () => {
+                        window.print();
+                    });
+                }
+            }
+            renderDynamicContent();
+            setupEventListeners();
+        });
+</script>
+</body>
+</html>
