@@ -54,6 +54,21 @@ transition: transform 0.3s ease;
 .image-section img:hover {
 transform: scale(1.02);
 }
+/* Scroll-to-top button styles */
+.scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            transform: translateY(20px);
+        }
+.scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 </style>
 </head>
 <body class="bg-white font-sans text-black">
@@ -164,6 +179,11 @@ transform: scale(1.02);
 <p class="mt-2">Based on peer-reviewed horticultural research and extension bulletins</p>
 </div>
 </footer>
+<!-- Scroll-to-top Button -->
+<button id="scroll-to-top-btn" class="scroll-to-top bg-black text-white rounded-full p-3 shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all" title="Go to top">
+<svg class="w-6 h-6" data-lucide="arrow-up"></svg>
+</button>
+
 </div>
 <!-- Gemini AI Modal -->
 <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -242,12 +262,12 @@ const checklist = [
                 { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1-2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
             ];
 const retailers = [
-                { name: 'Home Depot', icon: '🏪' },
-                { name: 'Lowe\'s', icon: '🏪' },
-                { name: 'Amazon', icon: '📦' },
-                { name: 'DripWorks', icon: '💧' },
-                { name: 'Miller\'s Nurseries (Santa Maria)', icon: '🌱' },
-                { name: 'Green Acres Nursery', icon: '🌱' },
+                { name: 'Home Depot', icon: '🏪', url: 'https://www.homedepot.com/' },
+                { name: 'Lowe\'s', icon: '🏪', url: 'https://www.lowes.com/' },
+                { name: 'Amazon', icon: '📦', url: 'https://www.amazon.com/' },
+                { name: 'DripWorks', icon: '💧', url: 'https://www.dripworks.com/' },
+                { name: 'Miller\'s Nurseries (Santa Maria)', icon: '🌱', url: 'https://www.google.com/search?q=Miller%27s+Nurseries+Santa+Maria' },
+                { name: 'Green Acres Nursery', icon: '🌱', url: 'https://www.google.com/search?q=Green+Acres+Nursery+Santa+Barbara+County' },
             ];
 const troubleshooting = [
                 { problem: 'Leaf yellowing + black roots', solution: 'Improve drainage by adding 5-10% extra perlite to media.', badge: 'Drainage Issue', fix: 'Miracle-Gro perlite bags' },
@@ -555,14 +575,14 @@ ${contentHtml}
                     `;
                 }).join('');
                 checklistContainer.innerHTML = checklist.map(group => `
-                    <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all section-fade-in">
                         <h3 class="font-semibold text-black mb-4 flex items-center gap-3 text-lg">
                             <svg class="w-5 h-5 text-black" data-lucide="check-circle-2"></svg>
 ${group.category}
                         </h3>
-                        <ul class="space-y-3">
+                        <ul class="checklist-group space-y-3">
 ${group.items.map(item => `
-                                <li class="flex items-start gap-3 text-gray-700">
+                                <li class="checklist-item flex items-start gap-3 text-gray-700 cursor-pointer transition-colors hover:text-black">
                                     <svg class="w-4 h-4 text-black flex-shrink-0 mt-1" data-lucide="check"></svg>
                                     <span>${linkifyProduct(item)}</span>
                                 </li>
@@ -570,12 +590,12 @@ ${group.items.map(item => `
                         </ul>
                     </div>
                 `).join('');
-                retailersContainer.innerHTML = retailers.map(retailer => `
-                    <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:border-gray-400 hover:shadow-md transition-all cursor-pointer">
+                retailersContainer.innerHTML = retailers.map(retailer => `<a href="${retailer.url}" target="_blank" rel="noopener noreferrer" class="block section-fade-in">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:border-gray-400 hover:shadow-md transition-all h-full">
                         <div class="text-4xl mb-3">${retailer.icon}</div>
                         <p class="font-medium text-black">${retailer.name}</p>
                     </div>
-                `).join('');
+                </a>`).join('');
                 troubleshootingContainer.innerHTML = troubleshooting.map(item => `
                     <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
                         <div class="flex flex-wrap items-center gap-4 mb-3">
@@ -598,6 +618,21 @@ ${group.items.map(item => `
                     </div>
                 `;
                 safeCreateIcons();
+                // Setup scroll animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                            entry.target.classList.remove('opacity-0', 'translate-y-4');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('section, .section-fade-in').forEach(el => {
+                    el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700', 'ease-out');
+                    observer.observe(el);
+                });
             }
 function toggleSection(key) {
 const contentPanel = document.getElementById(`content-${key}`);
@@ -637,6 +672,23 @@ if (btn) {
                         showTroubleshootingModal();
                     }
                 });
+                checklistContainer.addEventListener('click', (e) => {
+                    const item = e.target.closest('.checklist-item');
+                    if (item) {
+                        item.classList.toggle('line-through');
+                        item.classList.toggle('text-gray-400');
+                    }
+                });
+                const scrollTopBtn = document.getElementById('scroll-to-top-btn');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+                scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
                 modalCloseBtn.addEventListener('click', closeModal);
                 modalOverlay.addEventListener('click', (e) => {
 if (e.target === modalOverlay) {
