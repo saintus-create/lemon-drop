@@ -8,17 +8,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Load Lucide Icons -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
-<!-- Load Inter Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Configure Tailwind to use Inter font -->
+<!-- Load Geist Font -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
 <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Geist Sans', 'sans-serif'],
                     },
                 },
             },
@@ -53,7 +50,7 @@ opacity: 1;
 /* Custom style for the fading gradient effect around the hero section */
 .hero-header {
             background: linear-gradient(120deg, #fcd34d 0%, #fb923c 100%); /* Softer Yellow to Orange gradient */
-            padding: 4rem 0;
+            padding: 6rem 0;
             margin-bottom: 0;
         }
 /* Image section styles */
@@ -113,18 +110,17 @@ transform: scale(1.02);
         }
 </style>
 </head>
-<body class="bg-yellow-50 font-sans text-gray-800 leading-relaxed">
+<body class="bg-yellow-50 font-sans text-gray-800 leading-normal">
 <div id="app">
 <!-- MAIN CONTENT -->
 <main>
 <!-- New Hero Header Section -->
 <section class="hero-header text-center">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-center gap-4 mb-6">
-<div class="text-6xl">🍋</div>
+<div class="mb-6">
 <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900">Rooftop Lemon Guide</h1>
 </div>
-<p class="text-lg text-gray-700 leading-relaxed mb-12 max-w-3xl mx-auto">
+<p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
                             Growing a lemon tree in Orcutt requires precision engineering. This guide provides the exact media recipe, lightweight containers, sensor-driven irrigation, and environmental mitigation strategies to create a thriving urban orchard.
 </p>
 <!-- Hero Cards Container -->
@@ -137,7 +133,7 @@ transform: scale(1.02);
 <section class="mb-16 image-section">
 <div class="max-w-5xl mx-auto">
 <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Visualize Your Success</h3>
-<p class="text-center text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">Follow this guide to turn your rooftop into a personal oasis of fresh, juicy lemons.</p>
+<p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Follow this guide to turn your rooftop into a personal oasis of fresh, juicy lemons.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- First Image -->
 <figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200/80">
@@ -196,7 +192,7 @@ transform: scale(1.02);
 <!-- CTA Section -->
 <section class="bg-gradient-to-br from-gray-800 to-black rounded-2xl p-10 text-white text-center mb-12 shadow-2xl">
 <h2 class="text-4xl font-extrabold mb-4">Ready to Grow?</h2>
-<p class="mb-8 text-gray-300 leading-relaxed max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
+<p class="mb-8 text-gray-300 max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
 <button id="print-button" class="bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:from-yellow-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Print or Save Guide
 </button>
@@ -225,7 +221,7 @@ transform: scale(1.02);
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
 </button>
 </div>
-<div id="modal-content" class="p-6 text-gray-700 leading-relaxed overflow-y-auto">
+<div id="modal-content" class="p-6 text-gray-700 overflow-y-auto">
 <!-- AI content will be injected here -->
 </div>
 </div>
