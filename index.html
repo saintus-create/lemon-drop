@@ -50,10 +50,10 @@ max-height: 1000px; /* Large enough for content */
 opacity: 1;
         }
 /* Custom style for the fading gradient effect around the hero section */
-.hero-gradient-wrapper { /* Softened the hero background */
-background: radial-gradient(circle at center, var(--bg-color) 50%, transparent 80%);
-padding: 2rem 0;
-margin-bottom: 4rem;
+.hero-header {
+            background: linear-gradient(120deg, #fde047 0%, #f97316 100%); /* Yellow to Orange gradient */
+            padding: 5rem 0;
+            margin-bottom: 4rem;
         }
 /* Image section styles */
 .image-section img {
@@ -106,48 +106,31 @@ transform: scale(1.02);
         }
 </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800">
+<body class="bg-gray-50 font-sans text-gray-800 leading-relaxed">
 <div id="app">
-<!-- Header: STICKY TOP BAR with Glassmorphism effect -->
-<header class="sticky top-0 z-40 border-b border-gray-200/80 bg-white/80 backdrop-blur-lg">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-20">
-<div class="flex items-center gap-4">
-<div class="text-4xl">🍋</div>
-<div>
-<h1 class="text-2xl font-bold text-gray-900">Rooftop Lemon Guide</h1>
-<p class="text-sm text-gray-500 hidden sm:block">Your Guide to a Bountiful Harvest</p>
-</div>
-</div>
-</div>
-</div>
-</header>
 <!-- MAIN CONTENT -->
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
-<!-- Hero Section Wrapper with Fading Gradient -->
-<div class="hero-gradient-wrapper -mx-4 sm:-mx-6 lg:-mx-8">
-<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<div class="bg-white rounded-2xl p-8 sm:p-12 shadow-2xl border border-gray-100 hero-glow">
-<h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 flex items-center justify-center gap-3">
-<svg class="w-10 h-10 text-yellow-500" data-lucide="citrus"></svg>
-                            The Rooftop Advantage
-</h2>
-<p class="text-lg text-gray-600 leading-relaxed mb-10 max-w-3xl mx-auto">
+<main>
+<!-- New Hero Header Section -->
+<section class="hero-header text-center">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-center gap-4 mb-6">
+<div class="text-5xl">🍋</div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Rooftop Lemon Guide</h1>
+</div>
+<p class="text-lg text-gray-800 leading-relaxed mb-10 max-w-3xl mx-auto">
                             Growing a lemon tree in Orcutt requires precision engineering. This guide provides the exact media recipe, lightweight containers, sensor-driven irrigation, and environmental mitigation strategies to create a thriving urban orchard.
 </p>
 <!-- Hero Cards Container -->
 <div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
 <!-- Cards will be injected by JS -->
 </div>
-</div>
 </section>
-</div>
-
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 <!-- Visual Section: Lemon Harvest Images (External URLs) -->
 <section class="mb-16 image-section">
 <div class="max-w-5xl mx-auto">
 <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Visualize Your Success</h3>
-<p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Follow this guide to turn your rooftop into a personal oasis of fresh, juicy lemons.</p>
+<p class="text-center text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">Follow this guide to turn your rooftop into a personal oasis of fresh, juicy lemons.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- First Image -->
 <figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200/80">
@@ -161,6 +144,7 @@ transform: scale(1.02);
 </figure>
 </div>
 </div>
+</section>
 </section>
 
 <!-- Core Sections -->
@@ -182,7 +166,7 @@ transform: scale(1.02);
 <svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" data-lucide="info"></svg>
 <div>
 <p class="text-md font-semibold text-yellow-900 mb-1">Estimated Cost</p>
-<p class="text-md text-yellow-800">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
+<p class="text-md text-yellow-800 leading-normal">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
 </div>
 </div>
 </section>
@@ -205,17 +189,18 @@ transform: scale(1.02);
 <!-- CTA Section -->
 <section class="bg-gradient-to-br from-gray-800 to-black rounded-xl p-10 text-white text-center mb-12 shadow-2xl">
 <h2 class="text-4xl font-extrabold mb-4">Ready to Grow?</h2>
-<p class="mb-8 text-gray-300 max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
+<p class="mb-8 text-gray-300 leading-relaxed max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
 <button id="print-button" class="bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:from-yellow-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Print or Save Guide
 </button>
+</section>
 </section>
 </main>
 <!-- Footer -->
 <footer class="border-t border-gray-200 bg-white py-10 mt-16">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
 <p>🍋 Rooftop Lemon Tree Guide • Third-Story Growing for Orcutt, Santa Barbara County, CA</p>
-<p class="mt-2">Based on peer-reviewed horticultural research and extension bulletins</p>
+<p class="mt-2 leading-normal">Based on peer-reviewed horticultural research and extension bulletins</p>
 </div>
 </footer>
 <!-- Scroll-to-top Button -->
@@ -537,10 +522,10 @@ if (!heroContainer || !sectionsContainer || !checklistContainer || !retailersCon
 return;
                 }
                 heroContainer.innerHTML = heroCards.map(card => `
-                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                        <svg class="w-8 h-8 text-amber-500 mb-3" data-lucide="${card.icon}"></svg>
+                    <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left">
+                        <svg class="w-8 h-8 text-amber-600 mb-3" data-lucide="${card.icon}"></svg>
                         <h3 class="font-bold text-gray-900 mb-1 text-lg">${card.title}</h3>
-                        <p class="text-sm text-gray-500">${card.text}</p>
+                        <p class="text-sm text-gray-700">${card.text}</p>
                     </div>
                 `).join('');
                 sectionsContainer.innerHTML = Object.entries(sections).map(([key, section]) => {
@@ -553,7 +538,7 @@ if (key === 'soil') {
                                     <span class="font-semibold text-gray-800">${item.ingredient}</span>
                                     <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">${item.percent}</span>
                                 </div>
-                                <p class="text-sm text-gray-700 mb-2">Recommended Product: ${linkifyProduct(item.product)}</p>
+                                <p class="text-sm text-gray-700 leading-normal mb-2">Recommended Product: ${linkifyProduct(item.product)}</p>
                                 <p class="text-sm text-gray-600">${item.why}</p>
                             </div>`).join('') + `</div>`;
                         contentHtml += `
@@ -570,7 +555,7 @@ if (key === 'soil') {
                                     <span class="font-semibold text-gray-800">${item.type}</span>
                                     <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">${item.value}</span>
                                 </div>
-                                <p class="text-sm text-gray-700">${item.description}</p>
+                                <p class="text-sm text-gray-700 leading-normal">${item.description}</p>
                             </div>
                         `).join('') + `</div>`;
                     } else if (key === 'nutrients') {
@@ -581,7 +566,7 @@ if (key === 'soil') {
                                     <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.formula}</span>
                                     <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.rate}</span>
                                 </div>
-                                <p class="text-sm text-gray-700">${item.description}</p>
+                                <p class="text-sm text-gray-700 leading-normal">${item.description}</p>
                             </div>
                         `).join('') + `</div>`;
                     } else if (key === 'environment') {
@@ -591,7 +576,7 @@ if (key === 'soil') {
                                     <span class="font-semibold text-gray-800">${item.item}</span>
                                     <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full">${item.spec}</span>
                                 </div>
-                                <p class="text-sm text-gray-700">${item.benefit}</p>
+                                <p class="text-sm text-gray-700 leading-normal">${item.benefit}</p>
                             </div>
                         `).join('') + `</div>`;
                     }
@@ -642,7 +627,7 @@ ${group.items.map(item => `
                             <h3 class="text-lg font-semibold text-gray-900">${item.problem}</h3>
                             <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">${item.badge}</span>
                         </div>
-                        <p class="text-gray-700 mb-3 ml-10">${item.solution}</p>
+                        <p class="text-gray-700 leading-normal mb-3 ml-10">${item.solution}</p>
                         <div class="ml-10 bg-gray-50 rounded-lg p-4 text-sm text-gray-600 border border-gray-200">${linkifyProduct(item.fix)}</div>
                     </div>
                 `).join('');
