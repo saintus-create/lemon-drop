@@ -185,7 +185,7 @@ transform: scale(1.02);
 <section class="mb-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80">
 <h2 class="text-3xl font-bold text-gray-900 mb-6">Common Issues & Fixes</h2>
 <!-- Troubleshooting Container -->
-<div id="troubleshooting-container" class="space-y-4">
+<div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Issues will be injected by JS -->
 </div> 
 </section>
@@ -635,11 +635,13 @@ ${group.items.map(item => `
                     </div>
                 </a>`).join('');
                 troubleshootingContainer.innerHTML = troubleshooting.map(item => `
-                    <div class="border border-gray-200 rounded-lg p-6">
-                        <div class="flex flex-wrap items-center gap-4 mb-3">
-                            <svg class="w-6 h-6 text-gray-800 flex-shrink-0 mt-0.5" data-lucide="alert-triangle"></svg>
-                            <h3 class="text-lg font-semibold text-gray-900">${item.problem}</h3>
-                            <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">${item.badge}</span>
+                    <div class="border border-gray-200 rounded-lg p-6 flex flex-col">
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div class="flex items-start gap-4">
+                                <svg class="w-6 h-6 text-gray-800 flex-shrink-0 mt-0.5" data-lucide="alert-triangle"></svg>
+                                <h3 class="text-lg font-semibold text-gray-900">${item.problem}</h3>
+                            </div>
+                            <span class="inline-flex flex-shrink-0 items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">${item.badge}</span>
                         </div>
                         <p class="text-gray-700 leading-normal mb-3 ml-10">${item.solution}</p>
                         <div class="ml-10 bg-gray-50 rounded-lg p-4 text-sm text-gray-600 border border-gray-200">${linkifyProduct(item.fix)}</div>
