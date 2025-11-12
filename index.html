@@ -50,7 +50,7 @@ opacity: 1;
 /* Custom style for the fading gradient effect around the hero section */
 .hero-header {
             background: linear-gradient(120deg, #fcd34d 0%, #fb923c 100%); /* Softer Yellow to Orange gradient */
-            padding: 6rem 0;
+            padding: 6rem 0 8rem 0; /* Add more bottom padding for overlap */
             margin-bottom: 0;
         }
 /* Image section styles */
@@ -118,19 +118,20 @@ transform: scale(1.02);
 <section class="hero-header text-center">
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="mb-6">
-<h1 class="text-5xl md:text-6xl font-extrabold text-gray-900">Rooftop Lemon Guide</h1>
+<h1 class="text-5xl md:text-6xl font-extrabold text-gray-900">Ready to Get Juicing?</h1>
 </div>
 <p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-                            Growing a lemon tree in Orcutt requires precision engineering. This guide provides the exact media recipe, lightweight containers, sensor-driven irrigation, and environmental mitigation strategies to create a thriving urban orchard.
+                            This guide has everything you need to turn your sunny rooftop into a personal lemon factory. We're squeezing all our knowledge in here—from the zest soil mixes to the sweetest irrigation setups. Prepare for a sublime harvest!
 </p>
 <!-- Hero Cards Container -->
 <div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- Cards will be injected by JS -->
 </div>
+</div>
 </section>
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
 <!-- Visual Section: Lemon Harvest Images (External URLs) -->
-<section class="mb-16 image-section">
+<section class="mb-16 image-section bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80">
 <div class="max-w-5xl mx-auto">
 <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Visualize Your Success</h3>
 <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Follow this guide to turn your rooftop into a personal oasis of fresh, juicy lemons.</p>
@@ -147,7 +148,6 @@ transform: scale(1.02);
 </figure>
 </div>
 </div>
-</section>
 </section>
 
 <!-- Core Sections -->
@@ -380,7 +380,7 @@ function showTroubleshootingModal() {
                 modalContent.innerHTML = `
                     <p class="text-gray-600 mb-4">Please describe the problem you're seeing with your lemon tree. Be specific! (e.g., "yellow leaves with green veins," "sticky white bugs on new growth," "brown spots on fruit").</p>
                     <textarea id="problem-textarea" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none" placeholder="Type your problem here..."></textarea>
-                    <button id="submit-troubleshooting-btn" class="mt-4 w-full bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors flex items-center justify-center gap-2">
+                    <button id="submit-troubleshooting-btn" class="mt-4 w-full bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2">
                         Get AI Diagnosis
                     </button>
                     <div id="ai-response-container" class="mt-4"></div>
@@ -529,7 +529,7 @@ if (!heroContainer || !sectionsContainer || !checklistContainer || !retailersCon
 return;
                 }
                 heroContainer.innerHTML = heroCards.map(card => `
-                    <div class="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/40 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left">
+                    <div class="bg-white rounded-xl p-6 border border-gray-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left">
                         <svg class="w-8 h-8 text-amber-600 mb-3" data-lucide="${card.icon}"></svg>
                         <h3 class="font-bold text-gray-900 mb-1 text-lg">${card.title}</h3>
                         <p class="text-sm text-gray-700">${card.text}</p>
@@ -594,15 +594,15 @@ if (key === 'soil') {
                         `).join('') + `</div>`;
                     }
 return `
-                        <div class="border ${colorClasses[section.color].border} rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-all">
-                            <button class="accordion-button w-full p-5 flex items-center justify-between hover:bg-gray-50/50 transition-colors" data-key="${key}" style="--section-color: var(--${section.color}-500)">
+                        <div class="border-b border-gray-200">
+                            <button class="accordion-button w-full p-5 flex items-center justify-between transition-colors" data-key="${key}" style="--section-color: var(--${section.color}-500)">
                                 <div class="flex items-center gap-4">
                                     <div class="w-10 h-10 rounded-lg ${colorClasses[section.color].bg} flex items-center justify-center"><svg class="w-6 h-6 ${colorClasses[section.color].icon}" data-lucide="${section.icon}"></svg></div>
                                     <h3 class="text-xl font-semibold ${colorClasses[section.color].text}">${section.title}</h3>
                                 </div>
                                 <svg class="w-5 h-5 text-gray-600 transition-transform ${isExpanded ? 'rotate-180' : ''}" data-lucide="chevron-down"></svg>
                             </button>
-                            <div id="content-${key}" class="content-panel px-6 ${isExpanded ? '' : 'hidden'}">
+                            <div id="content-${key}" class="content-panel px-5 ${isExpanded ? '' : 'hidden'}">
                                 <div class="py-6 border-t border-gray-100 space-y-4">
 ${contentHtml}
                                 </div>
@@ -646,9 +646,9 @@ ${group.items.map(item => `
                 `).join('');
                 troubleshootingContainer.innerHTML += `
                     <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-8 text-center">
-                        <h4 class="text-xl font-semibold text-blue-900 mb-3">Have a different problem?</h4>
+                        <h4 class="text-xl font-semibold text-amber-900 mb-3">Have a different problem?</h4>
                         <p class="text-gray-600 mb-6 max-w-lg mx-auto">Describe your lemon tree's issue and get a custom solution from our AI gardening expert, trained for the Orcutt climate.</p>
-                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2">
                             <svg data-lucide="sparkles" class="w-5 h-5"></svg>
                             Get AI Troubleshooting Help
                         </button>
