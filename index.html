@@ -1,749 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rooftop Lemon Tree Growing Guide</title>
-<!-- Load Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Load Lucide Icons -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
-<!-- Load Geist Font -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
-<script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooftop Citrus Growing Guide - Aceternity Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Geist Sans', 'sans-serif'],
                     },
+                    colors: {
+                        // Aceternity-inspired dark palette
+                        'acet-bg': '#0f0f0f', // Very dark background
+                        'acet-card': '#1a1a1a', // Slightly lighter card background
+                        'acet-border': '#333333', // Subtle border color
+                        'acet-text': '#e0e0e0', // Light text for dark background
+                        'acet-text-light': '#a0a0a0', // Lighter descriptive text
+                        
+                        // Citrus accents
+                        'citrus-orange': '#fb923c', // Warm orange for accents
+                        'citrus-green': '#a7f3d0',  // Pale lime green for highlights
+                        'citrus-yellow': '#fde047', // Bright yellow for subtle glow
+                    }
                 },
             },
         }
-</script>
-<style>
-/* Custom Properties for a more modern theme */
-:root {
---bg-color: #fffbeb; /* Warm, sunny off-white */
---text-color: #1f2937; /* Dark gray for text */
---border-color: #e5e7eb;
---primary-color: #f59e0b; /* Amber/Yellow */
---primary-hover: #d97706;
---shadow-color: 220 38% 40%;
-}
-/* Adds a subtle transition to the accordion content */
-.content-panel {
-transition: all 0.3s ease-in-out;
-overflow: hidden;
+    </script>
+    <style>
+        /* Base Aceternity-inspired styles */
+        body {
+            background-color: var(--acet-bg);
+            color: var(--acet-text);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
-.content-panel.hidden {
-max-height: 0;
-opacity: 0;
-padding-top: 0;
-padding-bottom: 0;
-margin-top: 0;
+
+        /* Aceternity-like glowing border effect */
+        .acet-border-glow {
+            position: relative;
+            border: 1px solid transparent; /* Start transparent */
+            background-clip: padding-box;
+            background-origin: border-box;
+            background-image: linear-gradient(to bottom right, var(--acet-card), var(--acet-card)); /* Inner fill */
         }
-.content-panel:not(.hidden) {
-max-height: 1000px; /* Large enough for content */
-opacity: 1;
-        }
-/* Custom style for the fading gradient effect around the hero section */
-.hero-header {
-            background: linear-gradient(120deg, #fcd34d 0%, #fb923c 100%); /* Softer Yellow to Orange gradient */
-            padding: 6rem 0 8rem 0; /* Add more bottom padding for overlap */
-            margin-bottom: 0;
-        }
-/* Image section styles */
-.image-section img {
-transition: transform 0.3s ease;
-}
-.image-section img:hover {
-transform: scale(1.02);
-}
-/* Scroll-to-top button styles */
-.scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+
+        .acet-border-glow::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            margin: -1px; /* Extend gradient beyond actual border */
+            border-radius: inherit; /* Inherit border-radius from parent */
+            background: linear-gradient(
+                135deg,
+                var(--citrus-orange) 0%,
+                var(--citrus-yellow) 20%,
+                transparent 50%,
+                var(--citrus-green) 80%,
+                var(--citrus-orange) 100%
+            );
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-            transform: translateY(20px);
+            filter: blur(1px); /* Subtle blur for glow */
+            transition: opacity 0.3s ease;
         }
-.scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+
+        .acet-border-glow:hover::before {
+            opacity: 0.7; /* Show glow on hover */
         }
-/* Style for checked items in the checklist */
-.checklist-item.checked {
-            text-decoration: line-through;
-            color: #9ca3af; /* Gray-400 */
+
+        /* Specific Aceternity-inspired elements */
+        .hero-header {
+            background: radial-gradient(circle at top left, rgba(251, 146, 60, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(167, 243, 208, 0.08) 0%, transparent 40%),
+                        var(--acet-bg);
+            padding: 8rem 0 10rem 0; /* More space for dramatic effect */
+            position: relative;
+            overflow: hidden;
         }
-.checklist-item.checked .icon-check {
-            display: none;
+
+        .hero-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%231a1a1a" fill-opacity="0.4"%3E%3Cpath d="M12 28H8v4h4v-4zm-4 8h4v4H8v-4zM12 12H8v4h4v-4zm-4 8h4v4H8v-4z"/%3E%3C/g%3E%3C/svg%3E'); /* Subtle Aceternity grid pattern */
+            opacity: 0.3;
+            z-index: 0;
         }
-.checklist-item:not(.checked) .icon-check-circle {
-            display: none;
-        }
-/* Glowing effect for the main hero card */
-.hero-glow {
+
+        .hero-header > div { /* Target direct child div for content */
             position: relative;
             z-index: 1;
         }
-.hero-glow::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background: linear-gradient(120deg, var(--primary-color), #fde68a);
-            filter: blur(25px);
-            transform: scale(0.95);
-            opacity: 0.5;
-            z-index: -1;
-            transition: opacity 0.3s;
-        }
-/* Gradient text for headings */
-.gradient-text {
-            background: linear-gradient(120deg, #b45309, #d97706);
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--citrus-orange) 0%, var(--citrus-yellow) 50%, var(--citrus-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            text-shadow: 0 0 8px rgba(251, 146, 60, 0.4), 0 0 15px rgba(253, 224, 71, 0.3); /* Subtle glow */
         }
-</style>
+
+        /* Card styles */
+        .acet-card {
+            background-color: var(--acet-card);
+            border: 1px solid var(--acet-border);
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+            transition: all 0.3s ease;
+        }
+
+        .acet-card:hover {
+            border-color: rgba(251, 146, 60, 0.4); /* Citrus highlight on hover */
+            box-shadow: 0 0 15px rgba(251, 146, 60, 0.2), 0 0 25px rgba(253, 224, 71, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .acet-card-small-glow {
+            position: relative;
+            overflow: hidden;
+            background: var(--acet-card);
+            border: 1px solid var(--acet-border);
+        }
+
+        .acet-card-small-glow::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            margin: -1px;
+            border-radius: inherit;
+            background: conic-gradient(from var(--angle),
+                        transparent 0deg, transparent 90deg,
+                        var(--citrus-orange) 95deg, var(--citrus-green) 100deg,
+                        transparent 110deg);
+            animation: rotate-border 4s linear infinite;
+            opacity: 0.1; /* Very subtle glow */
+            filter: blur(2px);
+            z-index: 0;
+        }
+        .acet-card-small-glow:hover::before {
+            opacity: 0.3; /* More visible on hover */
+        }
+        .acet-card-small-glow > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        @property --angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        @keyframes rotate-border {
+            from { --angle: 0deg; }
+            to { --angle: 360deg; }
+        }
+
+        /* Specific overrides for text and icons on dark bg */
+        .text-gray-800, .text-gray-900 { color: var(--acet-text); }
+        .text-gray-600, .text-gray-700 { color: var(--acet-text-light); }
+
+        /* Buttons */
+        .acet-btn {
+            background: linear-gradient(90deg, var(--citrus-orange) 0%, var(--citrus-yellow) 100%);
+            color: var(--acet-bg); /* Dark text on bright button */
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .acet-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.75s ease-out;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+        .acet-btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+        }
+        .acet-btn:hover {
+            box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+            transform: translateY(-1px);
+        }
+        .acet-btn > * { position: relative; z-index: 1; } /* Ensure text/icons are above pseudo-element */
+
+
+        /* Modal styles */
+        #modal-box {
+            background-color: var(--acet-card);
+            border: 1px solid var(--acet-border);
+            color: var(--acet-text);
+        }
+        #modal-title {
+            color: var(--acet-text);
+        }
+        #modal-close-btn {
+            color: var(--acet-text-light);
+        }
+        #modal-close-btn:hover {
+            color: var(--citrus-orange);
+        }
+
+        /* Form elements within modal */
+        #problem-textarea {
+            background-color: #2a2a2a;
+            border-color: var(--acet-border);
+            color: var(--acet-text);
+        }
+        #problem-textarea:focus {
+            border-color: var(--citrus-orange);
+            box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.2);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            background-color: var(--acet-card);
+            border: 1px solid var(--acet-border);
+            color: var(--citrus-orange);
+        }
+        .scroll-to-top:hover {
+            background-color: #2a2a2a;
+            color: var(--citrus-yellow);
+        }
+        
+        /* Specific section styling */
+        .image-section {
+            background-color: var(--acet-card);
+            border: 1px solid var(--acet-border);
+        }
+        .image-section img {
+            border: 1px solid var(--acet-border);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .image-section img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+        }
+        .image-section figcaption {
+            background-color: rgba(0,0,0,0.3);
+            color: var(--acet-text-light);
+        }
+
+        /* Accordion button */
+        .accordion-button {
+            background-color: var(--acet-card);
+            border-bottom: 1px solid var(--acet-border);
+        }
+        .accordion-button:hover {
+            background-color: #222;
+        }
+        .accordion-button svg {
+            color: var(--citrus-green);
+        }
+        .accordion-button h3 {
+            color: var(--acet-text);
+        }
+        .accordion-button > div:first-child > div {
+            background-color: rgba(251, 146, 60, 0.1);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        .accordion-button > div:first-child > div svg {
+            color: var(--citrus-orange);
+        }
+
+
+        .content-panel .py-6 {
+            border-top: 1px solid var(--acet-border);
+        }
+        .content-panel .bg-gray-50 {
+            background-color: #222;
+            border-color: #333;
+            color: var(--acet-text);
+        }
+        .content-panel .bg-gray-50 .font-semibold {
+             color: var(--citrus-yellow); /* Highlight key info */
+             text-shadow: 0 0 3px rgba(253, 224, 71, 0.2);
+        }
+        .content-panel .bg-gray-50 .text-gray-700,
+        .content-panel .bg-gray-50 .text-gray-600 {
+            color: var(--acet-text-light);
+        }
+        .content-panel .bg-green-100 { background-color: rgba(167, 243, 208, 0.2); color: var(--citrus-green); }
+        .content-panel .bg-blue-100 { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .content-panel .bg-yellow-100 { background-color: rgba(253, 224, 71, 0.2); color: var(--citrus-yellow); }
+        .content-panel .bg-purple-100 { background-color: rgba(192, 132, 252, 0.2); color: #c084fc; }
+        .content-panel .bg-red-100 { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+
+        .checklist-group .checklist-item {
+            color: var(--acet-text-light);
+            transition: color 0.2s ease;
+        }
+        .checklist-group .checklist-item:hover {
+            color: var(--acet-text);
+        }
+        .checklist-group .checklist-item.checked {
+            color: var(--acet-text-light);
+            text-decoration-color: var(--citrus-green);
+        }
+        .checklist-group .checklist-item .icon-check {
+            color: var(--acet-border);
+            transition: color 0.2s ease;
+        }
+        .checklist-group .checklist-item:hover .icon-check {
+            color: var(--citrus-orange);
+        }
+        .checklist-group .checklist-item .icon-check-circle {
+            color: var(--citrus-green);
+            filter: drop-shadow(0 0 3px rgba(167, 243, 208, 0.5));
+        }
+
+        /* Info boxes */
+        .bg-orange-50 { background-color: rgba(251, 146, 60, 0.1); border-color: rgba(251, 146, 60, 0.3); }
+        .text-orange-900 { color: var(--citrus-orange); }
+        .text-orange-800 { color: var(--citrus-yellow); }
+        .bg-blue-50 { background-color: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); }
+        .text-blue-900 { color: #60a5fa; }
+        .text-blue-800 { color: #93c5fd; }
+        .bg-primary-citrus\/10 { background-color: rgba(251, 146, 60, 0.1); }
+        .border-primary-citrus\/30 { border-color: rgba(251, 146, 60, 0.3); }
+        .text-primary-citrus { color: var(--citrus-orange); }
+        .bg-secondary-citrus\/10 { background-color: rgba(253, 224, 71, 0.1); }
+        .border-secondary-citrus\/30 { border-color: rgba(253, 224, 71, 0.3); }
+
+
+        .footer {
+            background-color: var(--acet-card);
+            border-top: 1px solid var(--acet-border);
+            color: var(--acet-text-light);
+        }
+
+        /* Select dropdown */
+        #tree-select {
+            background-color: var(--acet-card);
+            border: 1px solid var(--acet-border);
+            color: var(--acet-text);
+            padding-right: 2.5rem; /* Space for chevron */
+            transition: all 0.2s ease;
+        }
+        #tree-select:hover {
+            border-color: var(--citrus-orange);
+            box-shadow: 0 0 8px rgba(251, 146, 60, 0.2);
+        }
+        #tree-select option {
+            background-color: var(--acet-card);
+            color: var(--acet-text);
+        }
+        .pointer-events-none {
+            color: var(--acet-text-light);
+        }
+    </style>
 </head>
-<body class="bg-yellow-50 font-sans text-gray-800 leading-normal">
-<div id="app">
-<!-- MAIN CONTENT -->
-<main>
-<!-- New Hero Header Section -->
-<section class="hero-header text-center">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="mb-6">
-<h1 class="text-5xl md:text-6xl font-extrabold gradient-text">Ready to Get Juicing?</h1>
-</div>
-<p class="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-                            This guide has everything you need to Make Your Lemons Wet and Ready.
-</p>
-<!-- Hero Cards Container -->
-<div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Cards will be injected by JS -->
-</div>
-</div>
-</section>
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
-<!-- Visual Section: Lemon Harvest Images (External URLs) -->
-<section class="mb-16 image-section bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80">
-<div class="max-w-5xl mx-auto">
-<h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Fill Us Up.</h3>
-<p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Wanna Try Our Lemons?</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- First Image -->
-<figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200/80">
-<img src="https://image.cdn2.seaart.me/2025-11-12/d4afbite878c73as2d6g/b43a49bd216e812b29a94c58bb114dbd.webp" alt="Woman in yellow bikini holding a large glass of lemonade on a sunny beach, symbolizing fresh rooftop lemon yield" class="w-full h-auto object-cover" loading="lazy">
-<figcaption class="p-4 text-sm text-gray-500 text-center bg-gray-50/50">Eyes Up Here.</figcaption>
-</figure>
-<!-- Second Image -->
-<figure class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200/80">
-<img src="https://image.cdn2.seaart.me/2025-11-12/d4afcsde878c738s8etg/58194980cbde8c7575534cf55932f761.webp" alt="Woman in yellow bikini holding two large lemons, representing successful lemon tree growth" class="w-full h-auto object-cover" loading="lazy">
-<figcaption class="p-4 text-sm text-gray-500 text-center bg-gray-50/50">I've Honesly Never Seen One So Big.</figcaption>
-</figure>
-</div>
-</div>
-</section>
-
-<!-- Core Sections -->
-<section class="mb-16">
-<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center gradient-text">Core Growing Systems</h2>
-<!-- Accordion Container -->
-<div id="sections-container" class="space-y-4">
-<!-- Sections will be injected by JS -->
-</div>
-</section>
-<!-- Shopping Checklist -->
-<section class="mb-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80" id="checklist">
-<h2 class="text-3xl font-bold text-gray-900 mb-6">Shopping Checklist</h2>
-<!-- Checklist Container -->
-<div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Checklist items will be injected by JS -->
-</div>
-<div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-6 flex gap-4 items-start">
-<svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" data-lucide="info"></svg>
-<div>
-<p class="text-md font-semibold text-yellow-900 mb-1">Estimated Cost</p>
-<p class="text-md text-yellow-800 leading-normal">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
-</div>
-</div>
-</section>
-<!-- Retailers -->
-<section class="mb-16">
-<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center gradient-text">Where to Buy</h2>
-<!-- Retailers Container -->
-<div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-<!-- Retailers will be injected by JS -->
-</div> 
-</section>
-<!-- Troubleshooting -->
-<section class="mb-16 bg-white rounded-2xl shadow-lg p-8 border border-gray-200/80">
-<h2 class="text-3xl font-bold text-gray-900 mb-6">Common Issues & Fixes</h2>
-<!-- Troubleshooting Container -->
-<div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Issues will be injected by JS -->
-</div> 
-</section>
-<!-- CTA Section -->
-<section class="bg-gradient-to-br from-gray-800 to-black rounded-2xl p-10 text-white text-center mb-12 shadow-2xl">
-<h2 class="text-4xl font-extrabold mb-4">Ready to Grow?</h2>
-<p class="mb-8 text-gray-300 max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
-<button id="print-button" class="bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 font-bold px-8 py-4 rounded-lg hover:from-yellow-300 hover:to-amber-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Print or Save Guide
-</button>
-</section>
-</section>
-</main>
-<!-- Footer -->
-<footer class="border-t border-gray-200 bg-white py-10 mt-16">
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
-<p>Made By Me</p>
-</div>
-</footer>
-<!-- Scroll-to-top Button -->
-<button id="scroll-to-top-btn" class="scroll-to-top bg-gray-800 text-white rounded-full p-3 shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 transition-all" title="Go to top">
-<svg class="w-6 h-6" data-lucide="arrow-up"></svg>
-</button>
-
-</div>
-<!-- Gemini AI Modal -->
-<div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-<div id="modal-box" class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col">
-<div class="flex justify-between items-center p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
-<h3 id="modal-title" class="text-lg font-semibold text-gray-900">✨ AI-Generated Suggestions</h3>
-<button id="modal-close-btn" class="text-gray-500 hover:text-black" aria-label="Close modal">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-</button>
-</div>
-<div id="modal-content" class="p-6 text-gray-700 overflow-y-auto">
-<!-- AI content will be injected here -->
-</div>
-</div>
-</div>
-<!-- Main Application Script -->
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-// --- DATA ---
-const openSections = new Set(['soil']);
-function safeCreateIcons() {
-if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                }
-            }
-const heroCards = [
-                { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold text-gray-800">≤ 20 lb/ft²</span> roof load' },
-                { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold text-gray-800">VWC monitoring</span>' },
-                { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold text-gray-800">20-30%</span>' },
-            ];
-const sections = {
-                soil: {
-                    title: 'Soil Media Design',
-                    icon: 'layers',
-                    color: 'amber',
-                    content: [
-                        { ingredient: 'Coarse pine bark', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density, large macropores, and excellent drainage.' },
-                        { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds essential weight for stability and keeps EC low.' },
-                        { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention capacity and maintains acidic pH ≈ 5.5.' },
-                        { ingredient: 'Perlite (3-5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity (AFP) which is vital for roots.' },
-                    ]
-                },
-                water: {
-                    title: 'Water Management',
-                    icon: 'droplets',
-                    color: 'blue',
-                    content: [
-                        { type: 'Emitter Flow', value: '0.5 gph', description: 'Use pressure-compensating emitters for consistent delivery.' },
-                        { type: 'Sensor Trigger', value: 'VWC Target (35%)', description: 'Irrigate when Volumetric Water Content (VWC) drops below target.' },
-                        { type: 'Target EC', value: '< 1.2 dS m⁻¹', description: 'Flush weekly with 2L rainwater or distilled water to prevent salt buildup.' }
-                    ]
-                },
-                nutrients: {
-                    title: 'Environmental Mitigation',
-                    icon: 'sun',
-                    color: 'orange',
-                    content: [
-                        { item: 'Shade cloth', spec: '30% density', benefit: 'Reduces leaf temp ~5°C, passes 70% PAR.' },
-                        { item: 'Lattice windbreak', spec: 'Vinyl', benefit: 'Blocks ~40% wind exposure, critical in exposed rooftop locations.' },
-                        { item: 'Cool-roof coating', spec: '0.65+ albedo', benefit: 'Lowers roof surface temp 10-12°C, minimizing radiant heat stress.' },
-                        { item: 'Coconut-coir mulch', spec: '1-2 in. layer', benefit: 'Cuts surface evaporation by approximately 30%.' },
-                    ]
-                },
-                environment: {
-                    title: 'Nutrient Management',
-                    icon: 'leaf',
-                    color: 'green',
-                    content: [
-                        { type: 'Slow Release', formula: '14-14-14', rate: '½ cup per pot', description: 'Osmocote® or similar releases NPK at 2-4% monthly for baseline.' },
-                        { type: 'Liquid Feed', formula: '2-4-6', rate: '30 mL bi-weekly', description: 'Jack\'s Classic liquid to boost P & K during flowering and fruit set.' },
-                        { type: 'Soil Inoculant', formula: 'Mycorrhizae', rate: '5g per pot', description: 'MycoApply™ inoculum to enhance root surface area and nutrient uptake efficiency.' },
-                    ]
-                }
-            };
-const checklist = [
-                { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1.5L)', 'Peat moss/coir (1.2L)', 'Perlite (0.15L)', 'Dolomitic lime (0.25 lb)'] },
-                { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
-                { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (20 ft)', 'Rain-Bird PC ½ gph emitters (2)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '5-gal gravity reservoir'] },
-                { category: 'Nutrients & Inoculants', items: ['Osmocote 14-14-14 (½ cup)', 'Jack\'s Classic 2-4-6 liquid', 'MycoApply mycorrhizal inoculum (5g)', 'Dolomitic lime (0.25 lb)'] },
-                { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1-2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
-            ];
-const retailers = [
-                { name: 'Home Depot', icon: '🏪', url: 'https://www.homedepot.com/' },
-                { name: 'Lowe\'s', icon: '🏪', url: 'https://www.lowes.com/' },
-                { name: 'Amazon', icon: '📦', url: 'https://www.amazon.com/' },
-                { name: 'DripWorks', icon: '💧', url: 'https://www.dripworks.com/' },
-                { name: 'Miller\'s Nurseries (Santa Maria)', icon: '🌱', url: 'https://www.google.com/search?q=Miller%27s+Nurseries+Santa+Maria' },
-                { name: 'Green Acres Nursery', icon: '🌱', url: 'https://www.google.com/search?q=Green+Acres+Nursery+Santa+Barbara+County' },
-            ];
-const troubleshooting = [
-                { problem: 'Leaf yellowing + black roots', solution: 'Improve drainage by adding 5-10% extra perlite to media.', badge: 'Drainage Issue', fix: 'Miracle-Gro perlite bags' },
-                { problem: 'Sun-scorch on south side', solution: 'Increase shade cloth overlap to achieve 40% total shading during peak hours.', badge: 'Heat Stress', fix: 'Additional Cool-Shade cloth roll' },
-                { problem: 'Fruit drop after hot night', solution: 'Apply 30 mL Jack\'s 2-4-6 liquid weekly as foliar spray to boost leaf K.', badge: 'Nutrient Deficiency', fix: 'Jack\'s Classic fertilizer' },
-                { problem: 'Mildew under canopy', solution: 'Increase pot spacing and add lattice panels for better airflow and light penetration.', badge: 'Airflow / Humidity', fix: 'Garden Edge lattice panels' },
-                { problem: 'pH drift upward in winter', solution: 'Add 0.1 lb elemental sulfur per 5-gal pot to safely acidify the media.', badge: 'Media Chemistry', fix: '5-lb sulfur bag from Home Depot' },
-            ];
-const productLinks = {
-'Sungro® Professional Pine Bark': 'https://www.homedepot.com/s/pine%20bark%20mulch',
-'Sungro® Professional Sand – Fine': 'https://www.homedepot.com/s/play%20sand',
-'Coir-Lite™ Coconut Coir': 'https://www.amazon.com/s?k=coconut+coir+brick',
-'Miracle-Gro Perlite': 'https://www.amazon.com/s?k=miracle+gro+perlite',
-'Smart Pot®': 'https://www.amazon.com/s?k=smart+pot',
-'DripWorks': 'https://www.dripworks.com/',
-'Rain-Bird': 'https://www.homedepot.com/s/rain%20bird%20drip',
-'Titan': 'https://www.amazon.com/s?k=12v+irrigation+timer',
-'Osmocote® Smart-Release 14-14-14': 'https://www.amazon.com/s?k=osmocote+14-14-14',
-"Jack's Classic 2-4-6": "https://www.amazon.com/s?k=jacks+classic+fertilizer",
-'MycoApply™': 'https://www.amazon.com/s?k=mycoapply',
-'Cool-Shade': 'https://www.homedepot.com/s/shade%20cloth',
-'Garden Edge': 'https://www.homedepot.com/s/vinyl%20lattice',
-'CocoCoir': 'https://www.homedepot.com/s/coconut%20coir%20mulch',
-'Home Depot': 'https://www.homedepot.com/',
-"Lowe's": 'https://www.lowes.com/',
-'Amazon': 'https://www.amazon.com/',
-'elemental sulfur': 'https://www.homedepot.com/s/elemental%20sulfur'
-            };
-function linkifyProduct(text) {
-if (!text) return '';
-let linkedText = text;
-const sortedKeywords = Object.keys(productLinks).sort((a, b) => b.length - a.length);
-                sortedKeywords.forEach(kw => {
-const url = productLinks[kw];
-const regex = new RegExp(`\\b${kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'g');
-                    linkedText = linkedText.replace(regex, `<a href="${url}" class="font-semibold text-amber-600 hover:text-amber-800 underline" target="_blank" rel="noopener noreferrer">${kw}</a>`);
-                });
-return linkedText;
-            }
-// --- Modal Functions ---
-const modalOverlay = document.getElementById('modal-overlay');
-const modalBox = document.getElementById('modal-box');
-const modalContent = document.getElementById('modal-content');
-const modalCloseBtn = document.getElementById('modal-close-btn');
-function showModal() {
-                modalOverlay.classList.remove('hidden');
-            }
-function closeModal() {
-                modalOverlay.classList.add('hidden');
-                modalContent.innerHTML = '';
-            }
-function setModalLoading() {
-                modalContent.innerHTML = `
-                    <div class="flex flex-col items-center justify-center h-48">
-                        <svg class="animate-spin h-8 w-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        <p class="mt-4 text-gray-600">Contacting our AI Gardener...</p>
+<body class="font-sans leading-normal">
+    <div id="app">
+        <header class="bg-acet-card/90 backdrop-blur-sm sticky top-0 z-20 border-b border-acet-border shadow-lg">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-acet-text flex items-center gap-2">
+                    <svg class="w-6 h-6" style="color: var(--citrus-green);" data-lucide="citrus"></svg>
+                    Citrus Guide
+                </a>
+                
+                <div class="relative inline-block text-left">
+                    <label for="tree-select" class="sr-only">Select Your Tree</label>
+                    <select id="tree-select" class="appearance-none acet-card text-acet-text font-semibold py-2 pl-4 pr-10 rounded-lg shadow-md hover:border-citrus-orange transition-colors focus:outline-none focus:ring-2 focus:ring-citrus-orange cursor-pointer">
+                        <option value="lemon">🍋 Lemon Tree (Eureka/Meyer)</option>
+                        <option value="orange">🍊 Orange Tree (Valencia/Navel)</option>
+                        <option value="general">🌳 General Citrus</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-acet-text-light">
+                        <svg class="w-4 h-4" data-lucide="chevron-down"></svg>
                     </div>
-                `;
-                showModal();
-            }
-function setModalContent(htmlContent) {
-                modalContent.innerHTML = `<div class="whitespace-pre-wrap">${htmlContent}</div>`;
-                showModal();
-            }
-function setModalError(errorMessage) {
-                modalContent.innerHTML = `
-                    <div class="text-center">
-                        <h4 class="font-semibold text-red-700 mb-2">An Error Occurred</h4>
-                        <p class="text-sm text-gray-600">${errorMessage}</p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-header text-center">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="mb-6">
+                        <h1 id="hero-title" class="text-5xl md:text-6xl font-extrabold gradient-text">Ready to Grow Your Citrus?</h1>
                     </div>
-                `;
-                showModal();
-            }
-function showTroubleshootingModal() {
-                document.getElementById('modal-title').innerText = '✨ AI Troubleshooting Helper';
-                modalContent.innerHTML = `
-                    <p class="text-gray-600 mb-4">Please describe the problem you're seeing with your lemon tree. Be specific! (e.g., "yellow leaves with green veins," "sticky white bugs on new growth," "brown spots on fruit").</p>
-                    <textarea id="problem-textarea" class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 focus:outline-none" placeholder="Type your problem here..."></textarea>
-                    <button id="submit-troubleshooting-btn" class="mt-4 w-full bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2">
-                        Get AI Diagnosis
+                    <p id="hero-subtitle" class="text-lg text-acet-text-light mb-12 max-w-3xl mx-auto">
+                        This guide has everything you need to grow a thriving **Lemon Tree** on your rooftop.
+                    </p>
+                    <div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        </div>
+                </div>
+            </section>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
+
+                <section class="mb-16 image-section acet-card rounded-2xl shadow-xl p-8 acet-border-glow">
+                    <div class="max-w-5xl mx-auto">
+                        <h3 class="text-3xl font-bold text-acet-text mb-4 text-center gradient-text">Harvest Potential</h3>
+                        <p class="text-center text-acet-text-light mb-10 max-w-2xl mx-auto">
+                            See what a successful rooftop citrus harvest looks like!
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <figure class="acet-card rounded-xl shadow-lg overflow-hidden acet-border-glow">
+                                <img src="https://image.cdn2.seaart.me/2025-11-12/d4afbite878c73as2d6g/b43a49bd216e812b29a94c58bb114dbd.webp" alt="Woman holding lemonade on a sunny beach" class="w-full h-auto object-cover" loading="lazy">
+                                <figcaption class="p-4 text-sm text-acet-text-light text-center bg-black/40">Fresh Lemonade.</figcaption>
+                            </figure>
+                            <figure class="acet-card rounded-xl shadow-lg overflow-hidden acet-border-glow">
+                                <img src="https://image.cdn2.seaart.me/2025-11-12/d4afcsde878c738s8etg/58194980cbde8c7575534cf55932f761.webp" alt="Woman holding two large lemons" class="w-full h-auto object-cover" loading="lazy">
+                                <figcaption class="p-4 text-sm text-acet-text-light text-center bg-black/40">Successful Yield.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mb-16">
+                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center gradient-text">Core Growing Systems</h2>
+                    <div id="sections-container" class="space-y-4">
+                        </div>
+                </section>
+
+                <section class="mb-16 acet-card rounded-2xl shadow-xl p-8 acet-border-glow" id="checklist">
+                    <h2 class="text-3xl font-bold text-acet-text mb-6 gradient-text">Shopping Checklist</h2>
+                    <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        </div>
+                    <div class="mt-6 bg-orange-50 acet-card-small-glow rounded-lg p-6 flex gap-4 items-start">
+                        <svg class="w-6 h-6 text-citrus-orange flex-shrink-0 mt-0.5" data-lucide="info"></svg>
+                        <div>
+                            <p class="text-md font-semibold text-citrus-orange mb-1">Estimated Cost</p>
+                            <p class="text-md text-citrus-yellow leading-normal">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center gradient-text">Where to Buy</h2>
+                    <div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        </div>
+                </section>
+
+                <section class="mb-16 acet-card rounded-2xl shadow-xl p-8 acet-border-glow">
+                    <h2 class="text-3xl font-bold text-acet-text mb-6 gradient-text">Common Issues & Fixes</h2>
+                    <div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        </div>
+                </section>
+
+                <section class="bg-gradient-to-br from-orange-800 to-red-900 rounded-2xl p-10 text-white text-center mb-12 shadow-2xl acet-card-small-glow">
+                    <h2 class="text-4xl font-extrabold mb-4 text-acet-text">Start Your Citrus Orchard</h2>
+                    <p class="mb-8 text-acet-text-light max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
+                    <button id="print-button" class="acet-btn px-8 py-4 rounded-lg shadow-lg">
+                        Print or Save Guide
                     </button>
-                    <div id="ai-response-container" class="mt-4"></div>
-                `;
-                showModal();
-                document.getElementById('submit-troubleshooting-btn').addEventListener('click', handleSubmitTroubleshooting);
-            }
-async function handleSubmitTroubleshooting() {
-const problemText = document.getElementById('problem-textarea').value;
-if (!problemText.trim()) {
-const responseContainer = document.getElementById('ai-response-container');
-                    responseContainer.innerHTML = `<p class="text-red-700 text-sm">Please describe your problem first.</p>`;
-return;
-                }
-const submitBtn = document.getElementById('submit-troubleshooting-btn');
-const responseContainer = document.getElementById('ai-response-container');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = `
-                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Diagnosing...
-                `;
-                responseContainer.innerHTML = '';
-try {
-const aiResponse = await callGeminiTroubleshootingApi(problemText);
-                    responseContainer.innerHTML = `<div class="whitespace-pre-wrap p-4 bg-gray-50 rounded-lg border border-gray-200">${aiResponse}</div>`;
-                } catch (error) {
-                    responseContainer.innerHTML = `<p class="text-red-700 text-sm">Sorry, an error occurred. Please try again.</p>`;
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Get AI Diagnosis';
-                }
-            }
-async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
-try {
-const response = await fetch(url, options);
-if (!response.ok) {
-throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-return await response.json();
-                } catch (error) {
-if (retries > 0) {
-await new Promise(resolve => setTimeout(resolve, delay));
-return fetchWithRetry(url, options, retries - 1, delay * 2);
-                    } else {
-                        console.error('API call failed after retries:', error);
-throw error;
-                    }
-                }
-            }
-async function callGeminiApi() {
-const apiKey = "";
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-const systemPrompt = "You are a helpful and concise master gardener. You provide practical, safe, and accurate advice for home gardeners. You will be asked to find substitutes for specific branded horticultural products. Provide 2-3 common, widely available alternatives that can be found at stores like Home Depot or Lowe's, and briefly explain *why* they are good substitutes (e.g., 'similar drainage', 'good water retention').";
-const userQuery = `Based on this specific soil recipe for a rooftop lemon tree: ${JSON.stringify(sections.soil.content)}.
-Please suggest 2-3 common, widely available substitutes for *each* of the following branded products:
-- 'Sungro® Professional Pine Bark'
-- 'Sungro® Professional Sand – Fine'
-- 'Coir-Lite™ Coconut Coir'
-- 'Miracle-Gro Perlite'
-Format the response in simple bullet points, grouped by the original product.`;
-const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                };
-try {
-const result = await fetchWithRetry(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-if (text) {
-                        setModalContent(text);
-                    } else {
-throw new Error("Invalid response from API.");
-                    }
-                } catch (error) {
-                    setModalError("Sorry, I couldn't get suggestions at this time. Please check your connection and try again.");
-                }
-            }
-async function callGeminiTroubleshootingApi(userProblem) {
-const apiKey = "";
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-const systemPrompt = `You are a master gardener and citrus expert specializing in container-grown lemon trees. Your advice is for a user on a third-story rooftop in Orcutt, Santa Barbara County, CA, which has an arid, windy, mild climate.
-Provide a concise, practical diagnosis and 2-3 actionable, numbered steps to fix the user's problem.
-Prioritize organic solutions first (like neem oil, insecticidal soap) before suggesting stronger chemicals.
-Keep the entire response under 150 words.`;
-const userQuery = `My rooftop lemon tree in Orcutt, CA has this problem: "${userProblem}"
-What is the likely cause and what are the 2-3 specific, actionable steps I should take to fix it?`;
-const payload = {
-                    contents: [{ parts: [{ text: userQuery }] }],
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                };
-try {
-const result = await fetchWithRetry(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-if (text) {
-return text;
-                    } else {
-throw new Error("Invalid response from API.");
-                    }
-                } catch (error) {
-                    console.error('Gemini Troubleshooting API call failed:', error);
-throw error;
-                }
-            }
-function handleFindSubstitutesClick() {
-const btn = document.getElementById('find-substitutes-btn');
-if (!btn) return;
-                btn.disabled = true;
-                btn.innerHTML = `
-                    <svg data-lucide="sparkles" class="w-5 h-5 animate-pulse"></svg>
-                    Finding Substitutes...
-                `;
-                safeCreateIcons();
-                document.getElementById('modal-title').innerText = '✨ AI-Generated Substitutes';
-                setModalLoading();
-                callGeminiApi().finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = `
-                        <svg data-lucide="sparkles" class="w-5 h-5"></svg>
-                        Find Product Substitutes
-                    `;
-                    safeCreateIcons();
-                });
-            }
-function renderDynamicContent() {
-const heroContainer = document.getElementById('hero-cards');
-const sectionsContainer = document.getElementById('sections-container');
-const checklistContainer = document.getElementById('checklist-container');
-const retailersContainer = document.getElementById('retailers-container');
-const troubleshootingContainer = document.getElementById('troubleshooting-container');
-if (!heroContainer || !sectionsContainer || !checklistContainer || !retailersContainer || !troubleshootingContainer) {
-                    console.error('One or more containers not found!');
-return;
-                }
-                heroContainer.innerHTML = heroCards.map(card => `
-                    <div class="bg-white rounded-xl p-6 border border-gray-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-left flex flex-col">
-                        <div class="flex-grow">
-                            <svg class="w-7 h-7 text-amber-600 mb-4" data-lucide="${card.icon}"></svg>
-                            <h3 class="font-semibold text-gray-900 mb-2 text-lg">${card.title}</h3>
-                            <p class="text-gray-600">${card.text}</p>
-                        </div>
-                    </div>
-                `).join('');
-                sectionsContainer.innerHTML = Object.entries(sections).map(([key, section]) => {
-const isExpanded = openSections.has(key);
-const colorClasses = {
-                    amber: { bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-900', icon: 'text-amber-600', badge: 'bg-amber-100 text-amber-800' },
-                    blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-900', icon: 'text-blue-600', badge: 'bg-blue-100 text-blue-800' },
-                    green: { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-900', icon: 'text-green-600', badge: 'bg-green-100 text-green-800' },
-                    orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-900', icon: 'text-orange-600', badge: 'bg-orange-100 text-orange-800' },
-                };
-let contentHtml = '';
-if (key === 'soil') {
-                        contentHtml = `<div class="grid md:grid-cols-2 gap-4">` + section.content.map(item => `
-                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                <div class="flex flex-wrap items-center justify-between mb-2">
-                                    <span class="font-semibold text-gray-800">${item.ingredient}</span>
-                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">${item.percent}</span>
-                                </div>
-                                <p class="text-sm text-gray-700 leading-normal mb-2">Recommended Product: ${linkifyProduct(item.product)}</p>
-                                <p class="text-sm text-gray-600">${item.why}</p>
-                            </div>`).join('') + `</div>`;
-                        contentHtml += `
-                            <div class="mt-5">
-                                <button id="find-substitutes-btn" class="w-full bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2" aria-live="polite">
-                                    <svg data-lucide="sparkles" class="w-5 h-5"></svg>
-                                    Find Product Substitutes
-                                </button>
-                            </div>`;
-                    } else if (key === 'water') {
-                        contentHtml = `<div class="space-y-4">` + section.content.map(item => `
-                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-semibold text-gray-800">${item.type}</span>
-                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-blue-100 text-blue-800 rounded-full">${item.value}</span>
-                                </div>
-                                <p class="text-sm text-gray-700 leading-normal">${item.description}</p>
-                            </div>
-                        `).join('') + `</div>`;
-                    } else if (key === 'nutrients') {
-                        contentHtml = `<div class="space-y-4">` + section.content.map(item => `
-                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-semibold text-gray-800">${item.type}</span>
-                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.formula}</span>
-                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-yellow-100 text-yellow-800 rounded-full">${item.rate}</span>
-                                </div>
-                                <p class="text-sm text-gray-700 leading-normal">${item.description}</p>
-                            </div>
-                        `).join('') + `</div>`;
-                    } else if (key === 'environment') {
-                         contentHtml = `<div class="space-y-4">` + section.content.map(item => `
-                            <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="font-semibold text-gray-800">${item.item}</span>
-                                    <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-purple-100 text-purple-800 rounded-full">${item.spec}</span>
-                                </div>
-                                <p class="text-sm text-gray-700 leading-normal">${item.benefit}</p>
-                            </div>
-                        `).join('') + `</div>`;
-                    }
-return `
-                        <div class="border-b border-gray-200">
-                            <button class="accordion-button w-full p-5 flex items-center justify-between transition-colors" data-key="${key}" style="--section-color: var(--${section.color}-500)">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-lg ${colorClasses[section.color].bg} flex items-center justify-center"><svg class="w-6 h-6 ${colorClasses[section.color].icon}" data-lucide="${section.icon}"></svg></div>
-                                    <h3 class="text-xl font-semibold ${colorClasses[section.color].text}">${section.title}</h3>
-                                </div>
-                                <svg class="w-5 h-5 text-gray-600 transition-transform ${isExpanded ? 'rotate-180' : ''}" data-lucide="chevron-down"></svg>
-                            </button>
-                            <div id="content-${key}" class="content-panel px-5 ${isExpanded ? '' : 'hidden'}">
-                                <div class="py-6 border-t border-gray-100 space-y-4">
-${contentHtml}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-                checklistContainer.innerHTML = checklist.map(group => `
-                    <div class="bg-yellow-50/50 border border-yellow-200/60 rounded-lg p-6 transition-all section-fade-in h-full">
-                        <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-3 text-lg">
-                            <svg class="w-5 h-5 text-gray-800" data-lucide="clipboard-list"></svg>
-${group.category}
-                        </h3>
-                        <ul class="checklist-group space-y-3">
-${group.items.map(item => `
-                                <li class="checklist-item flex items-start gap-3 text-gray-600 cursor-pointer transition-colors hover:text-gray-900">
-                                    <svg class="icon-check w-4 h-4 text-gray-400 flex-shrink-0 mt-1" data-lucide="circle"></svg>
-                                    <svg class="icon-check-circle w-4 h-4 text-amber-500 flex-shrink-0 mt-1" data-lucide="check-circle"></svg>
-                                    <span>${linkifyProduct(item)}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `).join('');
-                retailersContainer.innerHTML = retailers.map(retailer => `<a href="${retailer.url}" target="_blank" rel="noopener noreferrer" class="block section-fade-in group">
-                    <div class="bg-white border border-gray-200 rounded-xl p-4 text-center group-hover:border-amber-300 group-hover:shadow-lg transition-all h-full flex flex-col justify-center items-center shadow-sm">
-                        <div class="text-4xl mb-3">${retailer.icon}</div>
-                        <p class="font-medium text-gray-800 text-sm">${retailer.name}</p>
-                    </div>
-                </a>`).join('');
-                troubleshootingContainer.innerHTML = troubleshooting.map(item => `
-                    <div class="border border-gray-200 rounded-lg p-6 flex flex-col">
-                        <div class="flex justify-between items-start gap-4 mb-3">
-                            <div class="flex items-start gap-4">
-                                <svg class="w-6 h-6 text-gray-800 flex-shrink-0 mt-0.5" data-lucide="alert-triangle"></svg>
-                                <h3 class="text-lg font-semibold text-gray-900">${item.problem}</h3>
-                            </div>
-                            <span class="inline-flex flex-shrink-0 items-center px-3 py-1 text-sm font-medium bg-red-100 text-red-800 rounded-full">${item.badge}</span>
-                        </div>
-                        <p class="text-gray-700 leading-normal mb-3 ml-10">${item.solution}</p>
-                        <div class="ml-10 bg-gray-50 rounded-lg p-4 text-sm text-gray-600 border border-gray-200">${linkifyProduct(item.fix)}</div>
-                    </div>
-                `).join('');
-                troubleshootingContainer.innerHTML += `
-                    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-8 text-center">
-                        <h4 class="text-xl font-semibold text-amber-900 mb-3">Have a different problem?</h4>
-                        <p class="text-gray-600 mb-6 max-w-lg mx-auto">Describe your lemon tree's issue and get a custom solution from our AI gardening expert, trained for the Orcutt climate.</p>
-                        <button id="troubleshoot-ai-btn" class="w-full max-w-xs mx-auto bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2">
-                            <svg data-lucide="sparkles" class="w-5 h-5"></svg>
-                            Get AI Troubleshooting Help
-                        </button>
-                    </div>
-                `;
-                safeCreateIcons();
-                // Setup scroll animations
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('opacity-100', 'translate-y-0');
-                            entry.target.classList.remove('opacity-0', 'translate-y-4');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
+                </section>
+            </div>
+        </main>
 
-                document.querySelectorAll('section, .section-fade-in').forEach(el => {
-                    el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700', 'ease-out');
-                    observer.observe(el);
-                });
-            }
-function toggleSection(key) {
-const contentPanel = document.getElementById(`content-${key}`);
-const icon = document.querySelector(`.accordion-button[data-key="${key}"] [data-lucide="chevron-down"]`);
-if (!contentPanel || !icon) return;
-if (openSections.has(key)) {
-                    openSections.delete(key);
-                    contentPanel.classList.add('hidden');
-                    icon.classList.remove('rotate-180');
-                } else {
-                    openSections.add(key);
-                    contentPanel.classList.remove('hidden');
-                    icon.classList.add('rotate-180');
-                }
-                safeCreateIcons();
-            }
-function setupEventListeners() {
-                document.querySelectorAll('.accordion-button').forEach(button => {
-                    button.addEventListener('click', () => {
-const key = button.dataset.key;
-                        toggleSection(key);
-                    });
-                });
-                document.getElementById('sections-container').addEventListener('click', (e) => {
-const btn = e.target.closest('#find-substitutes-btn');
-if (btn) {
-                        e.preventDefault();
-if (!btn.disabled) {
-                            handleFindSubstitutesClick();
-                        }
-                    }
-                });
-                document.getElementById('troubleshooting-container').addEventListener('click', (e) => {
-const btn = e.target.closest('#troubleshoot-ai-btn');
-if (btn) {
-                        e.preventDefault();
-                        showTroubleshootingModal();
-                    }
-                });
-                checklistContainer.addEventListener('click', (e) => {
-                    const item = e.target.closest('.checklist-item');
-                    if (item) {
-                        item.classList.toggle('checked');
-                    }
-                });
-                const scrollTopBtn = document.getElementById('scroll-to-top-btn');
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        scrollTopBtn.classList.add('visible');
-                    } else {
-                        scrollTopBtn.classList.remove('visible');
-                    }
-                });
-                scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        <footer class="footer py-10 mt-16">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-acet-text-light text-sm">
+                <p>Made By Me</p>
+            </div>
+        </footer>
 
-                modalCloseBtn.addEventListener('click', closeModal);
-                modalOverlay.addEventListener('click', (e) => {
-if (e.target === modalOverlay) {
-                        closeModal();
-                    }
-                });
-const printButton = document.getElementById('print-button');
-if (printButton) {
-                    printButton.addEventListener('click', () => {
-                        window.print();
-                    });
-                }
-            }
-            renderDynamicContent();
-            setupEventListeners();
-        });
-</script>
-</body>
-</html>
+        <button id="scroll-to-top-btn" class="scroll-to-top acet-card rounded-full p-3 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-citrus-orange transition-all" title="Go to top">
+            <svg class="w-6 h-6" data-lucide="arrow-up"></svg>
+        </button>
+
+        <div id="modal-overlay" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div id="modal-box" class="acet-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col acet-border-glow">
+                <div class="flex justify-between items-center p-4 border-b border-acet-border sticky top-0 bg-acet-card z-10">
+                    <h3 id="modal-title" class="text-lg font-semibold text-acet-text">✨ AI-Generated Suggestions</h3>
+                    <button id="modal-close-btn" class="text-acet-text-light hover:text-citrus-orange" aria-label="Close modal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <div id="modal-content" class="p-6 text-acet-text-light overflow-y-auto">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DATA STRUCTURE (Updated to handle multiple citrus types) ---
+            const citrusData = {
+                lemon: {
+                    title: "Ready to Get Juicing?",
+                    subtitle: "This guide has everything you need to grow a thriving **Lemon Tree** on your rooftop.",
+                    heroCards: [
+                        { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold text-acet-text">≤ 20 lb/ft²</span> roof load' },
+                        { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold text-acet-text">VWC monitoring</span>' },
+                        { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold text-acet-text">20-30%</span>' },
+                    ],
+                    sections: {
+                        soil: { 
+                            title: 'Soil Media Design', icon: 'layers', color: 'amber', 
+                            content: [
+                                { ingredient: 'Coarse pine bark', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density, large macropores, and excellent drainage.' },
+                                { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds essential weight for stability and keeps EC low.' },
+                                { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention capacity and maintains acidic pH ≈ 5.5.' },
+                                { ingredient: 'Perlite (3-5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity (AFP) which is vital for roots.' },
+                            ]
+                        },
+                        water: { 
+                            title: 'Water Management', icon: 'droplets', color: 'blue', 
+                            content: [
+                                { type: 'Emitter Flow', value: '0.5 gph', description: 'Use pressure-compensating emitters for consistent delivery.' },
+                                { type: 'Sensor Trigger', value: 'VWC Target (35%)', description: 'Irrigate when Volumetric Water Content (VWC) drops below target.' },
+                                { type: 'Target EC', value: '< 1.2
