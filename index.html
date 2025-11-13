@@ -1,246 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rooftop Citrus Garden Guide</title>
-
-  <!-- Tailwind CDN (includes JIT, so we can use arbitrary values) -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-
-  <!-- Lucide icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
-
-  <!-- Custom Tailwind config – adds the “citrus” palette -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooftop Lemon Tree Growing Guide</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <!-- Aceternity-style subtle animations (via Tailwind + custom CSS) -->
+  <style>
+    [data-lucide] { @apply w-6 h-6 stroke-current; }
+    .card-hover { @apply transition-all duration-300 ease-out; }
+    .card-hover:hover { @apply shadow-xl -translate-y-1; }
+    .bg-citrus-gradient { background: linear-gradient(135deg, #FFF7ED 0%, #FED7AA 100%); }
+    .text-citrus { @apply text-orange-600; }
+    .border-citrus { @apply border-orange-200; }
+    .bg-citrus-light { @apply bg-orange-50; }
+    .bg-citrus-dark { @apply bg-orange-600; }
+    .hover\\:bg-citrus { @apply hover:bg-orange-100; }
+    .focus\\:ring-citrus { @apply focus:ring-orange-400; }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+  
+  <!-- Tailwind Config Extension for Citrus Palette -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             citrus: {
-              50: "#fff7e6",
-              100: "#ffebc2",
-              200: "#ffd68a",
-              300: "#ffbc4a",
-              400: "#ffa726",
-              500: "#ff9800",   /* primary */
-              600: "#fb8c00",
-              700: "#f57c00",
-              800: "#ef6c00",
-              900: "#e65100",
-            },
-            lime: {
-              500: "#cddc39",
-            },
-            amber: {
-              500: "#ffb300",
-            },
-          },
-          boxShadow: {
-            "glow": "0 0 15px rgba(255,152,0,0.4), 0 0 30px rgba(255,152,0,0.2)",
-          },
-          backdropBlur: {
-            xs: "2px",
-          },
-        },
-      },
-    };
+              50: '#FFF7ED',
+              100: '#FED7AA',
+              200: '#FDBA74',
+              300: '#FB923C',
+              400: '#F97316',
+              500: '#EA580C',
+              600: '#C2410C',
+              700: '#9A3412',
+              800: '#7C2D12',
+              900: '#431407',
+            }
+          }
+        }
+      }
+    }
   </script>
-
-  <style>
-    /* Aceternity‑style glass cards */
-    .glass {
-      @apply bg-white/10 backdrop-blur-xs border border-white/20 rounded-xl;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    /* shadcn‑style button */
-    .btn-primary {
-      @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-citrus-500 focus-visible:ring-offset-2 bg-citrus-500 text-white hover:bg-citrus-600 shadow-glow;
-    }
-
-    /* Lucide icons – keep them same size */
-    [data-lucide] {
-      display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
-      stroke-width: 2;
-    }
-  </style>
 </head>
-
-<body class="bg-gradient-to-b from-citrus-50 to-citrus-100 min-h-screen font-sans text-slate-800">
+<body class="bg-gradient-to-br from-slate-50 via-white to-citrus-50 min-h-screen">
 
   <div id="app"></div>
 
   <script>
-    /* ------------------------------------------------------------------
-       Data – unchanged from your original version (just renamed a few keys)
-       ------------------------------------------------------------------ */
-    const { ChevronDown, Leaf, Droplet, Sun, Package, AlertCircle, CheckCircle2 } = lucide;
+    const { ChevronDown, Package, Droplet, Sun, Leaf, CheckCircle2, AlertCircle, ShoppingCart, Store, Truck } = lucide;
 
-    let expandedSection = "soil";
+    let expandedSection = 'soil';
 
     const sections = {
       soil: {
-        title: "Soil Media Design",
-        icon: "package",
+        title: 'Soil Media Design',
+        icon: 'package',
         content: [
-          { ingredient: "Coarse pine bark (2‑3 in.)", percent: "40%", product: "Sungro® Professional Pine Bark", why: "Low bulk density & large macropores for drainage" },
-          { ingredient: "Washed river sand", percent: "30%", product: "Sungro® Professional Sand – Fine", why: "Adds weight & keeps EC < 0.2 dS m⁻¹" },
-          { ingredient: "Peat moss or coconut coir", percent: "25%", product: "Coir‑Lite™ Coconut Coir", why: "High water retention & maintains pH ≈ 5.5" },
-          { ingredient: "Perlite (3‑5 mm)", percent: "5%", product: "Miracle‑Gro Perlite", why: "Boosts air‑filled porosity" },
-        ],
+          { ingredient: 'Coarse pine bark (2–3 in.)', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density & large macropores for drainage' },
+          { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds weight & keeps EC < 0.2 dS m⁻¹' },
+          { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention & maintains pH ≈ 5.5' },
+          { ingredient: 'Perlite (3–5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity' },
+        ]
       },
-
       water: {
-        title: "Water Management",
-        icon: "droplet",
-        content:
-          "Precise irrigation with pressure‑compensating emitters at 0.5 gph. Use EC‑5 moisture sensors to trigger drip irrigation when soil moisture drops below target VWC. Flush weekly with 2 L rain‑water to maintain EC < 1.2 dS m⁻¹.",
+        title: 'Water Management',
+        icon: 'droplet',
+        content: 'Precise irrigation with pressure-compensating emitters at 0.5 gph. Use EC-5 moisture sensors to trigger drip irrigation when soil moisture drops below target VWC. Flush weekly with 2L rainwater to maintain EC < 1.2 dS m⁻¹.'
       },
-
       environment: {
-        title: "Environmental Mitigation",
-        icon: "sun",
+        title: 'Environmental Mitigation',
+        icon: 'sun',
         content: [
-          { item: "Shade cloth (30 % density)", benefit: "Reduces leaf temp ~5 °C, passes 70 % PAR" },
-          { item: "Lattice windbreak", benefit: "Blocks ~40 % wind exposure" },
-          { item: "Cool‑roof coating (0.65+ albedo)", benefit: "Lowers roof surface temp 10‑12 °C" },
-          { item: "Coconut‑coir mulch (1‑2 in.)", benefit: "Cuts surface evaporation ~30 %" },
-        ],
+          { item: 'Shade cloth (30% density)', benefit: 'Reduces leaf temp ~5°C, passes 70% PAR' },
+          { item: 'Lattice windbreak', benefit: 'Blocks ~40% wind exposure' },
+          { item: 'Cool-roof coating (0.65+ albedo)', benefit: 'Lowers roof surface temp 10–12°C' },
+          { item: 'Coconut-coir mulch (1–2 in.)', benefit: 'Cuts surface evaporation ~30%' },
+        ]
       },
-
       nutrients: {
-        title: "Nutrient Management",
-        icon: "leaf",
-        content:
-          "Osmocote® Smart‑Release 14‑14‑14 (½ cup per 5‑gal pot) releases NPK at 2‑4 % monthly. Supplement bi‑weekly with Jack’s Classic 2‑4‑6 liquid (30 mL per application) during fruit set. Add MycoApply™ mycorrhizal inoculum (5 g per pot) to enhance root surface area 2‑3×.",
-      },
-
-      citrus: {
-        title: "Orange & Other Citrus",
-        icon: "sun",
-        content: [
-          { item: "Varieties – ‘Washington Navel’, ‘Meyer’, ‘Kumquat’", benefit: "Cold‑hardier, compact growth habit, high vitamin C" },
-          { item: "Pollination – self‑fertile, but a second tree boosts yield", benefit: "10‑15 % more fruit per season" },
-          { item: "Fruit‑set timing – protect blossoms from wind with a 40 % shade net", benefit: "Reduces drop & improves size" },
-          { item: "Harvest – pick when fruit is fully orange, skin slightly soft to touch", benefit: "Peak flavor & sugar content" },
-        ],
-      },
+        title: 'Nutrient Management',
+        icon: 'leaf',
+        content: 'Osmocote® Smart-Release 14-14-14 (½ cup per 5-gal pot) releases NPK at 2–4% monthly. Supplement bi-weekly with Jack\'s Classic 2-4-6 liquid (30 mL per application) during fruit set. Add MycoApply™ mycorrhizal inoculum (5g per pot) to enhance root surface area 2–3×.'
+      }
     };
 
     const checklist = [
-      {
-        category: "Media Components",
-        items: ["Coarse pine bark (2 L)", "Washed river sand (1.5 L)", "Peat moss/coir (1.2 L)", "Perlite (0.15 L)", "Dolomitic lime (0.25 lb)"],
-      },
-      {
-        category: "Containers & Drainage",
-        items: ["Smart Pot® 5‑gal fabric bag", "Pumice stone (drain layer)", "Geotextile liner", "Anchoring hardware"],
-      },
-      {
-        category: "Irrigation System",
-        items: ["DripWorks ½‑in. tubing (20 ft)", "Rain‑Bird PC ½ gph emitters (2)", "EC‑5 moisture sensor", "Titan 12‑V timer + power supply", "5‑gal gravity reservoir"],
-      },
-      {
-        category: "Nutrients & Inoculants",
-        items: ["Osmocote 14‑14‑14 (½ cup)", "Jack’s Classic 2‑4‑6 liquid", "MycoApply mycorrhizal inoculum (5 g)", "Dolomitic lime (0.25 lb)"],
-      },
-      {
-        category: "Environmental Protection",
-        items: ["Cool‑Shade 30 % shade cloth", "Garden Edge vinyl lattice (2×2 ft)", "CocoCoir mulch (1‑2 in. layer)", "Cool‑Roof reflective coating (optional)"],
-      },
+      { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1.5L)', 'Peat moss/coir (1.2L)', 'Perlite (0.15L)', 'Dolomitic lime (0.25 lb)'] },
+      { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
+      { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (20 ft)', 'Rain-Bird PC ½ gph emitters (2)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '5-gal gravity reservoir'] },
+      { category: 'Nutrients & Inoculants', items: ['Osmocote 14-14-14 (½ cup)', 'Jack\'s Classic 2-4-6 liquid', 'MycoApply mycorrhizal inoculum (5g)', 'Dolomitic lime (0.25 lb)'] },
+      { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1–2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
     ];
 
     const retailers = [
-      { name: "Home Depot", icon: "🏪" },
-      { name: "Lowe’s", icon: "🏪" },
-      { name: "Amazon", icon: "📦" },
-      { name: "DripWorks", icon: "💧" },
-      { name: "Miller’s Nurseries (Santa Maria)", icon: "🌱" },
-      { name: "Green Acres Nursery", icon: "🌱" },
+      { name: 'Home Depot', icon: '🏪' },
+      { name: 'Lowe’s', icon: '🏪' },
+      { name: 'Amazon', icon: '📦' },
+      { name: 'DripWorks', icon: '💧' },
+      { name: 'Miller’s Nurseries', icon: '🌱' },
+      { name: 'Green Acres Nursery', icon: '🌱' },
     ];
 
     const troubleshooting = [
-      {
-        problem: "Leaf yellowing + black roots",
-        solution: "Add 5‑10 % extra perlite to media; improve drainage",
-        fix: "Home Depot perlite bags",
-      },
-      {
-        problem: "Sun‑scorch on south side",
-        solution: "Increase shade cloth overlap to 40 % total",
-        fix: "Additional Cool‑Shade cloth roll",
-      },
-      {
-        problem: "Fruit drop after hot night",
-        solution: "Apply 30 mL Jack’s 2‑4‑6 weekly as foliar spray",
-        fix: "Boost leaf K > 0.8 % DW",
-      },
-      {
-        problem: "Mildew under canopy",
-        solution: "Increase pot spacing; add lattice for airflow",
-        fix: "Garden Edge lattice panels",
-      },
-      {
-        problem: "pH drift upward in winter",
-        solution: "Add 0.1 lb elemental sulfur per 5‑gal pot",
-        fix: "5‑lb sulfur bag from Home Depot",
-      },
+      { problem: 'Leaf yellowing + black roots', solution: 'Add 5–10% extra perlite to media; improve drainage', fix: 'Home Depot perlite bags' },
+      { problem: 'Sun-scorch on south side', solution: 'Increase shade cloth overlap to 40% total', fix: 'Additional Cool-Shade cloth roll' },
+      { problem: 'Fruit drop after hot night', solution: 'Apply 30 mL Jack’s 2-4-6 weekly as foliar spray', fix: 'Boost leaf K > 0.8% DW' },
+      { problem: 'Mildew under canopy', solution: 'Increase pot spacing; add lattice for airflow', fix: 'Garden Edge lattice panels' },
+      { problem: 'pH drift upward in winter', solution: 'Add 0.1 lb elemental sulfur per 5-gal pot', fix: '5-lb sulfur bag from Home Depot' },
     ];
 
-    /* ------------------------------------------------------------------
-       Helper render functions – now using the “glass” class and shadcn
-       ------------------------------------------------------------------ */
     function toggleSection(key) {
       expandedSection = expandedSection === key ? null : key;
       render();
     }
 
     function renderIngredientContent(content) {
-      return content
-        .map(
-          (item) => `
-        <div class="glass p-4">
-          <div class="flex justify-between items-start mb-2">
-            <span class="font-semibold text-slate-900">${item.ingredient}</span>
-            <span class="bg-citrus-100 text-citrus-700 text-sm font-medium px-2 py-1 rounded">${item.percent}</span>
+      return content.map(item => `
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-citrus-100 card-hover">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="font-semibold text-slate-900">${item.ingredient}</h4>
+            <span class="bg-citrus-100 text-citrus-700 text-xs font-medium px-2.5 py-1 rounded-full">${item.percent}</span>
           </div>
-          <p class="text-sm text-slate-700 mb-1"><strong>${item.product}</strong></p>
-          <p class="text-sm text-slate-600">${item.why}</p>
-        </div>`
-        )
-        .join("");
+          <p class="text-sm text-slate-700 font-medium mb-1">${item.product}</p>
+          <p class="text-xs text-slate-600 leading-relaxed">${item.why}</p>
+        </div>
+      `).join('');
     }
 
     function renderEnvironmentContent(content) {
-      return content
-        .map(
-          (item) => `
-        <div class="glass p-4">
-          <h4 class="font-semibold text-slate-900 mb-1">${item.item}</h4>
+      return content.map(item => `
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-citrus-100 card-hover">
+          <h4 class="font-semibold text-slate-900 mb-2">${item.item}</h4>
           <p class="text-sm text-slate-600">${item.benefit}</p>
-        </div>`
-        )
-        .join("");
+        </div>
+      `).join('');
     }
 
     function renderSections() {
-      return Object.entries(sections)
-        .map(([key, section]) => {
-          const isExpanded = expandedSection === key;
-          const icon = section.icon;
+      return Object.entries(sections).map(([key, section]) => {
+        const isExpanded = expandedSection === key;
+        let contentHtml = '';
 
-          let innerHtml = "";
-          if (Array.isArray(section.content)) {
-            if (key === "soil") innerHtml = renderIngredientContent(section.content);
-            else innerHtml = renderEnvironmentContent(section.content);
-          } else {
-            innerHtml = `<p class="text-slate-700 leading-relaxed">${section.content}</p>`;
-          }
+        if (Array.isArray(section.content)) {
+          contentHtml = section.icon === 'package'
+            ? renderIngredientContent(section.content)
+            : renderEnvironmentContent(section.content);
+        } else {
+          contentHtml = `<p class="text-slate-700 leading-relaxed text-sm">${section.content}</p>`;
+        }
 
-          return `
-          <div class="glass overflow-hidden transition-shadow hover:shadow-xl">
-            <button onclick="toggleSection('${key}')" class="w-full p-6 flex items-center justify
+        return `
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 card-hover animate-fade-in">
+            <button 
+              onclick="window.toggleSection('${key}')" 
+              class="w-full p-6 flex items-center justify-between hover:bg-citrus-50 transition-colors focus:outline-none focus:ring-2 focus:ring-citrus"
+            >
+              <div class="flex items-center gap-4">
+                <div class="p-2 bg-citrus-100 rounded-lg">
+                  <i data-lucide="${section.icon}" class="w-5 h-5 text-citrus"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">${section.title}</h3>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''}"></i>
+            </button>
+            ${isExpanded ? `
+              <div class="px-6 pb-6 border-t border-slate-100">
+                <div class="mt-5 space-y-4">
+                  ${contentHtml}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function render() {
+      const html = `
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+          <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex items-center gap-4">
+              <div class="text-5xl">🍊</div>
+              <div>
+                <h1 class="text-4xl font-bold text-slate-900">Rooftop Lemon Tree</h1>
+                <p class="text-slate-600 mt-1">Precision Growing Guide for Orcutt, Santa Barbara County, CA</p>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-6 py-12">
+
+          <!-- Hero Section -->
+          <section class="mb-16 bg-citrus-gradient rounded-3xl border border-citrus p-10 shadow-lg">
+            <h2 class="text-3xl font-bold text-slate-900 mb-5">Why Rooftop Citrus Growing?</h2>
+            <p class="text-slate-700 leading-relaxed mb-8 max-w-3xl">
+              Cultivating lemon trees on a third-story rooftop in an arid microclimate demands engineered precision. This guide delivers a research-backed media blend, lightweight containment, sensor-driven irrigation, and climate mitigation strategies to establish a productive urban citrus orchard.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
+                <div class="text-3xl mb-3">⚖️</div>
+                <h3 class="font-semibold text-slate-900 mb-1">Load Optimization</h3>
+                <p class="text-sm text-slate-600">Media targets ≤ 20 lb/ft² roof load</p>
+              </div>
+              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
+                <div class="text-3xl mb-3">💧</div>
+                <h3 class="font-semibold text-slate-900 mb-1">Smart Irrigation</h3>
+                <p class="text-sm text-slate-600">Sensor-triggered drip saves water & prevents root stress</p>
+              </div>
+              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
+                <div class="text-3xl mb-3">🌡️</div>
+                <h3 class="font-semibold text-slate-900 mb-1">Climate Control</h3>
+                <p class="text-sm text-slate-600">Shade & windbreaks reduce ET by 20–30%</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core Systems -->
+          <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+              <i data-lucide="settings" class="w-6 h-6 text-citrus"></i>
+              Core Growing Systems
+            </h2>
+            <div class="space-y-5">
+              ${renderSections()}
+            </div>
+          </section>
+
+          <!-- Shopping Checklist -->
+          <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+              <i data-lucide="shopping-cart" class="w-6 h-6 text-citrus"></i>
+              Procurement Checklist
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              ${checklist.map(group => `
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                  <h3 class="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-citrus"></i>
+                    ${group.category}
+                  </h3>
+                  <ul class="space-y-2.5">
+                    ${group.items.map(item => `
+                      <li class="flex items-start gap-3 text-slate-700 text-sm">
+                        <span class="text-citrus mt-0.5">✓</span>
+                        <span>${item}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              `).join('')}
+            </div>
+            <div class="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-5 flex gap-4">
+              <i data-lucide="alert-circle" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+              <div>
+                <p class="font-semibold text-blue-900">Estimated Cost</p>
+                <p class="text-sm text-blue-800">$120–$150 per 5-gallon setup (media + container + irrigation + nutrients)</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Retailers -->
+          <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+              <i data-lucide="store" class="w-6 h-6 text-citrus"></i>
+              Where to Buy
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+              ${retailers.map(retailer => `
+                <div class="bg-white rounded-2xl p-5 text-center border border-slate-100 card-hover hover:border-citrus">
+                  <div class="text-4xl mb-3">${retailer.icon}</div>
+                  <p class="font-medium text-slate-900 text-sm">${retailer.name}</p>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- Troubleshooting -->
+          <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+              <i data-lucide="alert-circle" class="w-6 h-6 text-citrus"></i>
+              Common Issues & Fixes
+            </h2>
+            <div class="space-y-5">
+              ${troubleshooting.map(item => `
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                  <div class="flex items-start gap-4 mb-3">
+                    <i data-lucide="alert-circle" class="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5"></i>
+                    <h3 class="font-semibold text-slate-900">${item.problem}</h3>
+                  </div>
+                  <p class="text-slate-700 mb-3 ml-10">${item.solution}</p>
+                  <div class="ml-10 bg-citrus-50 rounded-xl p-3 text-sm text-citrus-800 font-medium">${item.fix}</div>
+                </div>
+              `).join('')}
+            </div>
+          </section>
+
+          <!-- CTA -->
+          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-10 text-white text-center shadow-xl">
+            <h2 class="text-3xl font-bold mb-4">Ready to Cultivate?</h2>
+            <p class="mb-8 opacity-90 max-w-2xl mx-auto">
+              All components are regionally available. Export this checklist into a spreadsheet and procure in bulk from local or online vendors for optimal efficiency.
+            </p>
+            <button onclick="window.print()" class="bg-white text-citrus-600 font-semibold px-8 py-3.5 rounded-xl hover:bg-slate-50 transition-all shadow-md">
+              Print or Save Guide
+            </button>
+          </section>
+
+        </main>
+
+        <footer class="border-t border-slate-200 bg-white py-10 mt-20">
+          <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-sm">
+            <p>🍊 Rooftop Lemon Tree Guide • Third-Story Cultivation in Orcutt, Santa Barbara County, CA</p>
+            <p class="mt-2">Supported by peer-reviewed horticultural science and UC Cooperative Extension bulletins</p>
+          </div>
+        </footer>
+      `;
+
+      document.getElementById('app').innerHTML = html;
+      lucide.createIcons();
+    }
+
+    window.toggleSection = toggleSection;
+    render();
+  </script>
+</body>
+</html>
