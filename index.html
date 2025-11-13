@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   
   <!-- Dark Mode & Sleek Animations -->
   <style>
@@ -27,8 +27,25 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .hero-blur { backdrop-filter: blur(12px); }
     .glass { @apply bg-white/5 backdrop-blur-md border border-white/10; }
-    .hero-image-1 { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp'); background-size: cover; background-position: center; }
-    .hero-image-2 { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akjmde878c73bn3pb0/15a45884-85f7-41d8-9a44-185703108cfd_high.webp'); background-size: cover; background-position: center; }
+    .hero-bg { 
+      background-image: 
+        linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+        url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp'),
+        url('https://image.cdn2.seaart.me/2025-11-13/d4akjmde878c73bn3pb0/15a45884-85f7-41d8-9a44-185703108cfd_high.webp');
+      background-size: cover, 60% auto, 60% auto;
+      background-position: center, left center, right center;
+      background-repeat: no-repeat;
+      background-blend-mode: overlay, normal, normal;
+    }
+    @media (max-width: 768px) {
+      .hero-bg {
+        background-image: 
+          linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)),
+          url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp');
+        background-size: cover, cover;
+        background-position: center, center;
+      }
+    }
   </style>
   
   <!-- Tailwind Config Extension for Dark Citrus Palette -->
@@ -81,7 +98,7 @@
     const citrusData = {
       lemon: {
         name: 'Lemon',
-        emoji: '🍋',
+        emoji: 'Lemon',
         soil: [
           { ingredient: 'Coarse pine bark (2–3 in.)', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density & large macropores for drainage' },
           { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds weight & keeps EC < 0.2 dS m⁻¹' },
@@ -113,7 +130,7 @@
       },
       orange: {
         name: 'Orange',
-        emoji: '🍊',
+        emoji: 'Orange',
         soil: [
           { ingredient: 'Coarse pine bark (2–3 in.)', percent: '35%', product: 'Sungro® Professional Pine Bark', why: 'Excellent drainage; prevents root rot in humid summers' },
           { ingredient: 'Washed river sand', percent: '35%', product: 'Sungro® Professional Sand – Fine', why: 'Increases weight stability; EC < 0.15 dS m⁻¹' },
@@ -145,7 +162,7 @@
       },
       lime: {
         name: 'Lime',
-        emoji: '🍈',
+        emoji: 'Lime',
         soil: [
           { ingredient: 'Coarse pine bark', percent: '45%', product: 'Sungro® Pine Bark', why: 'Superior drainage; prevents lime-sensitive root rot' },
           { ingredient: 'Washed river sand', percent: '25%', product: 'Fine Play Sand', why: 'Weight + low EC' },
@@ -176,12 +193,12 @@
     };
 
     const retailers = [
-      { name: 'Home Depot', icon: '🏪' },
-      { name: 'Lowe’s', icon: '🏪' },
-      { name: 'Amazon', icon: '📦' },
-      { name: 'DripWorks', icon: '💧' },
-      { name: 'Miller’s Nurseries', icon: '🌱' },
-      { name: 'Green Acres Nursery', icon: '🌱' },
+      { name: 'Home Depot', icon: 'Store' },
+      { name: 'Lowe’s', icon: 'Store' },
+      { name: 'Amazon', icon: 'Package' },
+      { name: 'DripWorks', icon: 'Droplet' },
+      { name: 'Miller’s Nurseries', icon: 'TreePine' },
+      { name: 'Green Acres Nursery', icon: 'Apple' },
     ];
 
     function setCitrus(type) {
@@ -269,20 +286,16 @@
     function render() {
       const data = getCurrentData();
       const html = `
-        <!-- Hero Header with Dual Images -->
-        <header class="relative overflow-hidden text-white min-h-screen flex items-center">
-          <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-2">
-            <div class="hero-image-1"></div>
-            <div class="hero-image-2"></div>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40"></div>
-          <div class="absolute inset-0 hero-blur bg-black/30"></div>
+        <!-- Hero Header with Clean Dual-Image Background -->
+        <header class="hero-bg relative text-white min-h-screen flex items-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30"></div>
+          <div class="absolute inset-0 hero-blur bg-black/20"></div>
           <div class="relative max-w-7xl mx-auto px-6 py-32 w-full text-center">
-            <div class="flex justify-center gap-4 mb-8">
+            <div class="flex justify-center gap-6 mb-10">
               ${Object.entries(citrusData).map(([key, c]) => `
                 <button onclick="window.setCitrus('${key}')" 
-                  class="glass rounded-full p-4 card-hover ${selectedCitrus === key ? 'ring-2 ring-citrus' : ''}">
-                  <div class="text-5xl">${c.emoji}</div>
+                  class="glass rounded-full p-5 card-hover transition-all ${selectedCitrus === key ? 'ring-4 ring-citrus shadow-lg scale-110' : 'ring-2 ring-white/30'}">
+                  <div class="text-6xl">${c.emoji}</div>
                 </button>
               `).join('')}
             </div>
@@ -295,16 +308,16 @@
             <p class="max-w-4xl mx-auto text-orange-50 leading-relaxed text-base md:text-lg mb-10 drop-shadow-md">
               Engineered systems for third-story rooftops. Lightweight media, sensor-driven irrigation, and climate mitigation for lemons, oranges, limes, and beyond.
             </p>
-            <div class="flex justify-center flex-wrap gap-4">
-              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
+            <div class="flex justify-center flex-wrap gap-5">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2 backdrop-blur-md">
                 <i data-lucide="weight" class="w-5 h-5"></i>
                 <span class="font-medium">≤ 20 lb/ft² Load</span>
               </div>
-              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2 backdrop-blur-md">
                 <i data-lucide="droplets" class="w-5 h-5"></i>
                 <span class="font-medium">Smart Drip</span>
               </div>
-              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2 backdrop-blur-md">
                 <i data-lucide="sun-dim" class="w-5 h-5"></i>
                 <span class="font-medium">Climate Control</span>
               </div>
@@ -341,7 +354,7 @@
                   <ul class="space-y-2.5">
                     ${group.items.map(item => `
                       <li class="flex items-start gap-3 text-slate-300 text-sm">
-                        <span class="text-citrus mt-0.5">✓</span>
+                        <span class="text-citrus mt-0.5">Check</span>
                         <span>${item}</span>
                       </li>
                     `).join('')}
@@ -366,8 +379,8 @@
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
               ${retailers.map(retailer => `
-                <div class="glass rounded-2xl p-5 text-center card-hover border-citrus">
-                  <div class="text-4xl mb-3 filter invert">${retailer.icon}</div>
+                <div class="glass rounded-2xl p-5 text-center card-hover border border-white/10 hover:border-citrus transition-all">
+                  <div class="text-4xl mb-3">${retailer.icon}</div>
                   <p class="font-medium text-slate-100 text-sm">${retailer.name}</p>
                 </div>
               `).join('')}
@@ -395,12 +408,12 @@
           </section>
 
           <!-- CTA -->
-          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-12 text-white text-center shadow-2xl glass">
+          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-12 text-white text-center shadow-2xl glass border border-white/10">
             <h2 class="text-3xl md:text-4xl font-bold mb-5">Ready to Grow ${data.name}s?</h2>
             <p class="mb-8 opacity-90 max-w-2xl mx-auto text-lg">
               Switch between citrus types above. All data is tailored to Orcutt’s microclimate and rooftop constraints.
             </p>
-            <button onclick="window.print()" class="bg-white/10 text-white font-semibold px-10 py-4 rounded-xl hover:bg-white/20 transition-all border border-white/20 text-lg">
+            <button onclick="window.print()" class="bg-white/10 text-white font-semibold px-10 py-4 rounded-xl hover:bg-white/20 transition-all border border-white/20 text-lg backdrop-blur-sm">
               Print Guide for ${data.name}
             </button>
           </section>
@@ -409,7 +422,7 @@
 
         <footer class="border-t border-slate-700/50 bg-slate-900 py-12 mt-32">
           <div class="max-w-7xl mx-auto px-6 text-center text-slate-400 text-sm">
-            <p>🍊🍋🍈 Rooftop Citrus Guide • Third-Story Cultivation in Orcutt, CA</p>
+            <p>Rooftop Citrus Guide • Third-Story Cultivation in Orcutt, CA</p>
             <p class="mt-2">Powered by UC ANR, USDA, and peer-reviewed horticultural science</p>
           </div>
         </footer>
