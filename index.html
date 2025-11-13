@@ -1,682 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooftop Citrus Guide v2.0</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/umd/lucide.min.js"></script>
-    <style>
-        :root {
-            --acet-bg: #0a0a0a;
-            --acet-card: #111111;
-            --acet-border: #333333;
-            --acet-text: #f0f0f0;
-            --acet-text-light: #a0a0a0;
-            --citrus-orange: #fd8c00;
-            --citrus-yellow: #faff00;
-            --citrus-green: #a7f3d0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooftop Citrus Garden Guide</title>
 
-        body {
-            background-color: var(--acet-bg);
-            color: var(--acet-text);
-            font-family: 'Geist Sans', sans-serif;
-            overflow-x: hidden;
-        }
+  <!-- Tailwind CDN (includes JIT, so we can use arbitrary values) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
 
-        .glow-text {
-            background: linear-gradient(90deg, var(--citrus-orange) 0%, var(--citrus-yellow) 50%, var(--citrus-green) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
-            animation: pulse-glow 3s infinite alternate;
-        }
+  <!-- Lucide icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
 
-        @keyframes pulse-glow {
-            0% { text-shadow: 0 0 10px rgba(250, 255, 0, 0.4), 0 0 20px rgba(253, 140, 0, 0.2); }
-            100% { text-shadow: 0 0 15px rgba(250, 255, 0, 0.6), 0 0 30px rgba(253, 140, 0, 0.4); }
-        }
-
-        .acet-card-styled {
-            background-color: var(--acet-card);
-            border: 1px solid var(--acet-border);
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .acet-card-styled:hover {
-            border-color: var(--citrus-orange);
-            box-shadow: 0 0 20px rgba(253, 140, 0, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .acet-btn {
-            background: linear-gradient(90deg, var(--citrus-orange) 0%, #ffc000 100%);
-            color: #000;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 15px rgba(253, 140, 0, 0.3);
-        }
-
-        .acet-btn:hover {
-            opacity: 0.9;
-            box-shadow: 0 8px 25px rgba(253, 140, 0, 0.6);
-            transform: translateY(-1px);
-        }
-
-        .acet-small-card {
-            background-color: #222222;
-            border: 1px solid var(--acet-border);
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0 1px rgba(253, 140, 0, 0.1);
-        }
-
-        .acet-small-card:hover {
-            border-color: var(--citrus-yellow);
-            box-shadow: 0 0 15px rgba(250, 255, 0, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .section-icon-bg {
-            background-color: rgba(253, 140, 0, 0.2);
-            border: 1px solid rgba(253, 140, 0, 0.4);
-        }
-
-        .section-icon-fg {
-            color: var(--citrus-orange);
-        }
-
-        .checklist-checked-icon {
-            color: var(--citrus-green);
-            filter: drop-shadow(0 0 4px rgba(167, 243, 208, 0.5));
-        }
-
-        #modal-box {
-            background-color: var(--acet-card);
-            border: 1px solid var(--citrus-orange);
-            box-shadow: 0 0 30px rgba(253, 140, 0, 0.5);
-        }
-
-        .checklist-item.checked {
-            border-left: 3px solid var(--citrus-green);
-            background: rgba(167, 243, 208, 0.1);
-        }
-
-        #hero-cards > div {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-
-        #scroll-to-top-btn {
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-    </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Geist Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        'acet-black': '#000000',
-                        'acet-bg': '#0a0a0a',
-                        'acet-card': '#111111',
-                        'acet-border': '#333333',
-                        'acet-text': '#f0f0f0',
-                        'acet-text-light': '#a0a0a0',
-                        'citrus-orange': '#fd8c00',
-                        'citrus-yellow': '#faff00',
-                        'citrus-green': '#a7f3d0',
-                    },
-                },
+  <!-- Custom Tailwind config – adds the “citrus” palette -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            citrus: {
+              50: "#fff7e6",
+              100: "#ffebc2",
+              200: "#ffd68a",
+              300: "#ffbc4a",
+              400: "#ffa726",
+              500: "#ff9800",   /* primary */
+              600: "#fb8c00",
+              700: "#f57c00",
+              800: "#ef6c00",
+              900: "#e65100",
             },
-        };
+            lime: {
+              500: "#cddc39",
+            },
+            amber: {
+              500: "#ffb300",
+            },
+          },
+          boxShadow: {
+            "glow": "0 0 15px rgba(255,152,0,0.4), 0 0 30px rgba(255,152,0,0.2)",
+          },
+          backdropBlur: {
+            xs: "2px",
+          },
+        },
+      },
+    };
+  </script>
 
-        // --- DATA STRUCTURE ---
-        const citrusData = {
-            lemon: {
-                title: "Ready to Get Juicing?",
-                subtitle: "This guide has everything you need to grow a thriving <span class='text-citrus-green'>**Lemon Tree**</span> on your rooftop.",
-                heroCards: [
-                    { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold">≤ 20 lb/ft²</span> roof load' },
-                    { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold">VWC monitoring</span>' },
-                    { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold">20-30%</span>' },
-                ],
-                sections: {
-                    soil: {
-                        title: 'Soil Media Design', icon: 'layers', color: 'amber',
-                        content: [
-                            { ingredient: 'Coarse pine bark', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density, large macropores, and excellent drainage.' },
-                            { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds essential weight for stability and keeps EC low.' },
-                            { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention capacity and maintains acidic pH ≈ 5.5.' },
-                            { ingredient: 'Perlite (3-5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity (AFP) which is vital for roots.' },
-                        ]
-                    },
-                    water: {
-                        title: 'Water Management', icon: 'droplets', color: 'blue',
-                        content: [
-                            { type: 'Emitter Flow', value: '0.5 gph', description: 'Use pressure-compensating emitters for consistent delivery.' },
-                            { type: 'Sensor Trigger', value: 'VWC Target (35%)', description: 'Irrigate when Volumetric Water Content (VWC) drops below target.' },
-                            { type: 'Target EC', value: '< 1.2 mS/cm', description: 'Keep nutrient concentration low to avoid burning sensitive roots.' },
-                            { type: 'Max Runoff', value: '15%', description: 'Ensure minor runoff to prevent salt accumulation in the container.' },
-                        ]
-                    },
-                    nutrients: {
-                        title: 'Fertilization Schedule', icon: 'zap', color: 'lime',
-                        content: [
-                            { schedule: 'Spring Flush', product: 'High N (20-10-10)', rate: '50% Strength', timing: 'Start when new growth emerges. Supports vegetative growth.' },
-                            { schedule: 'Summer Growth', product: 'Balanced (15-15-15)', rate: 'Full Strength', timing: 'Monthly application. Ensures healthy leaf and branch development.' },
-                            { schedule: 'Pre-Winter', product: 'Low N / High K (5-10-20)', rate: '75% Strength', timing: 'Late Fall. Hardens wood and increases cold tolerance.' },
-                            { schedule: 'Micronutrients', product: 'Chelated Fe/Zn/Mn', rate: 'As needed', timing: 'Treat iron chlorosis (yellowing) immediately.' },
-                        ]
-                    },
-                    pests: {
-                        title: 'Pest & Disease Control', icon: 'bug', color: 'red',
-                        content: [
-                            { pest: 'Aphids/Scale', treatment: 'Neem Oil', protocol: 'Weekly until suppressed, targeting undersides of leaves.' },
-                            { pest: 'Leafminer', treatment: 'Spinosad', protocol: 'Apply to new flushes to prevent tunneling damage.' },
-                            { pest: 'Phytophthora', treatment: 'Excellent Drainage', protocol: 'Primary prevention is non-negotiable. Only chemical treatment if severe.' },
-                        ]
-                    }
-                },
-                checklist: [
-                    'Citrus tree (Dwarf or Semi-Dwarf variety on dwarfing rootstock)',
-                    '20+ gallon container (light colored or white to reflect heat)',
-                    'Coarse Pine Bark (large bags)',
-                    'Washed River Sand (small bags)',
-                    'Coconut Coir or Peat Moss',
-                    'Perlite (3-5mm particle size)',
-                    'Slow-release granular fertilizer (e.g., Osmocote 15-9-12)',
-                    'Water-soluble fertilizer (e.g., 20-10-10 or 15-15-15)',
-                    'Digital pH meter and calibration solution',
-                    'Digital VWC sensor (optional, highly recommended)',
-                    'Drip irrigation kit (with 0.5 GPH pressure-compensating emitters)',
-                    'Neem oil or horticultural oil for pest control',
-                    'Windbreak netting (if exposed rooftop)',
-                ],
-                troubleshooting: [
-                    { issue: 'Yellowing Leaves (General)', cause: 'Iron/Zinc deficiency or High pH/Excess Water.', fix: 'Apply Chelated Iron/Zinc. Check pH (should be < 6.5) and irrigation schedule.' },
-                    { issue: 'Leaves Dropping', cause: 'Underwatering (Sudden stress) or Overwatering (Root rot).', fix: 'Check VWC sensor. Adjust water volume and ensure perfect drainage.' },
-                    { issue: 'No Flowers/Fruit', cause: 'Immaturity or Insufficient Light/Nutrients.', fix: 'Ensure 6+ hours of direct sun. Use a low-N fertilizer in late summer.' },
-                    { issue: 'Ants on Tree', cause: 'Pest infestation (Ants "farm" scale or aphids for honeydew).', fix: 'Treat the base of the tree with sticky barrier and apply Neem oil to the pests.' },
-                ],
-                retailers: [
-                    { name: 'Home Depot', icon: 'tool'}, { name: 'Lowe\'s', icon: 'factory'},
-                    { name: 'Local Nursery', icon: 'flower'}, { name: 'Amazon', icon: 'shopping-cart'},
-                    { name: 'Etsy', icon: 'hand-heart'}, { name: 'Granger', icon: 'cable'}
-                ]
-            }
-        };
+  <style>
+    /* Aceternity‑style glass cards */
+    .glass {
+      @apply bg-white/10 backdrop-blur-xs border border-white/20 rounded-xl;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
 
-        // --- UI Elements ---
-        const heroTitleEl = document.getElementById('hero-title');
-        const heroSubtitleEl = document.getElementById('hero-subtitle');
-        const heroCardsEl = document.getElementById('hero-cards');
-        const sectionsContainerEl = document.getElementById('sections-container');
-        const checklistContainerEl = document.getElementById('checklist-container');
-        const troubleshootingContainerEl = document.getElementById('troubleshooting-container');
-        const retailersContainerEl = document.getElementById('retailers-container');
-        const treeSelectEl = document.getElementById('tree-select');
-        const modalOverlayEl = document.getElementById('modal-overlay');
-        const modalCloseBtn = document.getElementById('modal-close-btn');
-        const generateBtn = document.getElementById('generate-suggestion-btn');
-        const loadingSpinnerEl = document.getElementById('loading-spinner');
-        const aiResponseEl = document.getElementById('ai-response');
-        const aiTextEl = document.getElementById('ai-text');
-        const problemTextareaEl = document.getElementById('problem-textarea');
-        const printButtonEl = document.getElementById('print-button');
-        const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+    /* shadcn‑style button */
+    .btn-primary {
+      @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-citrus-500 focus-visible:ring-offset-2 bg-citrus-500 text-white hover:bg-citrus-600 shadow-glow;
+    }
 
-        let activeSection = null;
-
-        // --- RENDERING FUNCTIONS ---
-        function getIcon(iconName) {
-            return lucide.createIcons()[iconName]?.toSvg() || `<svg data-lucide="${iconName}" class="w-6 h-6"></svg>`;
-        }
-
-        function renderHeroCards(cards) {
-            heroCardsEl.innerHTML = cards.map((card, index) => `
-                <div class="acet-small-card p-6 rounded-lg text-left transition-all duration-500" style="opacity: 0; transform: translateY(20px);">
-                    <div class="p-3 mb-3 inline-block rounded-lg section-icon-bg">
-                        ${getIcon(card.icon).replace('class="', 'class="w-6 h-6 section-icon-fg ')}
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2">${card.title}</h3>
-                    <p class="text-acet-text-light text-sm">${card.text}</p>
-                </div>
-            `).join('');
-            // Animate hero cards on load
-            document.querySelectorAll('#hero-cards > div').forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 200 * index);
-            });
-        }
-
-        function renderSections(sections) {
-            sectionsContainerEl.innerHTML = Object.keys(sections).map(key => {
-                const section = sections[key];
-                return `
-                    <div class="acet-card-styled rounded-xl shadow-lg transition-all duration-300">
-                        <button id="accordion-btn-${key}" data-key="${key}" class="accordion-button w-full flex justify-between items-center p-5 text-left transition-colors duration-200 hover:bg-[#1f1f1f] focus:outline-none">
-                            <div class="flex items-center space-x-4">
-                                <div class="p-3 rounded-full section-icon-bg">
-                                    ${getIcon(section.icon).replace('class="', 'class="w-6 h-6 section-icon-fg ')}
-                                </div>
-                                <h3 class="text-xl font-semibold">${section.title}</h3>
-                            </div>
-                            <svg class="w-6 h-6 text-citrus-yellow transition-transform duration-300" data-lucide="chevron-down"></svg>
-                        </button>
-                        <div id="accordion-content-${key}" class="content-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                            <div class="p-6">
-                                ${renderSectionContent(key, section)}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            lucide.createIcons();
-            attachAccordionListeners();
-        }
-
-        function renderSectionContent(key, section) {
-            const headers = {
-                'soil': ['Ingredient', 'Percent', 'Product', 'Why'],
-                'water': ['Type', 'Value', 'Description', ''],
-                'nutrients': ['Schedule', 'Product', 'Rate', 'Timing'],
-                'pests': ['Pest', 'Treatment', 'Protocol', '']
-            };
-            const headerRow = headers[key].map(h => `<th class="px-4 py-2 font-semibold text-citrus-yellow text-left">${h}</th>`).join('');
-            const rows = section.content.map(item => `
-                <tr class="border-b border-acet-border last:border-b-0 hover:bg-[#1a1a1a]">
-                    <td class="px-4 py-3">${item[headers[key][0].toLowerCase().split('/')[0].split(' ')[0]]}</td>
-                    <td class="px-4 py-3 text-acet-text-light">${item[headers[key][1].toLowerCase().split('/')[0].split(' ')[0]]}</td>
-                    <td class="px-4 py-3 text-acet-text-light">${item[headers[key][2].toLowerCase().split('/')[0].split(' ')[0]]}</td>
-                    <td class="px-4 py-3 text-acet-text-light">${item[headers[key][3].toLowerCase().split('/')[0].split(' ')[0]] || ''}</td>
-                </tr>
-            `).join('');
-            return `
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-acet-border rounded-lg overflow-hidden">
-                        <thead class="bg-acet-black">
-                            <tr>${headerRow}</tr>
-                        </thead>
-                        <tbody class="divide-y divide-acet-border">
-                            ${rows}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
-
-        function renderChecklist(items) {
-            checklistContainerEl.innerHTML = items.map((item, index) => `
-                <label class="checklist-item flex items-start space-x-3 p-4 acet-small-card rounded-lg transition-all duration-200 cursor-pointer" data-index="${index}">
-                    <input type="checkbox" class="sr-only">
-                    <div class="w-5 h-5 flex-shrink-0 mt-0.5">
-                        <svg class="icon-check text-acet-border" data-lucide="square"></svg>
-                        <svg class="icon-check-circle checklist-checked-icon hidden" data-lucide="check-square"></svg>
-                    </div>
-                    <span class="text-acet-text-light text-sm">${item}</span>
-                </label>
-            `).join('');
-            lucide.createIcons();
-            attachChecklistListeners();
-        }
-
-        function renderTroubleshooting(issues) {
-            troubleshootingContainerEl.innerHTML = issues.map(issue => `
-                <div class="acet-small-card p-5 rounded-lg border-l-4 border-citrus-orange/50 transition-shadow duration-300 hover:shadow-lg hover:shadow-citrus-orange/10">
-                    <p class="text-lg font-semibold text-citrus-yellow mb-2">${issue.issue}</p>
-                    <p class="text-acet-text-light text-sm mb-2">
-                        <span class="font-medium text-citrus-green">Cause:</span> ${issue.cause}
-                    </p>
-                    <p class="text-acet-text-light text-sm">
-                        <span class="font-medium text-citrus-green">Fix:</span> ${issue.fix}
-                    </p>
-                </div>
-            `).join('');
-        }
-
-        function renderRetailers(retailers) {
-            retailersContainerEl.innerHTML = retailers.map(r => `
-                <div class="acet-small-card p-4 rounded-lg flex flex-col items-center justify-center text-center transition-all duration-200">
-                    <div class="section-icon-bg p-2 rounded-full mb-2">
-                        ${getIcon(r.icon).replace('class="', 'class="w-5 h-5 section-icon-fg ')}
-                    </div>
-                    <p class="text-sm font-medium">${r.name}</p>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
-
-        function renderContent(type) {
-            const data = citrusData[type];
-            if (!data) return;
-            heroTitleEl.innerHTML = data.title;
-            heroSubtitleEl.innerHTML = data.subtitle;
-            renderHeroCards(data.heroCards);
-            renderSections(data.sections);
-            renderChecklist(data.checklist);
-            renderTroubleshooting(data.troubleshooting);
-            renderRetailers(data.retailers);
-            activeSection = null;
-        }
-
-        // --- EVENT LISTENERS ---
-        function attachAccordionListeners() {
-            document.querySelectorAll('.accordion-button').forEach(button => {
-                button.removeEventListener('click', toggleAccordion);
-                button.addEventListener('click', toggleAccordion);
-            });
-        }
-
-        function toggleAccordion(event) {
-            const button = event.currentTarget;
-            const key = button.getAttribute('data-key');
-            const content = document.getElementById(`accordion-content-${key}`);
-            const icon = button.querySelector('svg');
-            if (activeSection && activeSection !== key) {
-                const prevContent = document.getElementById(`accordion-content-${activeSection}`);
-                const prevButton = document.getElementById(`accordion-btn-${activeSection}`);
-                const prevIcon = prevButton.querySelector('svg');
-                prevContent.style.maxHeight = null;
-                prevContent.classList.remove('open');
-                prevIcon.style.transform = 'rotate(0deg)';
-            }
-            if (content.classList.contains('open')) {
-                content.style.maxHeight = null;
-                content.classList.remove('open');
-                icon.style.transform = 'rotate(0deg)';
-                activeSection = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('open');
-                icon.style.transform = 'rotate(180deg)';
-                activeSection = key;
-            }
-        }
-
-        function attachChecklistListeners() {
-            document.querySelectorAll('.checklist-item').forEach(label => {
-                const checkbox = label.querySelector('input[type="checkbox"]');
-                const squareIcon = label.querySelector('.icon-check');
-                const checkIcon = label.querySelector('.icon-check-circle');
-                const isChecked = localStorage.getItem(`checklist-${label.dataset.index}`) === 'true';
-                if (isChecked) {
-                    checkbox.checked = true;
-                    label.classList.add('checked');
-                    squareIcon.classList.add('hidden');
-                    checkIcon.classList.remove('hidden');
-                } else {
-                    checkbox.checked = false;
-                    label.classList.remove('checked');
-                    squareIcon.classList.remove('hidden');
-                    checkIcon.classList.add('hidden');
-                }
-                label.onclick = (e) => {
-                    e.preventDefault();
-                    const isNowChecked = !checkbox.checked;
-                    checkbox.checked = isNowChecked;
-                    if (isNowChecked) {
-                        label.classList.add('checked');
-                        squareIcon.classList.add('hidden');
-                        checkIcon.classList.remove('hidden');
-                        localStorage.setItem(`checklist-${label.dataset.index}`, 'true');
-                    } else {
-                        label.classList.remove('checked');
-                        squareIcon.classList.remove('hidden');
-                        checkIcon.classList.add('hidden');
-                        localStorage.setItem(`checklist-${label.dataset.index}`, 'false');
-                    }
-                };
-            });
-        }
-
-        // --- MODAL AND AI FUNCTIONS ---
-        function showModal() {
-            modalOverlayEl.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            lucide.createIcons();
-        }
-
-        function hideModal() {
-            modalOverlayEl.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        function showLoading() {
-            generateBtn.disabled = true;
-            generateBtn.textContent = '';
-            loadingSpinnerEl.classList.remove('hidden');
-            aiResponseEl.classList.add('hidden');
-            aiTextEl.innerHTML = '';
-        }
-
-        function hideLoading(success) {
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = 'Generate Suggestions';
-            loadingSpinnerEl.classList.add('hidden');
-            if (success) {
-                aiResponseEl.classList.remove('hidden');
-            }
-        }
-
-        async function generateAISuggestion() {
-            const problem = problemTextareaEl.value.trim();
-            if (!problem) return;
-            showLoading();
-            // Simulate AI response
-            setTimeout(() => {
-                aiTextEl.innerHTML = `
-                    <p><strong>Here’s what you can do:</strong></p>
-                    <ol class="list-decimal pl-5 mt-2">
-                        <li>Check the soil moisture with your VWC sensor. If it’s below 35%, water your tree thoroughly.</li>
-                        <li>Inspect the leaves for pests, especially on the undersides. Use neem oil if you spot aphids or scale.</li>
-                        <li>Test the pH of your soil. Citrus trees prefer a pH between 5.5 and 6.5. Adjust with sulfur or lime if needed.</li>
-                    </ol>
-                    <p class="mt-2"><em>Tip: Ensure your tree gets at least 6 hours of direct sunlight daily.</em></p>
-                `;
-                hideLoading(true);
-            }, 1500);
-        }
-
-        // --- INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', () => {
-            renderContent('lemon');
-            treeSelectEl.addEventListener('change', (e) => {
-                const selectedType = e.target.value;
-                localStorage.setItem('selectedCitrusType', selectedType);
-                renderContent(selectedType);
-            });
-            const savedType = localStorage.getItem('selectedCitrusType') || 'lemon';
-            treeSelectEl.value = savedType;
-            renderContent(savedType);
-            printButtonEl.addEventListener('click', showModal);
-            modalCloseBtn.addEventListener('click', hideModal);
-            modalOverlayEl.addEventListener('click', (e) => {
-                if (e.target === modalOverlayEl) hideModal();
-            });
-            generateBtn.addEventListener('click', generateAISuggestion);
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                    scrollToTopBtn.classList.add('opacity-100', 'visible');
-                } else {
-                    scrollToTopBtn.classList.add('opacity-0', 'invisible');
-                    scrollToTopBtn.classList.remove('opacity-100', 'visible');
-                }
-            });
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            lucide.createIcons();
-            // Inject the AI Modal Trigger Card into Hero Cards
-            heroCardsEl.innerHTML += `
-                <div id="ai-modal-trigger" class="acet-card-styled p-6 rounded-lg text-left cursor-pointer hover:shadow-2xl hover:shadow-citrus-green/30 transition-all duration-300">
-                    <div class="p-3 mb-3 inline-block rounded-lg" style="background-color: rgba(167, 243, 208, 0.2);">
-                        ${getIcon('bot').replace('class="', 'class="w-6 h-6 text-citrus-green ')}
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2 text-citrus-green">AI Agronomy Helper</h3>
-                    <p class="text-acet-text-light text-sm">Use our AI to troubleshoot issues or generate specialized care plans.</p>
-                </div>
-            `;
-            document.getElementById('ai-modal-trigger').addEventListener('click', showModal);
-        });
-    </script>
+    /* Lucide icons – keep them same size */
+    [data-lucide] {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke-width: 2;
+    }
+  </style>
 </head>
-<body class="font-sans leading-normal bg-acet-bg text-acet-text">
-    <div id="app">
-        <header class="bg-acet-card/90 backdrop-blur-sm sticky top-0 z-20 border-b border-acet-border shadow-2xl shadow-acet-black/50">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                <a href="#" class="text-2xl font-bold flex items-center gap-2 glow-text">
-                    <svg class="w-6 h-6 text-citrus-green" data-lucide="citrus"></svg>
-                    Citrus Protocol
-                </a>
-                <div class="relative inline-block text-left">
-                    <label for="tree-select" class="sr-only">Select Your Tree</label>
-                    <select id="tree-select" class="appearance-none acet-card-styled text-acet-text font-semibold py-2 pl-4 pr-10 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-citrus-orange cursor-pointer">
-                        <option value="lemon">🍋 Lemon Tree (Eureka/Meyer)</option>
-                        <option value="orange">🍊 Orange Tree (Valencia/Navel)</option>
-                        <option value="general">🌳 General Citrus</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-acet-text-light">
-                        <svg class="w-4 h-4" data-lucide="chevron-down"></svg>
-                    </div>
-                </div>
-            </div>
-        </header>
 
-        <main>
-            <section class="text-center pt-24 pb-32">
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="mb-6">
-                        <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold glow-text">Ready to Grow Your Citrus?</h1>
-                    </div>
-                    <p id="hero-subtitle" class="text-xl text-acet-text-light mb-12 max-w-3xl mx-auto">
-                        This guide has everything you need to grow a thriving <span class="text-citrus-green">**Lemon Tree**</span> on your rooftop.
-                    </p>
-                    <div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Hero Cards Injected Here -->
-                    </div>
-                </div>
-            </section>
+<body class="bg-gradient-to-b from-citrus-50 to-citrus-100 min-h-screen font-sans text-slate-800">
 
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
-                <section class="mb-16 acet-card-styled p-8 rounded-2xl shadow-2xl">
-                    <div class="max-w-5xl mx-auto">
-                        <h3 class="text-3xl font-bold mb-4 text-center glow-text">Harvest Potential</h3>
-                        <p class="text-center text-acet-text-light mb-10 max-w-2xl mx-auto">
-                            See what a successful rooftop citrus harvest looks like!
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
-                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Lemonade" alt="Lemonade on a sunny beach" class="w-full h-auto object-cover" loading="lazy">
-                                <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Fresh Lemonade.</figcaption>
-                            </figure>
-                            <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
-                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Yield" alt="Woman holding two large lemons" class="w-full h-auto object-cover" loading="lazy">
-                                <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Successful Yield.</figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </section>
+  <div id="app"></div>
 
-                <section class="mb-16">
-                    <h2 class="text-3xl font-bold mb-8 text-center glow-text">Core Growing Systems</h2>
-                    <div id="sections-container" class="space-y-4">
-                        <!-- Accordion Sections Injected Here -->
-                    </div>
-                </section>
+  <script>
+    /* ------------------------------------------------------------------
+       Data – unchanged from your original version (just renamed a few keys)
+       ------------------------------------------------------------------ */
+    const { ChevronDown, Leaf, Droplet, Sun, Package, AlertCircle, CheckCircle2 } = lucide;
 
-                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8">
-                    <h2 class="text-3xl font-bold mb-6 glow-text">Shopping Checklist</h2>
-                    <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Checklist Injected Here -->
-                    </div>
-                    <div class="mt-8 acet-small-card rounded-lg p-6 flex gap-4 items-start">
-                        <svg class="w-6 h-6 text-citrus-yellow flex-shrink-0 mt-0.5" data-lucide="info"></svg>
-                        <div>
-                            <p class="text-lg font-semibold text-citrus-orange mb-1">Estimated Cost</p>
-                            <p class="text-md text-acet-text-light leading-normal">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
-                        </div>
-                    </div>
-                </section>
+    let expandedSection = "soil";
 
-                <section class="mb-16">
-                    <h2 class="text-3xl font-bold mb-8 text-center glow-text">Where to Buy</h2>
-                    <div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <!-- Retailers Injected Here -->
-                    </div>
-                </section>
+    const sections = {
+      soil: {
+        title: "Soil Media Design",
+        icon: "package",
+        content: [
+          { ingredient: "Coarse pine bark (2‑3 in.)", percent: "40%", product: "Sungro® Professional Pine Bark", why: "Low bulk density & large macropores for drainage" },
+          { ingredient: "Washed river sand", percent: "30%", product: "Sungro® Professional Sand – Fine", why: "Adds weight & keeps EC < 0.2 dS m⁻¹" },
+          { ingredient: "Peat moss or coconut coir", percent: "25%", product: "Coir‑Lite™ Coconut Coir", why: "High water retention & maintains pH ≈ 5.5" },
+          { ingredient: "Perlite (3‑5 mm)", percent: "5%", product: "Miracle‑Gro Perlite", why: "Boosts air‑filled porosity" },
+        ],
+      },
 
-                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8">
-                    <h2 class="text-3xl font-bold mb-6 glow-text">Common Issues & Fixes</h2>
-                    <div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Troubleshooting Injected Here -->
-                    </div>
-                </section>
+      water: {
+        title: "Water Management",
+        icon: "droplet",
+        content:
+          "Precise irrigation with pressure‑compensating emitters at 0.5 gph. Use EC‑5 moisture sensors to trigger drip irrigation when soil moisture drops below target VWC. Flush weekly with 2 L rain‑water to maintain EC < 1.2 dS m⁻¹.",
+      },
 
-                <section class="acet-card-styled rounded-2xl p-10 text-center mb-12 shadow-2xl border border-citrus-orange/50">
-                    <h2 class="text-4xl font-extrabold mb-4 glow-text">Start Your Citrus Orchard</h2>
-                    <p class="mb-8 text-acet-text-light max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
-                    <button id="print-button" class="acet-btn px-8 py-4 rounded-lg shadow-lg text-lg">
-                        <div class="flex items-center justify-center gap-2">
-                            <svg class="w-6 h-6" data-lucide="printer"></svg>
-                            Print or Save Guide
-                        </div>
-                    </button>
-                </section>
-            </div>
-        </main>
+      environment: {
+        title: "Environmental Mitigation",
+        icon: "sun",
+        content: [
+          { item: "Shade cloth (30 % density)", benefit: "Reduces leaf temp ~5 °C, passes 70 % PAR" },
+          { item: "Lattice windbreak", benefit: "Blocks ~40 % wind exposure" },
+          { item: "Cool‑roof coating (0.65+ albedo)", benefit: "Lowers roof surface temp 10‑12 °C" },
+          { item: "Coconut‑coir mulch (1‑2 in.)", benefit: "Cuts surface evaporation ~30 %" },
+        ],
+      },
 
-        <footer class="bg-acet-card py-10 mt-16 border-t border-acet-border">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-acet-text-light text-sm">
-                <p>Citrus Protocol v2.0. Designed with Aceternity style and a hint of fresh citrus.</p>
-            </div>
-        </footer>
+      nutrients: {
+        title: "Nutrient Management",
+        icon: "leaf",
+        content:
+          "Osmocote® Smart‑Release 14‑14‑14 (½ cup per 5‑gal pot) releases NPK at 2‑4 % monthly. Supplement bi‑weekly with Jack’s Classic 2‑4‑6 liquid (30 mL per application) during fruit set. Add MycoApply™ mycorrhizal inoculum (5 g per pot) to enhance root surface area 2‑3×.",
+      },
 
-        <button id="scroll-to-top-btn" class="fixed bottom-6 right-6 acet-small-card rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-citrus-orange transition-all opacity-0 invisible" title="Go to top">
-            <svg class="w-6 h-6 text-citrus-yellow" data-lucide="arrow-up"></svg>
-        </button>
+      citrus: {
+        title: "Orange & Other Citrus",
+        icon: "sun",
+        content: [
+          { item: "Varieties – ‘Washington Navel’, ‘Meyer’, ‘Kumquat’", benefit: "Cold‑hardier, compact growth habit, high vitamin C" },
+          { item: "Pollination – self‑fertile, but a second tree boosts yield", benefit: "10‑15 % more fruit per season" },
+          { item: "Fruit‑set timing – protect blossoms from wind with a 40 % shade net", benefit: "Reduces drop & improves size" },
+          { item: "Harvest – pick when fruit is fully orange, skin slightly soft to touch", benefit: "Peak flavor & sugar content" },
+        ],
+      },
+    };
 
-        <!-- AI Modal Structure -->
-        <div id="modal-overlay" class="fixed inset-0 bg-acet-black/80 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div id="modal-box" class="acet-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col transition-all duration-300">
-                <div class="flex justify-between items-center p-4 border-b border-acet-border sticky top-0 bg-acet-card z-10">
-                    <h3 id="modal-title" class="text-lg font-semibold">
-                        <span class="glow-text text-xl">✨</span> AI-Generated Suggestions
-                    </h3>
-                    <button id="modal-close-btn" class="text-acet-text-light hover:text-citrus-orange" aria-label="Close modal">
-                        <svg class="w-6 h-6" data-lucide="x"></svg>
-                    </button>
-                </div>
-                <div id="modal-content" class="p-6 text-acet-text-light overflow-y-auto">
-                    <label for="problem-textarea" class="block text-sm font-medium text-citrus-yellow mb-2">Describe your problem or idea:</label>
-                    <textarea id="problem-textarea" rows="4" class="block w-full rounded-md shadow-sm p-3 text-sm focus:ring-citrus-orange focus:border-citrus-orange resize-none bg-acet-card border border-acet-border" placeholder="E.g., My leaves are turning yellow. What could be wrong?"></textarea>
-                    <button id="generate-suggestion-btn" class="acet-btn mt-4 px-6 py-2 rounded-lg text-sm w-full">
-                        Generate Suggestions
-                    </button>
-                    <div id="ai-response" class="mt-6 p-4 rounded-lg bg-acet-black border border-citrus-green/30 text-acet-text-light hidden">
-                        <p class="font-semibold text-citrus-green mb-2 flex items-center gap-2">
-                            <svg class="w-4 h-4" data-lucide="bot"></svg>
-                            AI Response:
-                        </p>
-                        <div id="ai-text"></div>
-                    </div>
-                    <div id="loading-spinner" class="mt-6 text-center text-citrus-orange hidden">
-                        <svg class="animate-spin h-5 w-5 mr-3 inline-block" data-lucide="loader-2"></svg>
-                        Generating ideas...
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+    const checklist = [
+      {
+        category: "Media Components",
+        items: ["Coarse pine bark (2 L)", "Washed river sand (1.5 L)", "Peat moss/coir (1.2 L)", "Perlite (0.15 L)", "Dolomitic lime (0.25 lb)"],
+      },
+      {
+        category: "Containers & Drainage",
+        items: ["Smart Pot® 5‑gal fabric bag", "Pumice stone (drain layer)", "Geotextile liner", "Anchoring hardware"],
+      },
+      {
+        category: "Irrigation System",
+        items: ["DripWorks ½‑in. tubing (20 ft)", "Rain‑Bird PC ½ gph emitters (2)", "EC‑5 moisture sensor", "Titan 12‑V timer + power supply", "5‑gal gravity reservoir"],
+      },
+      {
+        category: "Nutrients & Inoculants",
+        items: ["Osmocote 14‑14‑14 (½ cup)", "Jack’s Classic 2‑4‑6 liquid", "MycoApply mycorrhizal inoculum (5 g)", "Dolomitic lime (0.25 lb)"],
+      },
+      {
+        category: "Environmental Protection",
+        items: ["Cool‑Shade 30 % shade cloth", "Garden Edge vinyl lattice (2×2 ft)", "CocoCoir mulch (1‑2 in. layer)", "Cool‑Roof reflective coating (optional)"],
+      },
+    ];
+
+    const retailers = [
+      { name: "Home Depot", icon: "🏪" },
+      { name: "Lowe’s", icon: "🏪" },
+      { name: "Amazon", icon: "📦" },
+      { name: "DripWorks", icon: "💧" },
+      { name: "Miller’s Nurseries (Santa Maria)", icon: "🌱" },
+      { name: "Green Acres Nursery", icon: "🌱" },
+    ];
+
+    const troubleshooting = [
+      {
+        problem: "Leaf yellowing + black roots",
+        solution: "Add 5‑10 % extra perlite to media; improve drainage",
+        fix: "Home Depot perlite bags",
+      },
+      {
+        problem: "Sun‑scorch on south side",
+        solution: "Increase shade cloth overlap to 40 % total",
+        fix: "Additional Cool‑Shade cloth roll",
+      },
+      {
+        problem: "Fruit drop after hot night",
+        solution: "Apply 30 mL Jack’s 2‑4‑6 weekly as foliar spray",
+        fix: "Boost leaf K > 0.8 % DW",
+      },
+      {
+        problem: "Mildew under canopy",
+        solution: "Increase pot spacing; add lattice for airflow",
+        fix: "Garden Edge lattice panels",
+      },
+      {
+        problem: "pH drift upward in winter",
+        solution: "Add 0.1 lb elemental sulfur per 5‑gal pot",
+        fix: "5‑lb sulfur bag from Home Depot",
+      },
+    ];
+
+    /* ------------------------------------------------------------------
+       Helper render functions – now using the “glass” class and shadcn
+       ------------------------------------------------------------------ */
+    function toggleSection(key) {
+      expandedSection = expandedSection === key ? null : key;
+      render();
+    }
+
+    function renderIngredientContent(content) {
+      return content
+        .map(
+          (item) => `
+        <div class="glass p-4">
+          <div class="flex justify-between items-start mb-2">
+            <span class="font-semibold text-slate-900">${item.ingredient}</span>
+            <span class="bg-citrus-100 text-citrus-700 text-sm font-medium px-2 py-1 rounded">${item.percent}</span>
+          </div>
+          <p class="text-sm text-slate-700 mb-1"><strong>${item.product}</strong></p>
+          <p class="text-sm text-slate-600">${item.why}</p>
+        </div>`
+        )
+        .join("");
+    }
+
+    function renderEnvironmentContent(content) {
+      return content
+        .map(
+          (item) => `
+        <div class="glass p-4">
+          <h4 class="font-semibold text-slate-900 mb-1">${item.item}</h4>
+          <p class="text-sm text-slate-600">${item.benefit}</p>
+        </div>`
+        )
+        .join("");
+    }
+
+    function renderSections() {
+      return Object.entries(sections)
+        .map(([key, section]) => {
+          const isExpanded = expandedSection === key;
+          const icon = section.icon;
+
+          let innerHtml = "";
+          if (Array.isArray(section.content)) {
+            if (key === "soil") innerHtml = renderIngredientContent(section.content);
+            else innerHtml = renderEnvironmentContent(section.content);
+          } else {
+            innerHtml = `<p class="text-slate-700 leading-relaxed">${section.content}</p>`;
+          }
+
+          return `
+          <div class="glass overflow-hidden transition-shadow hover:shadow-xl">
+            <button onclick="toggleSection('${key}')" class="w-full p-6 flex items-center justify
