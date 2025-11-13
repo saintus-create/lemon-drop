@@ -1,54 +1,162 @@
-/* Aceternity Hero Text with Citrus Glow */
-.glow-text {
-  background: linear-gradient(90deg, #fd8c00 0%, #faff00 50%, #a7f3d0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
-  text-shadow:
-    0 0 10px rgba(250, 255, 0, 0.4),
-    0 0 20px rgba(253, 140, 0, 0.2);
-  animation: pulse-glow 3s infinite alternate;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooftop Citrus Guide v2.0</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans leading-normal">
+    <div id="app">
+        <header class="bg-acet-card/90 backdrop-blur-sm sticky top-0 z-20 border-b border-acet-border shadow-2xl shadow-acet-black/50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-acet-text flex items-center gap-2 glow-text">
+                    <svg class="w-6 h-6" style="color: var(--citrus-green);" data-lucide="citrus"></svg>
+                    Citrus Protocol
+                </a>
+                <div class="relative inline-block text-left">
+                    <label for="tree-select" class="sr-only">Select Your Tree</label>
+                    <select id="tree-select" class="appearance-none acet-card-styled text-acet-text font-semibold py-2 pl-4 pr-10 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-citrus-orange cursor-pointer">
+                        <option value="lemon">🍋 Lemon Tree (Eureka/Meyer)</option>
+                        <option value="orange">🍊 Orange Tree (Valencia/Navel)</option>
+                        <option value="general">🌳 General Citrus</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-acet-text-light">
+                        <svg class="w-4 h-4" data-lucide="chevron-down"></svg>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-@keyframes pulse-glow {
-  0% { text-shadow: 0 0 10px rgba(250, 255, 0, 0.4), 0 0 20px rgba(253, 140, 0, 0.2); }
-  100% { text-shadow: 0 0 15px rgba(250, 255, 0, 0.6), 0 0 30px rgba(253, 140, 0, 0.4); }
-}
+        <main>
+            <section class="bg-acet-bg text-center pt-24 pb-32">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="mb-6">
+                        <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold glow-text">Ready to Grow Your Citrus?</h1>
+                    </div>
+                    <p id="hero-subtitle" class="text-xl text-acet-text-light mb-12 max-w-3xl mx-auto">
+                        This guide has everything you need to grow a thriving <span class="text-citrus-green">**Lemon Tree**</span> on your rooftop.
+                    </p>
+                    <div id="hero-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Hero Cards Injected Here -->
+                    </div>
+                </div>
+            </section>
 
-/* Aceternity Card Style with Citrus Border/Glow */
-.acet-card-styled {
-  background: rgba(17, 17, 17, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(253, 140, 0, 0.2);
-  border-radius: 1rem;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.4, 1);
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    inset 0 1px 3px rgba(255, 255, 255, 0.1);
-}
-.acet-card-styled:hover {
-  border-color: #fd8c00;
-  box-shadow:
-    0 0 20px rgba(253, 140, 0, 0.3),
-    inset 0 1px 3px rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-}
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
+                <section class="mb-16 acet-card-styled p-8 rounded-2xl shadow-2xl">
+                    <div class="max-w-5xl mx-auto">
+                        <h3 class="text-3xl font-bold text-acet-text mb-4 text-center glow-text">Harvest Potential</h3>
+                        <p class="text-center text-acet-text-light mb-10 max-w-2xl mx-auto">
+                            See what a successful rooftop citrus harvest looks like!
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
+                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Lemonade" onerror="this.onerror=null; this.src='https://placehold.co/600x400/111111/f0f0f0?text=Image+Load+Failed'" alt="Lemonade on a sunny beach" class="w-full h-auto object-cover" loading="lazy">
+                                <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Fresh Lemonade.</figcaption>
+                            </figure>
+                            <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
+                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Yield" onerror="this.onerror=null; this.src='https://placehold.co/600x400/111111/f0f0f0?text=Image+Load+Failed'" alt="Woman holding two large lemons" class="w-full h-auto object-cover" loading="lazy">
+                                <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Successful Yield.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
 
-/* Citrus Button */
-.acet-btn {
-  background: linear-gradient(90deg, #fd8c00, #faff00);
-  color: #000;
-  font-weight: 700;
-  box-shadow: 0 0 15px rgba(253, 140, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.acet-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(253, 140, 0, 0.5);
-}
+                <section class="mb-16">
+                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center glow-text">Core Growing Systems</h2>
+                    <div id="sections-container" class="space-y-4">
+                        <!-- Accordion Sections Injected Here -->
+                    </div>
+                </section>
 
-/* Checklist Items */
-.checklist-item.checked {
-  border-left: 3px solid #a7f3d0;
-  background: rgba(167, 243, 208, 0.1);
-}
+                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8" id="checklist">
+                    <h2 class="text-3xl font-bold text-acet-text mb-6 glow-text">Shopping Checklist</h2>
+                    <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Checklist Injected Here -->
+                    </div>
+                    <div class="mt-8 bg-acet-card-styled acet-small-card rounded-lg p-6 flex gap-4 items-start">
+                        <svg class="w-6 h-6 text-citrus-yellow flex-shrink-0 mt-0.5" data-lucide="info"></svg>
+                        <div>
+                            <p class="text-lg font-semibold text-citrus-orange mb-1">Estimated Cost</p>
+                            <p class="text-md text-acet-text-light leading-normal">$120-$150 per 5-gallon setup (media + container + irrigation + nutrients, excluding optional cool-roof coating)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center glow-text">Where to Buy</h2>
+                    <div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <!-- Retailers Injected Here -->
+                    </div>
+                </section>
+
+                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8">
+                    <h2 class="text-3xl font-bold text-acet-text mb-6 glow-text">Common Issues & Fixes</h2>
+                    <div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Troubleshooting Injected Here -->
+                    </div>
+                </section>
+
+                <section class="bg-acet-card-styled rounded-2xl p-10 text-white text-center mb-12 shadow-2xl border border-citrus-orange/50">
+                    <h2 class="text-4xl font-extrabold mb-4 glow-text">Start Your Citrus Orchard</h2>
+                    <p class="mb-8 text-acet-text-light max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
+                    <button id="print-button" class="acet-btn px-8 py-4 rounded-lg shadow-lg text-lg">
+                        <div class="flex items-center justify-center gap-2">
+                            <svg class="w-6 h-6" data-lucide="printer"></svg>
+                            Print or Save Guide
+                        </div>
+                    </button>
+                </section>
+            </div>
+        </main>
+
+        <footer class="bg-acet-card py-10 mt-16 border-t border-acet-border">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-acet-text-light text-sm">
+                <p>Citrus Protocol v2.0. Designed with Aceternity style and a hint of fresh citrus.</p>
+            </div>
+        </footer>
+
+        <button id="scroll-to-top-btn" class="fixed bottom-6 right-6 acet-small-card rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-citrus-orange transition-all opacity-0 invisible" title="Go to top">
+            <svg class="w-6 h-6 text-citrus-yellow" data-lucide="arrow-up"></svg>
+        </button>
+
+        <!-- AI Modal Structure -->
+        <div id="modal-overlay" class="fixed inset-0 bg-acet-black/80 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div id="modal-box" class="acet-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col transition-all duration-300">
+                <div class="flex justify-between items-center p-4 border-b border-acet-border sticky top-0 bg-acet-card z-10">
+                    <h3 id="modal-title" class="text-lg font-semibold text-acet-text">
+                        <span class="glow-text text-xl">✨</span> AI-Generated Suggestions
+                    </h3>
+                    <button id="modal-close-btn" class="text-acet-text-light hover:text-citrus-orange" aria-label="Close modal">
+                        <svg class="w-6 h-6" data-lucide="x"></svg>
+                    </button>
+                </div>
+                <div id="modal-content" class="p-6 text-acet-text-light overflow-y-auto">
+                    <label for="problem-textarea" class="block text-sm font-medium text-citrus-yellow mb-2">Describe your problem or idea:</label>
+                    <textarea id="problem-textarea" rows="4" class="block w-full rounded-md shadow-sm p-3 text-sm focus:ring-citrus-orange focus:border-citrus-orange resize-none" placeholder="E.g., My leaves are turning yellow. What could be wrong?"></textarea>
+                    <button id="generate-suggestion-btn" class="acet-btn mt-4 px-6 py-2 rounded-lg text-sm w-full">
+                        Generate Suggestions
+                    </button>
+                    <div id="ai-response" class="mt-6 p-4 rounded-lg bg-acet-black border border-citrus-green/30 text-acet-text-light hidden">
+                        <p class="font-semibold text-citrus-green mb-2 flex items-center gap-2">
+                            <svg class="w-4 h-4" data-lucide="bot"></svg>
+                            AI Response:
+                        </p>
+                        <div id="ai-text"></div>
+                    </div>
+                    <div id="loading-spinner" class="mt-6 text-center text-citrus-orange hidden">
+                        <svg class="animate-spin h-5 w-5 mr-3 inline-block" data-lucide="loader-2"></svg>
+                        Generating ideas...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
