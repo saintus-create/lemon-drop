@@ -4,9 +4,9 @@ const citrusData = {
         title: "Ready to Get Juicing?",
         subtitle: "This guide has everything you need to grow a thriving <span class='text-citrus-green'>**Lemon Tree**</span> on your rooftop.",
         heroCards: [
-            { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold text-acet-text">≤ 20 lb/ft²</span> roof load' },
-            { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold text-acet-text">VWC monitoring</span>' },
-            { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold text-acet-text">20-30%</span>' },
+            { icon: 'scale', title: 'Load Optimization', text: 'Lightweight media targets <span class="font-semibold">≤ 20 lb/ft²</span> roof load' },
+            { icon: 'droplets', title: 'Smart Irrigation', text: 'Sensor-driven drip system saves water & prevents over-watering with <span class="font-semibold">VWC monitoring</span>' },
+            { icon: 'thermometer-sun', title: 'Climate Control', text: 'Shade & windbreak reduce ET stress by <span class="font-semibold">20-30%</span>' },
         ],
         sections: {
             soil: {
@@ -76,9 +76,9 @@ const citrusData = {
         title: "Orange You Glad You Checked?",
         subtitle: "This guide is tailored for success with <span class='text-citrus-green'>**Orange Trees**</span> (Valencia/Navel) in containers.",
         heroCards: [
-            { icon: 'scale', title: 'Weight Limit', text: 'Mature trees need <span class="font-semibold text-acet-text">50-100 gallon</span> containers. Use a dolly.' },
-            { icon: 'droplets', title: 'Consistent Watering', text: 'Orange trees are more sensitive to drought. Maintain <span class="font-semibold text-acet-text">40% VWC</span> minimum.' },
-            { icon: 'wind', title: 'Wind Protection', text: 'Oranges are susceptible to windburn. Requires a <span class="font-semibold text-acet-text">solid windbreak</span>.' },
+            { icon: 'scale', title: 'Weight Limit', text: 'Mature trees need <span class="font-semibold">50-100 gallon</span> containers. Use a dolly.' },
+            { icon: 'droplets', title: 'Consistent Watering', text: 'Orange trees are more sensitive to drought. Maintain <span class="font-semibold">40% VWC</span> minimum.' },
+            { icon: 'wind', title: 'Wind Protection', text: 'Oranges are susceptible to windburn. Requires a <span class="font-semibold">solid windbreak</span>.' },
         ],
         sections: {
             soil: {
@@ -145,9 +145,9 @@ const citrusData = {
         title: "General Citrus Care",
         subtitle: "This guide provides core principles for successfully growing <span class='text-citrus-green'>**Any Citrus Variety**</span> on a rooftop.",
         heroCards: [
-            { icon: 'sun', title: 'Sun Exposure', text: '<span class="font-semibold text-acet-text">6-8 Hours</span> of direct, unfiltered sun is non-negotiable.' },
-            { icon: 'package', title: 'Dwarf Varieties', text: 'Always choose trees grafted onto <span class="font-semibold text-acet-text">Dwarfing Rootstock</span> for container success.' },
-            { icon: 'alert-triangle', title: 'Frost Risk', text: 'Protect the trunk and move pots indoors if temperatures drop <span class="font-semibold text-acet-text">below 30°F</span>.' },
+            { icon: 'sun', title: 'Sun Exposure', text: '<span class="font-semibold">6-8 Hours</span> of direct, unfiltered sun is non-negotiable.' },
+            { icon: 'package', title: 'Dwarf Varieties', text: 'Always choose trees grafted onto <span class="font-semibold">Dwarfing Rootstock</span> for container success.' },
+            { icon: 'alert-triangle', title: 'Frost Risk', text: 'Protect the trunk and move pots indoors if temperatures drop <span class="font-semibold">below 30°F</span>.' },
         ],
         sections: {
             soil: {
@@ -234,7 +234,7 @@ function renderHeroCards(cards) {
             <div class="p-3 mb-3 inline-block rounded-lg section-icon-bg">
                 ${getIcon(card.icon).replace('class="', 'class="w-6 h-6 section-icon-fg ')}
             </div>
-            <h3 class="text-lg font-semibold text-acet-text mb-2">${card.title}</h3>
+            <h3 class="text-lg font-semibold mb-2">${card.title}</h3>
             <p class="text-acet-text-light text-sm">${card.text}</p>
         </div>
     `).join('');
@@ -257,7 +257,7 @@ function renderSections(sections) {
                         <div class="p-3 rounded-full section-icon-bg">
                             ${getIcon(section.icon).replace('class="', 'class="w-6 h-6 section-icon-fg ')}
                         </div>
-                        <h3 class="text-xl font-semibold text-acet-text">${section.title}</h3>
+                        <h3 class="text-xl font-semibold">${section.title}</h3>
                     </div>
                     <svg class="w-6 h-6 text-citrus-yellow transition-transform duration-300" data-lucide="chevron-down"></svg>
                 </button>
@@ -283,7 +283,7 @@ function renderSectionContent(key, section) {
     const headerRow = headers[key].map(h => `<th class="px-4 py-2 font-semibold text-citrus-yellow text-left">${h}</th>`).join('');
     const rows = section.content.map(item => `
         <tr class="border-b border-acet-border last:border-b-0 hover:bg-[#1a1a1a]">
-            <td class="px-4 py-3 text-acet-text">${item[headers[key][0].toLowerCase().split('/')[0].split(' ')[0]]}</td>
+            <td class="px-4 py-3">${item[headers[key][0].toLowerCase().split('/')[0].split(' ')[0]]}</td>
             <td class="px-4 py-3 text-acet-text-light">${item[headers[key][1].toLowerCase().split('/')[0].split(' ')[0]]}</td>
             <td class="px-4 py-3 text-acet-text-light">${item[headers[key][2].toLowerCase().split('/')[0].split(' ')[0]]}</td>
             <td class="px-4 py-3 text-acet-text-light">${item[headers[key][3].toLowerCase().split('/')[0].split(' ')[0]] || ''}</td>
@@ -338,7 +338,7 @@ function renderRetailers(retailers) {
             <div class="section-icon-bg p-2 rounded-full mb-2">
                 ${getIcon(r.icon).replace('class="', 'class="w-5 h-5 section-icon-fg ')}
             </div>
-            <p class="text-acet-text text-sm font-medium">${r.name}</p>
+            <p class="text-sm font-medium">${r.name}</p>
         </div>
     `).join('');
     lucide.createIcons();
@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="p-3 mb-3 inline-block rounded-lg" style="background-color: rgba(167, 243, 208, 0.2);">
                 ${getIcon('bot').replace('class="', 'class="w-6 h-6 text-citrus-green ')}
             </div>
-            <h3 class="text-lg font-semibold text-acet-text mb-2 text-citrus-green">AI Agronomy Helper</h3>
+            <h3 class="text-lg font-semibold mb-2 text-citrus-green">AI Agronomy Helper</h3>
             <p class="text-acet-text-light text-sm">Use our AI to troubleshoot issues or generate specialized care plans.</p>
         </div>
     `;
