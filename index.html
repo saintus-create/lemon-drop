@@ -11,38 +11,54 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   
-  <!-- Aceternity-style subtle animations (via Tailwind + custom CSS) -->
+  <!-- Dark Mode & Sleek Animations -->
   <style>
     [data-lucide] { @apply w-6 h-6 stroke-current; }
     .card-hover { @apply transition-all duration-300 ease-out; }
-    .card-hover:hover { @apply shadow-xl -translate-y-1; }
-    .bg-citrus-gradient { background: linear-gradient(135deg, #FFF7ED 0%, #FED7AA 100%); }
-    .text-citrus { @apply text-orange-600; }
-    .border-citrus { @apply border-orange-200; }
-    .bg-citrus-light { @apply bg-orange-50; }
-    .bg-citrus-dark { @apply bg-orange-600; }
-    .hover\\:bg-citrus { @apply hover:bg-orange-100; }
-    .focus\\:ring-citrus { @apply focus:ring-orange-400; }
-    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .card-hover:hover { @apply shadow-2xl -translate-y-1; }
+    .bg-citrus-dark-gradient { background: linear-gradient(135deg, #1f1f1f 0%, #2d1b14 100%); }
+    .text-citrus { @apply text-orange-400; }
+    .border-citrus { @apply border-orange-800/30; }
+    .bg-citrus-light { @apply bg-orange-900/10; }
+    .bg-citrus-dark { @apply bg-orange-500/20; }
+    .hover\\:bg-citrus { @apply hover:bg-orange-900/20; }
+    .focus\\:ring-citrus { @apply focus:ring-orange-400/30; }
+    .animate-fade-in { animation: fadeIn 0.7s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-blur { backdrop-filter: blur(12px); }
+    .glass { @apply bg-white/5 backdrop-blur-md border border-white/10; }
+    .hero-image { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp'); background-size: cover; background-position: center; }
   </style>
   
-  <!-- Tailwind Config Extension for Citrus Palette -->
+  <!-- Tailwind Config Extension for Dark Citrus Palette -->
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
+            slate: {
+              900: '#0f0f0f',
+              800: '#1e1e1e',
+              700: '#2d2d2d',
+              600: '#3d3d3d',
+              500: '#525252',
+              400: '#6b6b6b',
+              300: '#9ca3af',
+              200: '#d1d5db',
+              100: '#f3f4f6',
+              50: '#f9fafb',
+            },
             citrus: {
-              50: '#FFF7ED',
-              100: '#FED7AA',
-              200: '#FDBA74',
-              300: '#FB923C',
-              400: '#F97316',
-              500: '#EA580C',
-              600: '#C2410C',
-              700: '#9A3412',
-              800: '#7C2D12',
+              50: '#fff7ed',
+              100: '#fed7aa',
+              200: '#fdbA74',
+              300: '#fb923c',
+              400: '#f97316',
+              500: '#ea580c',
+              600: '#c2410c',
+              700: '#9a3412',
+              800: '#7c2d12',
               900: '#431407',
             }
           }
@@ -51,12 +67,12 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-white to-citrus-50 min-h-screen">
+<body class="dark bg-slate-900 text-slate-100 min-h-screen">
 
   <div id="app"></div>
 
   <script>
-    const { ChevronDown, Package, Droplet, Sun, Leaf, CheckCircle2, AlertCircle, ShoppingCart, Store, Truck } = lucide;
+    const { ChevronDown, Package, Droplet, Sun, Leaf, CheckCircle2, AlertCircle, ShoppingCart, Store, Settings, SunDim, Droplets, Weight } = lucide;
 
     let expandedSection = 'soil';
 
@@ -125,22 +141,22 @@
 
     function renderIngredientContent(content) {
       return content.map(item => `
-        <div class="bg-white rounded-xl p-5 shadow-sm border border-citrus-100 card-hover">
+        <div class="glass rounded-xl p-5 card-hover">
           <div class="flex justify-between items-start mb-3">
-            <h4 class="font-semibold text-slate-900">${item.ingredient}</h4>
-            <span class="bg-citrus-100 text-citrus-700 text-xs font-medium px-2.5 py-1 rounded-full">${item.percent}</span>
+            <h4 class="font-semibold text-slate-100">${item.ingredient}</h4>
+            <span class="bg-citrus-dark text-citrus px-2.5 py-1 rounded-full text-xs font-medium">${item.percent}</span>
           </div>
-          <p class="text-sm text-slate-700 font-medium mb-1">${item.product}</p>
-          <p class="text-xs text-slate-600 leading-relaxed">${item.why}</p>
+          <p class="text-sm text-slate-300 font-medium mb-1">${item.product}</p>
+          <p class="text-xs text-slate-400 leading-relaxed">${item.why}</p>
         </div>
       `).join('');
     }
 
     function renderEnvironmentContent(content) {
       return content.map(item => `
-        <div class="bg-white rounded-xl p-5 shadow-sm border border-citrus-100 card-hover">
-          <h4 class="font-semibold text-slate-900 mb-2">${item.item}</h4>
-          <p class="text-sm text-slate-600">${item.benefit}</p>
+        <div class="glass rounded-xl p-5 card-hover">
+          <h4 class="font-semibold text-slate-100 mb-2">${item.item}</h4>
+          <p class="text-sm text-slate-400">${item.benefit}</p>
         </div>
       `).join('');
     }
@@ -155,25 +171,25 @@
             ? renderIngredientContent(section.content)
             : renderEnvironmentContent(section.content);
         } else {
-          contentHtml = `<p class="text-slate-700 leading-relaxed text-sm">${section.content}</p>`;
+          contentHtml = `<p class="text-slate-300 leading-relaxed text-sm">${section.content}</p>`;
         }
 
         return `
-          <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 card-hover animate-fade-in">
+          <div class="glass rounded-2xl overflow-hidden card-hover animate-fade-in">
             <button 
               onclick="window.toggleSection('${key}')" 
-              class="w-full p-6 flex items-center justify-between hover:bg-citrus-50 transition-colors focus:outline-none focus:ring-2 focus:ring-citrus"
+              class="w-full p-6 flex items-center justify-between hover:bg-citrus-dark transition-colors focus:outline-none focus:ring-2 focus:ring-citrus"
             >
               <div class="flex items-center gap-4">
-                <div class="p-2 bg-citrus-100 rounded-lg">
+                <div class="p-2 bg-citrus-dark rounded-lg">
                   <i data-lucide="${section.icon}" class="w-5 h-5 text-citrus"></i>
                 </div>
-                <h3 class="text-lg font-semibold text-slate-900">${section.title}</h3>
+                <h3 class="text-lg font-semibold text-slate-100">${section.title}</h3>
               </div>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 transition-transform ${isExpanded ? 'rotate-180' : ''}"></i>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform ${isExpanded ? 'rotate-180' : ''}"></i>
             </button>
             ${isExpanded ? `
-              <div class="px-6 pb-6 border-t border-slate-100">
+              <div class="px-6 pb-6 border-t border-slate-700/50">
                 <div class="mt-5 space-y-4">
                   ${contentHtml}
                 </div>
@@ -186,49 +202,44 @@
 
     function render() {
       const html = `
-        <!-- Header -->
-        <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-          <div class="max-w-7xl mx-auto px-6 py-8">
-            <div class="flex items-center gap-4">
-              <div class="text-5xl">🍊</div>
+        <!-- Hero Header (shadcn-style, Dark Mode) -->
+        <header class="relative overflow-hidden hero-image text-white min-h-[70vh] flex items-center">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
+          <div class="absolute inset-0 hero-blur bg-black/20"></div>
+          <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32 w-full">
+            <div class="flex items-center gap-5 mb-6 animate-fade-in">
+              <div class="text-6xl md:text-7xl">🍊</div>
               <div>
-                <h1 class="text-4xl font-bold text-slate-900">Rooftop Lemon Tree</h1>
-                <p class="text-slate-600 mt-1">Precision Growing Guide for Orcutt, Santa Barbara County, CA</p>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">Rooftop Lemon Tree</h1>
+                <p class="text-lg md:text-xl text-orange-100 mt-2 drop-shadow-md">Precision Growing Guide for Orcutt, CA</p>
+              </div>
+            </div>
+            <p class="max-w-3xl text-orange-50 leading-relaxed text-base md:text-lg mb-8 drop-shadow-md animate-fade-in" style="animation-delay: 0.2s;">
+              Engineered for third-story rooftops in arid microclimates. This guide delivers research-backed media, lightweight systems, sensor irrigation, and climate mitigation for a thriving urban citrus orchard.
+            </p>
+            <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 0.4s;">
+              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+                <i data-lucide="weight" class="w-5 h-5"></i>
+                <span class="font-medium">≤ 20 lb/ft² Load</span>
+              </div>
+              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+                <i data-lucide="droplets" class="w-5 h-5"></i>
+                <span class="font-medium">Sensor-Driven Drip</span>
+              </div>
+              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+                <i data-lucide="sun-dim" class="w-5 h-5"></i>
+                <span class="font-medium">20–30% ET Reduction</span>
               </div>
             </div>
           </div>
+          <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </header>
 
-        <main class="max-w-7xl mx-auto px-6 py-12">
-
-          <!-- Hero Section -->
-          <section class="mb-16 bg-citrus-gradient rounded-3xl border border-citrus p-10 shadow-lg">
-            <h2 class="text-3xl font-bold text-slate-900 mb-5">Why Rooftop Citrus Growing?</h2>
-            <p class="text-slate-700 leading-relaxed mb-8 max-w-3xl">
-              Cultivating lemon trees on a third-story rooftop in an arid microclimate demands engineered precision. This guide delivers a research-backed media blend, lightweight containment, sensor-driven irrigation, and climate mitigation strategies to establish a productive urban citrus orchard.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
-                <div class="text-3xl mb-3">⚖️</div>
-                <h3 class="font-semibold text-slate-900 mb-1">Load Optimization</h3>
-                <p class="text-sm text-slate-600">Media targets ≤ 20 lb/ft² roof load</p>
-              </div>
-              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
-                <div class="text-3xl mb-3">💧</div>
-                <h3 class="font-semibold text-slate-900 mb-1">Smart Irrigation</h3>
-                <p class="text-sm text-slate-600">Sensor-triggered drip saves water & prevents root stress</p>
-              </div>
-              <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-citrus-100 card-hover">
-                <div class="text-3xl mb-3">🌡️</div>
-                <h3 class="font-semibold text-slate-900 mb-1">Climate Control</h3>
-                <p class="text-sm text-slate-600">Shade & windbreaks reduce ET by 20–30%</p>
-              </div>
-            </div>
-          </section>
+        <main class="max-w-7xl mx-auto px-6 py-16 -mt-12 relative z-10">
 
           <!-- Core Systems -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
               <i data-lucide="settings" class="w-6 h-6 text-citrus"></i>
               Core Growing Systems
             </h2>
@@ -239,20 +250,20 @@
 
           <!-- Shopping Checklist -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
               <i data-lucide="shopping-cart" class="w-6 h-6 text-citrus"></i>
               Procurement Checklist
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               ${checklist.map(group => `
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
-                  <h3 class="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                <div class="glass rounded-2xl p-6 card-hover">
+                  <h3 class="font-semibold text-slate-100 mb-4 flex items-center gap-2">
                     <i data-lucide="check-circle-2" class="w-5 h-5 text-citrus"></i>
                     ${group.category}
                   </h3>
                   <ul class="space-y-2.5">
                     ${group.items.map(item => `
-                      <li class="flex items-start gap-3 text-slate-700 text-sm">
+                      <li class="flex items-start gap-3 text-slate-300 text-sm">
                         <span class="text-citrus mt-0.5">✓</span>
                         <span>${item}</span>
                       </li>
@@ -261,26 +272,26 @@
                 </div>
               `).join('')}
             </div>
-            <div class="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-5 flex gap-4">
-              <i data-lucide="alert-circle" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+            <div class="mt-8 glass rounded-2xl p-5 flex gap-4">
+              <i data-lucide="alert-circle" class="w-6 h-6 text-blue-400 flex-shrink-0"></i>
               <div>
-                <p class="font-semibold text-blue-900">Estimated Cost</p>
-                <p class="text-sm text-blue-800">$120–$150 per 5-gallon setup (media + container + irrigation + nutrients)</p>
+                <p class="font-semibold text-slate-100">Estimated Cost</p>
+                <p class="text-sm text-slate-300">$120–$150 per 5-gallon setup (media + container + irrigation + nutrients)</p>
               </div>
             </div>
           </section>
 
           <!-- Retailers -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
               <i data-lucide="store" class="w-6 h-6 text-citrus"></i>
               Where to Buy
             </h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
               ${retailers.map(retailer => `
-                <div class="bg-white rounded-2xl p-5 text-center border border-slate-100 card-hover hover:border-citrus">
-                  <div class="text-4xl mb-3">${retailer.icon}</div>
-                  <p class="font-medium text-slate-900 text-sm">${retailer.name}</p>
+                <div class="glass rounded-2xl p-5 text-center card-hover border-citrus">
+                  <div class="text-4xl mb-3 filter invert">${retailer.icon}</div>
+                  <p class="font-medium text-slate-100 text-sm">${retailer.name}</p>
                 </div>
               `).join('')}
             </div>
@@ -288,39 +299,39 @@
 
           <!-- Troubleshooting -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-900 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
               <i data-lucide="alert-circle" class="w-6 h-6 text-citrus"></i>
               Common Issues & Fixes
             </h2>
             <div class="space-y-5">
               ${troubleshooting.map(item => `
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover">
+                <div class="glass rounded-2xl p-6 card-hover">
                   <div class="flex items-start gap-4 mb-3">
-                    <i data-lucide="alert-circle" class="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5"></i>
-                    <h3 class="font-semibold text-slate-900">${item.problem}</h3>
+                    <i data-lucide="alert-circle" class="w-6 h-6 text-orange-400 flex-shrink-0 mt-0.5"></i>
+                    <h3 class="font-semibold text-slate-100">${item.problem}</h3>
                   </div>
-                  <p class="text-slate-700 mb-3 ml-10">${item.solution}</p>
-                  <div class="ml-10 bg-citrus-50 rounded-xl p-3 text-sm text-citrus-800 font-medium">${item.fix}</div>
+                  <p class="text-slate-300 mb-3 ml-10">${item.solution}</p>
+                  <div class="ml-10 bg-citrus-dark rounded-xl p-3 text-sm text-citrus font-medium">${item.fix}</div>
                 </div>
               `).join('')}
             </div>
           </section>
 
           <!-- CTA -->
-          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-10 text-white text-center shadow-xl">
+          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-10 text-white text-center shadow-2xl glass">
             <h2 class="text-3xl font-bold mb-4">Ready to Cultivate?</h2>
             <p class="mb-8 opacity-90 max-w-2xl mx-auto">
               All components are regionally available. Export this checklist into a spreadsheet and procure in bulk from local or online vendors for optimal efficiency.
             </p>
-            <button onclick="window.print()" class="bg-white text-citrus-600 font-semibold px-8 py-3.5 rounded-xl hover:bg-slate-50 transition-all shadow-md">
+            <button onclick="window.print()" class="bg-white/10 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/20 transition-all border border-white/20">
               Print or Save Guide
             </button>
           </section>
 
         </main>
 
-        <footer class="border-t border-slate-200 bg-white py-10 mt-20">
-          <div class="max-w-7xl mx-auto px-6 text-center text-slate-600 text-sm">
+        <footer class="border-t border-slate-700/50 bg-slate-900 py-10 mt-24">
+          <div class="max-w-7xl mx-auto px-6 text-center text-slate-400 text-sm">
             <p>🍊 Rooftop Lemon Tree Guide • Third-Story Cultivation in Orcutt, Santa Barbara County, CA</p>
             <p class="mt-2">Supported by peer-reviewed horticultural science and UC Cooperative Extension bulletins</p>
           </div>
