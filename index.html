@@ -6,15 +6,51 @@
     <title>Rooftop Citrus Guide v2.0</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist/dist/fonts/geist-sans/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/latest/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/1.0.0/umd/lucide.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Geist Sans', 'sans-serif'],
+            },
+            colors: {
+              'acet-black': '#000000',
+              'acet-bg': '#0a0a0a',
+              'acet-card': '#111111',
+              'acet-border': '#333333',
+              'acet-text': '#f0f0f0',
+              'acet-text-light': '#a0a0a0',
+              'citrus-orange': '#fd8c00',
+              'citrus-yellow': '#faff00',
+              'citrus-green': '#a7f3d0',
+            },
+            animation: {
+              'pulse-glow': 'pulse-glow 3s infinite alternate',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              'pulse-glow': {
+                '0%': { textShadow: '0 0 10px rgba(250, 255, 0, 0.4), 0 0 20px rgba(253, 140, 0, 0.2)' },
+                '100%': { textShadow: '0 0 15px rgba(250, 255, 0, 0.6), 0 0 30px rgba(253, 140, 0, 0.4)' },
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-5px)' },
+              },
+            },
+          },
+        },
+      }
+    </script>
 </head>
-<body class="font-sans leading-normal">
+<body class="font-sans leading-normal bg-acet-bg text-acet-text">
     <div id="app">
         <header class="bg-acet-card/90 backdrop-blur-sm sticky top-0 z-20 border-b border-acet-border shadow-2xl shadow-acet-black/50">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                <a href="#" class="text-2xl font-bold text-acet-text flex items-center gap-2 glow-text">
-                    <svg class="w-6 h-6" style="color: var(--citrus-green);" data-lucide="citrus"></svg>
+                <a href="#" class="text-2xl font-bold flex items-center gap-2 glow-text">
+                    <svg class="w-6 h-6 text-citrus-green" data-lucide="citrus"></svg>
                     Citrus Protocol
                 </a>
                 <div class="relative inline-block text-left">
@@ -32,7 +68,7 @@
         </header>
 
         <main>
-            <section class="bg-acet-bg text-center pt-24 pb-32">
+            <section class="text-center pt-24 pb-32">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="mb-6">
                         <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold glow-text">Ready to Grow Your Citrus?</h1>
@@ -49,17 +85,17 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 relative z-10">
                 <section class="mb-16 acet-card-styled p-8 rounded-2xl shadow-2xl">
                     <div class="max-w-5xl mx-auto">
-                        <h3 class="text-3xl font-bold text-acet-text mb-4 text-center glow-text">Harvest Potential</h3>
+                        <h3 class="text-3xl font-bold mb-4 text-center glow-text">Harvest Potential</h3>
                         <p class="text-center text-acet-text-light mb-10 max-w-2xl mx-auto">
                             See what a successful rooftop citrus harvest looks like!
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
-                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Lemonade" onerror="this.onerror=null; this.src='https://placehold.co/600x400/111111/f0f0f0?text=Image+Load+Failed'" alt="Lemonade on a sunny beach" class="w-full h-auto object-cover" loading="lazy">
+                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Lemonade" alt="Lemonade on a sunny beach" class="w-full h-auto object-cover" loading="lazy">
                                 <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Fresh Lemonade.</figcaption>
                             </figure>
                             <figure class="acet-card-styled rounded-xl shadow-lg overflow-hidden hover:scale-[1.01] transition-transform">
-                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Yield" onerror="this.onerror=null; this.src='https://placehold.co/600x400/111111/f0f0f0?text=Image+Load+Failed'" alt="Woman holding two large lemons" class="w-full h-auto object-cover" loading="lazy">
+                                <img src="https://placehold.co/600x400/111111/f0f0f0?text=Placeholder+Yield" alt="Woman holding two large lemons" class="w-full h-auto object-cover" loading="lazy">
                                 <figcaption class="p-3 text-sm text-acet-text-light text-center bg-black/40 border-t border-acet-border">Successful Yield.</figcaption>
                             </figure>
                         </div>
@@ -67,18 +103,18 @@
                 </section>
 
                 <section class="mb-16">
-                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center glow-text">Core Growing Systems</h2>
+                    <h2 class="text-3xl font-bold mb-8 text-center glow-text">Core Growing Systems</h2>
                     <div id="sections-container" class="space-y-4">
                         <!-- Accordion Sections Injected Here -->
                     </div>
                 </section>
 
-                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8" id="checklist">
-                    <h2 class="text-3xl font-bold text-acet-text mb-6 glow-text">Shopping Checklist</h2>
+                <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8">
+                    <h2 class="text-3xl font-bold mb-6 glow-text">Shopping Checklist</h2>
                     <div id="checklist-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Checklist Injected Here -->
                     </div>
-                    <div class="mt-8 bg-acet-card-styled acet-small-card rounded-lg p-6 flex gap-4 items-start">
+                    <div class="mt-8 acet-small-card rounded-lg p-6 flex gap-4 items-start">
                         <svg class="w-6 h-6 text-citrus-yellow flex-shrink-0 mt-0.5" data-lucide="info"></svg>
                         <div>
                             <p class="text-lg font-semibold text-citrus-orange mb-1">Estimated Cost</p>
@@ -88,20 +124,20 @@
                 </section>
 
                 <section class="mb-16">
-                    <h2 class="text-3xl font-bold text-acet-text mb-8 text-center glow-text">Where to Buy</h2>
+                    <h2 class="text-3xl font-bold mb-8 text-center glow-text">Where to Buy</h2>
                     <div id="retailers-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <!-- Retailers Injected Here -->
                     </div>
                 </section>
 
                 <section class="mb-16 acet-card-styled rounded-2xl shadow-xl p-8">
-                    <h2 class="text-3xl font-bold text-acet-text mb-6 glow-text">Common Issues & Fixes</h2>
+                    <h2 class="text-3xl font-bold mb-6 glow-text">Common Issues & Fixes</h2>
                     <div id="troubleshooting-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Troubleshooting Injected Here -->
                     </div>
                 </section>
 
-                <section class="bg-acet-card-styled rounded-2xl p-10 text-white text-center mb-12 shadow-2xl border border-citrus-orange/50">
+                <section class="acet-card-styled rounded-2xl p-10 text-center mb-12 shadow-2xl border border-citrus-orange/50">
                     <h2 class="text-4xl font-extrabold mb-4 glow-text">Start Your Citrus Orchard</h2>
                     <p class="mb-8 text-acet-text-light max-w-2xl mx-auto">All products are available in the Central Coast market. Use our interactive checklist and start your rooftop orchard today.</p>
                     <button id="print-button" class="acet-btn px-8 py-4 rounded-lg shadow-lg text-lg">
@@ -128,7 +164,7 @@
         <div id="modal-overlay" class="fixed inset-0 bg-acet-black/80 z-50 hidden flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div id="modal-box" class="acet-card rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col transition-all duration-300">
                 <div class="flex justify-between items-center p-4 border-b border-acet-border sticky top-0 bg-acet-card z-10">
-                    <h3 id="modal-title" class="text-lg font-semibold text-acet-text">
+                    <h3 id="modal-title" class="text-lg font-semibold">
                         <span class="glow-text text-xl">✨</span> AI-Generated Suggestions
                     </h3>
                     <button id="modal-close-btn" class="text-acet-text-light hover:text-citrus-orange" aria-label="Close modal">
@@ -137,7 +173,7 @@
                 </div>
                 <div id="modal-content" class="p-6 text-acet-text-light overflow-y-auto">
                     <label for="problem-textarea" class="block text-sm font-medium text-citrus-yellow mb-2">Describe your problem or idea:</label>
-                    <textarea id="problem-textarea" rows="4" class="block w-full rounded-md shadow-sm p-3 text-sm focus:ring-citrus-orange focus:border-citrus-orange resize-none" placeholder="E.g., My leaves are turning yellow. What could be wrong?"></textarea>
+                    <textarea id="problem-textarea" rows="4" class="block w-full rounded-md shadow-sm p-3 text-sm focus:ring-citrus-orange focus:border-citrus-orange resize-none bg-acet-card border border-acet-border" placeholder="E.g., My leaves are turning yellow. What could be wrong?"></textarea>
                     <button id="generate-suggestion-btn" class="acet-btn mt-4 px-6 py-2 rounded-lg text-sm w-full">
                         Generate Suggestions
                     </button>
