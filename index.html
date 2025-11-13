@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rooftop Lemon Tree Growing Guide</title>
+  <title>Rooftop Citrus Growing Guide</title>
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,8 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .hero-blur { backdrop-filter: blur(12px); }
     .glass { @apply bg-white/5 backdrop-blur-md border border-white/10; }
-    .hero-image { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp'); background-size: cover; background-position: center; }
+    .hero-image-1 { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akhede878c73d17nl0/760b99c2-002b-4789-8c58-ff4d30b8a9bd_high.webp'); background-size: cover; background-position: center; }
+    .hero-image-2 { background-image: url('https://image.cdn2.seaart.me/2025-11-13/d4akjmde878c73bn3pb0/15a45884-85f7-41d8-9a44-185703108cfd_high.webp'); background-size: cover; background-position: center; }
   </style>
   
   <!-- Tailwind Config Extension for Dark Citrus Palette -->
@@ -72,50 +73,107 @@
   <div id="app"></div>
 
   <script>
-    const { ChevronDown, Package, Droplet, Sun, Leaf, CheckCircle2, AlertCircle, ShoppingCart, Store, Settings, SunDim, Droplets, Weight } = lucide;
+    const { ChevronDown, Package, Droplet, Sun, Leaf, CheckCircle2, AlertCircle, ShoppingCart, Store, Settings, SunDim, Droplets, Weight, TreePine, Apple } = lucide;
 
     let expandedSection = 'soil';
+    let selectedCitrus = 'lemon';
 
-    const sections = {
-      soil: {
-        title: 'Soil Media Design',
-        icon: 'package',
-        content: [
+    const citrusData = {
+      lemon: {
+        name: 'Lemon',
+        emoji: '🍋',
+        soil: [
           { ingredient: 'Coarse pine bark (2–3 in.)', percent: '40%', product: 'Sungro® Professional Pine Bark', why: 'Low bulk density & large macropores for drainage' },
           { ingredient: 'Washed river sand', percent: '30%', product: 'Sungro® Professional Sand – Fine', why: 'Adds weight & keeps EC < 0.2 dS m⁻¹' },
           { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'High water retention & maintains pH ≈ 5.5' },
           { ingredient: 'Perlite (3–5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Boosts air-filled porosity' },
-        ]
-      },
-      water: {
-        title: 'Water Management',
-        icon: 'droplet',
-        content: 'Precise irrigation with pressure-compensating emitters at 0.5 gph. Use EC-5 moisture sensors to trigger drip irrigation when soil moisture drops below target VWC. Flush weekly with 2L rainwater to maintain EC < 1.2 dS m⁻¹.'
-      },
-      environment: {
-        title: 'Environmental Mitigation',
-        icon: 'sun',
-        content: [
+        ],
+        water: 'Precise irrigation with pressure-compensating emitters at 0.5 gph. Use EC-5 moisture sensors to trigger drip irrigation when soil moisture drops below target VWC. Flush weekly with 2L rainwater to maintain EC < 1.2 dS m⁻¹.',
+        environment: [
           { item: 'Shade cloth (30% density)', benefit: 'Reduces leaf temp ~5°C, passes 70% PAR' },
           { item: 'Lattice windbreak', benefit: 'Blocks ~40% wind exposure' },
           { item: 'Cool-roof coating (0.65+ albedo)', benefit: 'Lowers roof surface temp 10–12°C' },
           { item: 'Coconut-coir mulch (1–2 in.)', benefit: 'Cuts surface evaporation ~30%' },
+        ],
+        nutrients: 'Osmocote® Smart-Release 14-14-14 (½ cup per 5-gal pot) releases NPK at 2–4% monthly. Supplement bi-weekly with Jack\'s Classic 2-4-6 liquid (30 mL per application) during fruit set. Add MycoApply™ mycorrhizal inoculum (5g per pot) to enhance root surface area 2–3×.',
+        checklist: [
+          { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1.5L)', 'Peat moss/coir (1.2L)', 'Perlite (0.15L)', 'Dolomitic lime (0.25 lb)'] },
+          { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
+          { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (20 ft)', 'Rain-Bird PC ½ gph emitters (2)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '5-gal gravity reservoir'] },
+          { category: 'Nutrients & Inoculants', items: ['Osmocote 14-14-14 (½ cup)', 'Jack\'s Classic 2-4-6 liquid', 'MycoApply mycorrhizal inoculum (5g)', 'Dolomitic lime (0.25 lb)'] },
+          { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1–2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
+        ],
+        troubleshooting: [
+          { problem: 'Leaf yellowing + black roots', solution: 'Add 5–10% extra perlite to media; improve drainage', fix: 'Home Depot perlite bags' },
+          { problem: 'Sun-scorch on south side', solution: 'Increase shade cloth overlap to 40% total', fix: 'Additional Cool-Shade cloth roll' },
+          { problem: 'Fruit drop after hot night', solution: 'Apply 30 mL Jack’s 2-4-6 weekly as foliar spray', fix: 'Boost leaf K > 0.8% DW' },
+          { problem: 'Mildew under canopy', solution: 'Increase pot spacing; add lattice for airflow', fix: 'Garden Edge lattice panels' },
+          { problem: 'pH drift upward in winter', solution: 'Add 0.1 lb elemental sulfur per 5-gal pot', fix: '5-lb sulfur bag from Home Depot' },
         ]
       },
-      nutrients: {
-        title: 'Nutrient Management',
-        icon: 'leaf',
-        content: 'Osmocote® Smart-Release 14-14-14 (½ cup per 5-gal pot) releases NPK at 2–4% monthly. Supplement bi-weekly with Jack\'s Classic 2-4-6 liquid (30 mL per application) during fruit set. Add MycoApply™ mycorrhizal inoculum (5g per pot) to enhance root surface area 2–3×.'
+      orange: {
+        name: 'Orange',
+        emoji: '🍊',
+        soil: [
+          { ingredient: 'Coarse pine bark (2–3 in.)', percent: '35%', product: 'Sungro® Professional Pine Bark', why: 'Excellent drainage; prevents root rot in humid summers' },
+          { ingredient: 'Washed river sand', percent: '35%', product: 'Sungro® Professional Sand – Fine', why: 'Increases weight stability; EC < 0.15 dS m⁻¹' },
+          { ingredient: 'Peat moss or coconut coir', percent: '25%', product: 'Coir-Lite™ Coconut Coir', why: 'Retains moisture; pH 5.8–6.2 ideal for sweet oranges' },
+          { ingredient: 'Perlite (3–5 mm)', percent: '5%', product: 'Miracle-Gro Perlite', why: 'Enhances aeration for vigorous root growth' },
+        ],
+        water: 'Pressure-compensating emitters at 0.75 gph. EC-5 sensors trigger irrigation at 25% VWC depletion. Flush bi-weekly with 3L filtered water to prevent salt buildup.',
+        environment: [
+          { item: 'Shade cloth (40% density)', benefit: 'Mitigates heat stress; reduces fruit sunburn by 60%' },
+          { item: 'Lattice windbreak (50% porosity)', benefit: 'Reduces wind speed by 50%; protects blossoms' },
+          { item: 'Cool-roof coating (0.70 albedo)', benefit: 'Lowers ambient temp 12–15°C' },
+          { item: 'Pine bark mulch (2 in.)', benefit: 'Suppresses weeds; retains soil moisture' },
+        ],
+        nutrients: 'Osmocote® 18-6-12 (¾ cup per 7-gal pot) for steady release. Foliar spray with urea (1%) + micronutrients every 3 weeks during bloom. Inoculate with MycoApply™ Endo (7g per pot) for P uptake.',
+        checklist: [
+          { category: 'Media Components', items: ['Coarse pine bark (2.5L)', 'Washed river sand (2L)', 'Peat moss/coir (1.5L)', 'Perlite (0.2L)', 'Dolomitic lime (0.3 lb)'] },
+          { category: 'Containers & Drainage', items: ['Smart Pot® 7-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
+          { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (25 ft)', 'Rain-Bird PC ¾ gph emitters (3)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '7-gal gravity reservoir'] },
+          { category: 'Nutrients & Inoculants', items: ['Osmocote 18-6-12 (¾ cup)', 'Urea + micronutrient spray', 'MycoApply Endo (7g)', 'Dolomitic lime (0.3 lb)'] },
+          { category: 'Environmental Protection', items: ['Cool-Shade 40% shade cloth', 'Garden Edge vinyl lattice (3×3 ft)', 'Pine bark mulch (2 in. layer)', 'Cool-Roof reflective coating'] },
+        ],
+        troubleshooting: [
+          { problem: 'Blossom drop in spring', solution: 'Increase humidity with misting; maintain night temp >15°C', fix: 'Portable humidifier or mist nozzles' },
+          { problem: 'Fruit splitting', solution: 'Stabilize irrigation; avoid drought-stress cycles', fix: 'Upgrade to 1 gph emitters' },
+          { problem: 'Leaf miner trails', solution: 'Apply spinosad spray at first sign; use sticky traps', fix: 'Monterey Garden Insect Spray' },
+          { problem: 'Greening (HLB) symptoms', solution: 'Quarantine; test via UC ANR lab; remove if positive', fix: 'Contact local extension office' },
+          { problem: 'Iron deficiency chlorosis', solution: 'Apply chelated iron (Sequestrene 138) to soil', fix: '1 tbsp per 7-gal pot' },
+        ]
+      },
+      lime: {
+        name: 'Lime',
+        emoji: '🍈',
+        soil: [
+          { ingredient: 'Coarse pine bark', percent: '45%', product: 'Sungro® Pine Bark', why: 'Superior drainage; prevents lime-sensitive root rot' },
+          { ingredient: 'Washed river sand', percent: '25%', product: 'Fine Play Sand', why: 'Weight + low EC' },
+          { ingredient: 'Coconut coir', percent: '25%', product: 'Coir-Lite™', why: 'pH neutral; high CEC' },
+          { ingredient: 'Vermiculite', percent: '5%', product: 'Espoma Vermiculite', why: 'Improves water retention' },
+        ],
+        water: '0.4 gph emitters. Irrigate when VWC drops below 18%. Use RO water to avoid alkalinity buildup.',
+        environment: [
+          { item: 'Shade cloth (25% density)', benefit: 'Protects tender skin from sunscald' },
+          { item: 'Wind netting', benefit: 'Reduces fruit scarring' },
+          { item: 'Reflective mulch', benefit: 'Increases light to lower canopy' },
+          { item: 'Coir mulch', benefit: 'Maintains even moisture' },
+        ],
+        nutrients: 'Jack’s Citrus FeED 20-10-20 (1 tbsp per gal) weekly. Supplement with magnesium sulfate (Epsom salt) monthly.',
+        checklist: [
+          { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1L)', 'Coconut coir (1L)', 'Vermiculite (0.2L)', 'Gypsum (0.2 lb)'] },
+          { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal', 'Pumice stone', 'Geotextile', 'Anchoring'] },
+          { category: 'Irrigation System', items: ['DripWorks tubing (15 ft)', '0.4 gph emitters (2)', 'EC-5 sensor', 'Timer', 'RO filter'] },
+          { category: 'Nutrients & Inoculants', items: ['Jack’s Citrus FeED', 'Epsom salt', 'MycoApply', 'Gypsum'] },
+          { category: 'Environmental Protection', items: ['25% shade cloth', 'Wind netting', 'Reflective mulch', 'Coir mulch'] },
+        ],
+        troubleshooting: [
+          { problem: 'Button fruit (small limes)', solution: 'Increase K and reduce N after fruit set', fix: 'Switch to 10-10-20' },
+          { problem: 'Lime anthracnose', solution: 'Copper fungicide spray pre-bloom', fix: 'Bonide Copper Fungicide' },
+          { problem: 'Thorns on new growth', solution: 'Normal for juvenile phase; prune selectively', fix: 'Use thornless rootstock next time' },
+        ]
       }
     };
-
-    const checklist = [
-      { category: 'Media Components', items: ['Coarse pine bark (2L)', 'Washed river sand (1.5L)', 'Peat moss/coir (1.2L)', 'Perlite (0.15L)', 'Dolomitic lime (0.25 lb)'] },
-      { category: 'Containers & Drainage', items: ['Smart Pot® 5-gal fabric bag', 'Pumice stone (drain layer)', 'Geotextile liner', 'Anchoring hardware'] },
-      { category: 'Irrigation System', items: ['DripWorks ½-in. tubing (20 ft)', 'Rain-Bird PC ½ gph emitters (2)', 'EC-5 moisture sensor', 'Titan 12-V timer + power supply', '5-gal gravity reservoir'] },
-      { category: 'Nutrients & Inoculants', items: ['Osmocote 14-14-14 (½ cup)', 'Jack\'s Classic 2-4-6 liquid', 'MycoApply mycorrhizal inoculum (5g)', 'Dolomitic lime (0.25 lb)'] },
-      { category: 'Environmental Protection', items: ['Cool-Shade 30% shade cloth', 'Garden Edge vinyl lattice (2×2 ft)', 'CocoCoir mulch (1–2 in. layer)', 'Cool-Roof reflective coating (optional)'] },
-    ];
 
     const retailers = [
       { name: 'Home Depot', icon: '🏪' },
@@ -126,17 +184,19 @@
       { name: 'Green Acres Nursery', icon: '🌱' },
     ];
 
-    const troubleshooting = [
-      { problem: 'Leaf yellowing + black roots', solution: 'Add 5–10% extra perlite to media; improve drainage', fix: 'Home Depot perlite bags' },
-      { problem: 'Sun-scorch on south side', solution: 'Increase shade cloth overlap to 40% total', fix: 'Additional Cool-Shade cloth roll' },
-      { problem: 'Fruit drop after hot night', solution: 'Apply 30 mL Jack’s 2-4-6 weekly as foliar spray', fix: 'Boost leaf K > 0.8% DW' },
-      { problem: 'Mildew under canopy', solution: 'Increase pot spacing; add lattice for airflow', fix: 'Garden Edge lattice panels' },
-      { problem: 'pH drift upward in winter', solution: 'Add 0.1 lb elemental sulfur per 5-gal pot', fix: '5-lb sulfur bag from Home Depot' },
-    ];
+    function setCitrus(type) {
+      selectedCitrus = type;
+      expandedSection = 'soil';
+      render();
+    }
 
     function toggleSection(key) {
       expandedSection = expandedSection === key ? null : key;
       render();
+    }
+
+    function getCurrentData() {
+      return citrusData[selectedCitrus];
     }
 
     function renderIngredientContent(content) {
@@ -162,14 +222,20 @@
     }
 
     function renderSections() {
+      const data = getCurrentData();
+      const sections = {
+        soil: { title: 'Soil Media Design', icon: 'package', content: data.soil },
+        water: { title: 'Water Management', icon: 'droplet', content: data.water },
+        environment: { title: 'Environmental Mitigation', icon: 'sun', content: data.environment },
+        nutrients: { title: 'Nutrient Management', icon: 'leaf', content: data.nutrients }
+      };
+
       return Object.entries(sections).map(([key, section]) => {
         const isExpanded = expandedSection === key;
         let contentHtml = '';
 
         if (Array.isArray(section.content)) {
-          contentHtml = section.icon === 'package'
-            ? renderIngredientContent(section.content)
-            : renderEnvironmentContent(section.content);
+          contentHtml = key === 'soil' ? renderIngredientContent(section.content) : renderEnvironmentContent(section.content);
         } else {
           contentHtml = `<p class="text-slate-300 leading-relaxed text-sm">${section.content}</p>`;
         }
@@ -201,47 +267,58 @@
     }
 
     function render() {
+      const data = getCurrentData();
       const html = `
-        <!-- Hero Header (shadcn-style, Dark Mode) -->
-        <header class="relative overflow-hidden hero-image text-white min-h-[70vh] flex items-center">
-          <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80"></div>
-          <div class="absolute inset-0 hero-blur bg-black/20"></div>
-          <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32 w-full">
-            <div class="flex items-center gap-5 mb-6 animate-fade-in">
-              <div class="text-6xl md:text-7xl">🍊</div>
-              <div>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">Rooftop Lemon Tree</h1>
-                <p class="text-lg md:text-xl text-orange-100 mt-2 drop-shadow-md">Precision Growing Guide for Orcutt, CA</p>
-              </div>
+        <!-- Hero Header with Dual Images -->
+        <header class="relative overflow-hidden text-white min-h-screen flex items-center">
+          <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-2">
+            <div class="hero-image-1"></div>
+            <div class="hero-image-2"></div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40"></div>
+          <div class="absolute inset-0 hero-blur bg-black/30"></div>
+          <div class="relative max-w-7xl mx-auto px-6 py-32 w-full text-center">
+            <div class="flex justify-center gap-4 mb-8">
+              ${Object.entries(citrusData).map(([key, c]) => `
+                <button onclick="window.setCitrus('${key}')" 
+                  class="glass rounded-full p-4 card-hover ${selectedCitrus === key ? 'ring-2 ring-citrus' : ''}">
+                  <div class="text-5xl">${c.emoji}</div>
+                </button>
+              `).join('')}
             </div>
-            <p class="max-w-3xl text-orange-50 leading-relaxed text-base md:text-lg mb-8 drop-shadow-md animate-fade-in" style="animation-delay: 0.2s;">
-              Engineered for third-story rooftops in arid microclimates. This guide delivers research-backed media, lightweight systems, sensor irrigation, and climate mitigation for a thriving urban citrus orchard.
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white drop-shadow-2xl mb-4">
+              Rooftop ${data.name} Growing
+            </h1>
+            <p class="text-xl md:text-2xl text-orange-100 drop-shadow-md mb-8">
+              Precision Guide for Orcutt, Santa Barbara County, CA
             </p>
-            <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 0.4s;">
-              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+            <p class="max-w-4xl mx-auto text-orange-50 leading-relaxed text-base md:text-lg mb-10 drop-shadow-md">
+              Engineered systems for third-story rooftops. Lightweight media, sensor-driven irrigation, and climate mitigation for lemons, oranges, limes, and beyond.
+            </p>
+            <div class="flex justify-center flex-wrap gap-4">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
                 <i data-lucide="weight" class="w-5 h-5"></i>
                 <span class="font-medium">≤ 20 lb/ft² Load</span>
               </div>
-              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
                 <i data-lucide="droplets" class="w-5 h-5"></i>
-                <span class="font-medium">Sensor-Driven Drip</span>
+                <span class="font-medium">Smart Drip</span>
               </div>
-              <div class="glass rounded-full px-5 py-3 flex items-center gap-2">
+              <div class="glass rounded-full px-6 py-3 flex items-center gap-2">
                 <i data-lucide="sun-dim" class="w-5 h-5"></i>
-                <span class="font-medium">20–30% ET Reduction</span>
+                <span class="font-medium">Climate Control</span>
               </div>
             </div>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
         </header>
 
-        <main class="max-w-7xl mx-auto px-6 py-16 -mt-12 relative z-10">
+        <main class="max-w-7xl mx-auto px-6 py-16 -mt-32 relative z-10">
 
           <!-- Core Systems -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3 justify-center md:justify-start">
               <i data-lucide="settings" class="w-6 h-6 text-citrus"></i>
-              Core Growing Systems
+              Core Growing Systems for ${data.name}
             </h2>
             <div class="space-y-5">
               ${renderSections()}
@@ -250,12 +327,12 @@
 
           <!-- Shopping Checklist -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3 justify-center md:justify-start">
               <i data-lucide="shopping-cart" class="w-6 h-6 text-citrus"></i>
               Procurement Checklist
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              ${checklist.map(group => `
+              ${data.checklist.map(group => `
                 <div class="glass rounded-2xl p-6 card-hover">
                   <h3 class="font-semibold text-slate-100 mb-4 flex items-center gap-2">
                     <i data-lucide="check-circle-2" class="w-5 h-5 text-citrus"></i>
@@ -276,14 +353,14 @@
               <i data-lucide="alert-circle" class="w-6 h-6 text-blue-400 flex-shrink-0"></i>
               <div>
                 <p class="font-semibold text-slate-100">Estimated Cost</p>
-                <p class="text-sm text-slate-300">$120–$150 per 5-gallon setup (media + container + irrigation + nutrients)</p>
+                <p class="text-sm text-slate-300">$120–$180 per setup (varies by citrus type and container size)</p>
               </div>
             </div>
           </section>
 
           <!-- Retailers -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3 justify-center md:justify-start">
               <i data-lucide="store" class="w-6 h-6 text-citrus"></i>
               Where to Buy
             </h2>
@@ -299,12 +376,12 @@
 
           <!-- Troubleshooting -->
           <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3">
+            <h2 class="text-2xl font-semibold text-slate-100 mb-7 flex items-center gap-3 justify-center md:justify-start">
               <i data-lucide="alert-circle" class="w-6 h-6 text-citrus"></i>
               Common Issues & Fixes
             </h2>
             <div class="space-y-5">
-              ${troubleshooting.map(item => `
+              ${data.troubleshooting.map(item => `
                 <div class="glass rounded-2xl p-6 card-hover">
                   <div class="flex items-start gap-4 mb-3">
                     <i data-lucide="alert-circle" class="w-6 h-6 text-orange-400 flex-shrink-0 mt-0.5"></i>
@@ -318,22 +395,22 @@
           </section>
 
           <!-- CTA -->
-          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-10 text-white text-center shadow-2xl glass">
-            <h2 class="text-3xl font-bold mb-4">Ready to Cultivate?</h2>
-            <p class="mb-8 opacity-90 max-w-2xl mx-auto">
-              All components are regionally available. Export this checklist into a spreadsheet and procure in bulk from local or online vendors for optimal efficiency.
+          <section class="bg-gradient-to-r from-citrus-600 to-orange-600 rounded-3xl p-12 text-white text-center shadow-2xl glass">
+            <h2 class="text-3xl md:text-4xl font-bold mb-5">Ready to Grow ${data.name}s?</h2>
+            <p class="mb-8 opacity-90 max-w-2xl mx-auto text-lg">
+              Switch between citrus types above. All data is tailored to Orcutt’s microclimate and rooftop constraints.
             </p>
-            <button onclick="window.print()" class="bg-white/10 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/20 transition-all border border-white/20">
-              Print or Save Guide
+            <button onclick="window.print()" class="bg-white/10 text-white font-semibold px-10 py-4 rounded-xl hover:bg-white/20 transition-all border border-white/20 text-lg">
+              Print Guide for ${data.name}
             </button>
           </section>
 
         </main>
 
-        <footer class="border-t border-slate-700/50 bg-slate-900 py-10 mt-24">
+        <footer class="border-t border-slate-700/50 bg-slate-900 py-12 mt-32">
           <div class="max-w-7xl mx-auto px-6 text-center text-slate-400 text-sm">
-            <p>🍊 Rooftop Lemon Tree Guide • Third-Story Cultivation in Orcutt, Santa Barbara County, CA</p>
-            <p class="mt-2">Supported by peer-reviewed horticultural science and UC Cooperative Extension bulletins</p>
+            <p>🍊🍋🍈 Rooftop Citrus Guide • Third-Story Cultivation in Orcutt, CA</p>
+            <p class="mt-2">Powered by UC ANR, USDA, and peer-reviewed horticultural science</p>
           </div>
         </footer>
       `;
@@ -343,6 +420,7 @@
     }
 
     window.toggleSection = toggleSection;
+    window.setCitrus = setCitrus;
     render();
   </script>
 </body>
